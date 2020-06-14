@@ -42,14 +42,14 @@ class _BottonWidgetState extends State<WidgetHomeBottomBar> {
           BottomNavigationBarItem(
             // 设置图标,颜色和文字
             icon: Icon(
-              Icons.home,
+              Icons.library_music,
               color: _Color,
             ),
             title: Text('故事',style: TextStyle(color: _Color),),
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.email,
+              Icons.video_label,
               color: _Color,
             ),
             title: Text('动画',style: TextStyle(color: _Color),),
@@ -63,7 +63,7 @@ class _BottonWidgetState extends State<WidgetHomeBottomBar> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.airplay,
+              Icons.near_me,
               color: _Color,
             ),
             title: Text('我的',style: TextStyle(color: _Color),),
