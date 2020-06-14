@@ -7,3 +7,4 @@ android/app/gradlew.bat
 android/app/local.properties
 **/.DS_Store
 .gitignore.swp
+build/
