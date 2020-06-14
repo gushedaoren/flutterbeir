@@ -1,3 +1,7 @@
 .dart_tool/
 .idea/
 .packages
+android/app/gradle/
+android/app/gradlew
+android/app/gradlew.bat
+android/app/local.properties
