@@ -5,3 +5,5 @@ android/app/gradle/
 android/app/gradlew
 android/app/gradlew.bat
 android/app/local.properties
+**/.DS_Store
+.gitignore.swp
