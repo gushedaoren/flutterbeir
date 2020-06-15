@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterbeir/base/BRApp.dart';
 // 引入四个文件
 
 import '../pages/tabbars/PageStoryHome.dart';
@@ -29,6 +30,9 @@ class _BottonWidgetState extends State<WidgetHomeBottomBar> {
       ..add(PageVideoHome())
       ..add(PageAI())
       ..add(PageMe());
+
+    var app=BRApp();
+    app.init();
     super.initState();
   }
   @override
