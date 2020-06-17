@@ -3,6 +3,7 @@ import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_banner_swiper/flutter_banner_swiper.dart';
+import 'package:flutterbeir/config/BRConfig.dart';
 import 'package:flutterbeir/models/ModelBanner.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'dart:convert';
@@ -40,8 +41,8 @@ class PageStoryHomeState extends State<PageStoryHome> {
   var bannerSwiper=BannerSwiper(
 
     //width  和 height 是图片的高宽比  不用传具体的高宽   必传
-    height: 108,
-    width: 54,
+    height: 720,
+    width: 360,
     //轮播图数目 必传
     length: (_bannersData==null)?0:_bannersData.results.length,
 
@@ -63,7 +64,7 @@ class PageStoryHomeState extends State<PageStoryHome> {
 
     void getBannerRequest() async {
 
-      var url_post="http://beir.1207game.com/brstory/banner/";
+      var url_post=BRConfig.domian+"/brstory/banner/";
       FormData formData = new FormData.from({
 
       });
