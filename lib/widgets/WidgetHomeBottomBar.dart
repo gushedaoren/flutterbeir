@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutterbeir/base/BRApp.dart';
 // 引入四个文件
 
-import '../pages/tabbars/PageStoryHome.dart';
-import '../pages/tabbars/PageVideoHome.dart';
-import '../pages/tabbars/PageAI.dart';
-import '../pages/tabbars/PageMe.dart';
+import '../pages/home/PageStoryHome.dart';
+import '../pages/home/PageVideoHome.dart';
+import '../pages/home/PageAI.dart';
+import '../pages/home/PageMe.dart';
 
 // 动态的Widget
 class WidgetHomeBottomBar extends StatefulWidget {
