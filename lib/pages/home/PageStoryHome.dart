@@ -71,27 +71,7 @@ class PageStoryHomeState extends State<PageStoryHome> {
 
   }
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    print("initState");
-    getBannerRequest();
-    _streamController = StreamController<ModelBanner>();
-  }
-
-  @override
-  void didUpdateWidget(PageStoryHome oldWidget) {
-    // TODO: implement didUpdateWidget
-    super.didUpdateWidget(oldWidget);
-
-    print("didUpdateWidget");
-  }
-
-
-  @override
-  Widget build(BuildContext context) {
-
+  initBannerBuilder(){
     return StreamBuilder<ModelBanner>(
       stream:_streamController.stream,
       //initialData: ,// a Stream<int> or null
@@ -128,7 +108,7 @@ class PageStoryHomeState extends State<PageStoryHome> {
           // 请求未结束，显示loading
           return
             Center(
-               child: CircularProgressIndicator()
+                child: CircularProgressIndicator()
             );
 
 
@@ -137,6 +117,58 @@ class PageStoryHomeState extends State<PageStoryHome> {
 
 
       },
+    );
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print("initState");
+    getBannerRequest();
+    _streamController = StreamController<ModelBanner>();
+  }
+
+  @override
+  void didUpdateWidget(PageStoryHome oldWidget) {
+    // TODO: implement didUpdateWidget
+    super.didUpdateWidget(oldWidget);
+
+    print("didUpdateWidget");
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+
+    return  new Container(
+
+      child: new Row(
+        children: [
+          new Expanded(
+            child: new Column(
+
+              children: [
+                new Container(
+
+                  child: initBannerBuilder(),
+                ),
+
+              ],
+            ),
+          ),
+          new Icon(
+            Icons.star,
+            color: Colors.red[500],
+          ),
+         new Container(
+           child:new Icon(
+             Icons.star,
+             color: Colors.red[500],
+           )
+         )
+        ],
+      ),
     );
   }
 
