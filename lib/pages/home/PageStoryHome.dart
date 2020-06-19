@@ -7,6 +7,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_banner_swiper/flutter_banner_swiper.dart';
 import 'package:flutterbeir/config/BRConfig.dart';
 import 'package:flutterbeir/models/ModelBanner.dart';
+import 'package:flutterbeir/models/ModelHomeAll.dart';
+import 'package:flutterbeir/widgets/HomeHeader.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'dart:convert';
 class PageStoryHome extends StatefulWidget {
@@ -18,8 +20,11 @@ class PageStoryHome extends StatefulWidget {
 class PageStoryHomeState extends State<PageStoryHome> {
 
   StreamController<ModelBanner> _streamController;
+  StreamController<ModelHomeAll> _streamHomeAllController;
 
   static var _bannersData;
+
+  static var _homeAllData;
   var bannerSwiper;
 
   getBannerRequest() async {
@@ -46,28 +51,33 @@ class PageStoryHomeState extends State<PageStoryHome> {
     _streamController.add(_bannersData);
     _streamController.close();
 
-    bannerSwiper=BannerSwiper(
-
-      //width  和 height 是图片的高宽比  不用传具体的高宽   必传s
-      height: 720,
-      width: 360,
-      //轮播图数目 必传
-      length: (_bannersData==null)?0:_bannersData.results.length,
-
-      //轮播的item  widget 必传
-      getwidget: (index) {
-        return new GestureDetector(
-            child:  Image.network(_bannersData.results[index%_bannersData.results.length].media.toString(),fit: BoxFit.cover,),
-            onTap: () {
-              //点击后todo
-            });
-      },
-
-    );
 
 
+  }
 
-    return 0;
+  getHomeAllRequest() async {
+
+    var url_post=BRConfig.domian+"/brstory/homeall/";
+    FormData formData = new FormData.from({
+
+    });
+    LogUtil.e(url_post);
+    var dio = new Dio();
+    var response = await dio.get(url_post, data: formData);
+
+
+    var responseStr=response.data;
+    print(responseStr);
+
+    var data=ModelHomeAll.fromJson(responseStr);
+
+
+
+
+    _streamHomeAllController.add(data);
+    _streamHomeAllController.close();
+
+
 
   }
 
@@ -120,13 +130,50 @@ class PageStoryHomeState extends State<PageStoryHome> {
     );
   }
 
+
+  initHomeAllBuilder(){
+    return StreamBuilder<ModelHomeAll>(
+      stream:_streamHomeAllController.stream,
+      //initialData: ,// a Stream<int> or null
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+
+        // 请求已结束
+        if(snapshot.connectionState == ConnectionState.done){
+          if(snapshot.hasError){
+            // 请求失败，显示错误
+            return Text("Error: ${snapshot.error}");
+          }else{
+            return Row(
+                children:[
+                  new HomeHeader(),
+                ]
+
+            );
+          }
+        }else{
+          // 请求未结束，显示loading
+          return
+            Center(
+                child: CircularProgressIndicator()
+            );
+
+
+        }
+
+
+
+      },
+    );
+  }
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     print("initState");
     getBannerRequest();
+    getHomeAllRequest();
     _streamController = StreamController<ModelBanner>();
+    _streamHomeAllController=StreamController<ModelHomeAll>();
   }
 
   @override
@@ -143,7 +190,7 @@ class PageStoryHomeState extends State<PageStoryHome> {
 
     return  new Container(
 
-      child: new Row(
+      child: new Column(
         children: [
           new Expanded(
             child: new Column(
@@ -157,15 +204,9 @@ class PageStoryHomeState extends State<PageStoryHome> {
               ],
             ),
           ),
-          new Icon(
-            Icons.star,
-            color: Colors.red[500],
-          ),
          new Container(
-           child:new Icon(
-             Icons.star,
-             color: Colors.red[500],
-           )
+           child:initHomeAllBuilder(),
+
          )
         ],
       ),
