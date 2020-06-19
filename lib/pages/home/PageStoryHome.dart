@@ -143,9 +143,11 @@ class PageStoryHomeState extends State<PageStoryHome> {
             // 请求失败，显示错误
             return Text("Error: ${snapshot.error}");
           }else{
-            return Row(
+            return Column(
                 children:[
-                  new HomeHeader(),
+                  new HomeHeader("今日推荐","今日听什么？快来这里看看"),
+                  new HomeHeader("重磅推荐","充实每一天，成长看得见"),
+                  new HomeHeader("猜你喜欢","知识就是这样炼成的"),
                 ]
 
             );
