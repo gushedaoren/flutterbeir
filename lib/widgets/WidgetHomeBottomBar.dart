@@ -31,12 +31,14 @@ class _BottonWidgetState extends State<WidgetHomeBottomBar> {
       ..add(PageAI())
       ..add(PageMe());
 
-    var app=BRApp();
-    app.init();
+
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
+
+    var app=BRApp(context);
+    app.init();
     return Scaffold(
       // 根据用户点击的索引显示不同的内容
       body: lists[_currentIndex],

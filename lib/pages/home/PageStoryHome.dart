@@ -8,6 +8,7 @@ import 'package:flutter_banner_swiper/flutter_banner_swiper.dart';
 import 'package:flutterbeir/config/BRConfig.dart';
 import 'package:flutterbeir/models/ModelBanner.dart';
 import 'package:flutterbeir/models/ModelHomeAll.dart';
+import 'package:flutterbeir/pages/story/StroyGridView.dart';
 import 'package:flutterbeir/widgets/HomeHeader.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'dart:convert';
@@ -19,7 +20,7 @@ class PageStoryHome extends StatefulWidget {
 }
 class PageStoryHomeState extends State<PageStoryHome> {
 
-  StreamController<ModelBanner> _streamController;
+  StreamController<ModelBanner> _streamBannerController;
   StreamController<ModelHomeAll> _streamHomeAllController;
 
   static var _bannersData;
@@ -48,8 +49,8 @@ class PageStoryHomeState extends State<PageStoryHome> {
     print(data.results[0].media.toString());
 
 
-    _streamController.add(_bannersData);
-    _streamController.close();
+    _streamBannerController.add(_bannersData);
+    _streamBannerController.close();
 
 
 
@@ -71,6 +72,8 @@ class PageStoryHomeState extends State<PageStoryHome> {
 
     var data=ModelHomeAll.fromJson(responseStr);
 
+    _homeAllData=data;
+
 
 
 
@@ -83,7 +86,7 @@ class PageStoryHomeState extends State<PageStoryHome> {
 
   initBannerBuilder(){
     return StreamBuilder<ModelBanner>(
-      stream:_streamController.stream,
+      stream:_streamBannerController.stream,
       //initialData: ,// a Stream<int> or null
       builder: (BuildContext context, AsyncSnapshot snapshot) {
 
@@ -146,8 +149,11 @@ class PageStoryHomeState extends State<PageStoryHome> {
             return Column(
                 children:[
                   new HomeHeader("今日推荐","今日听什么？快来这里看看"),
+                  new StoryGridView(0, _homeAllData),
                   new HomeHeader("重磅推荐","充实每一天，成长看得见"),
+//                  new StoryGridView(1, _homeAllData),
                   new HomeHeader("猜你喜欢","知识就是这样炼成的"),
+//                  new StoryGridView(2, _homeAllData),
                 ]
 
             );
@@ -174,7 +180,7 @@ class PageStoryHomeState extends State<PageStoryHome> {
     print("initState");
     getBannerRequest();
     getHomeAllRequest();
-    _streamController = StreamController<ModelBanner>();
+    _streamBannerController = StreamController<ModelBanner>();
     _streamHomeAllController=StreamController<ModelHomeAll>();
   }
 
