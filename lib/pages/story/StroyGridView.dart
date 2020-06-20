@@ -43,7 +43,7 @@ class StoryGridView extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       padding: EdgeInsets.symmetric(horizontal: 16),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
+        crossAxisCount: coloum,
         mainAxisSpacing: 10,
         crossAxisSpacing: 10,
         childAspectRatio: 0.7,

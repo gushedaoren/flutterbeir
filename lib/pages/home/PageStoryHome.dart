@@ -121,7 +121,7 @@ class PageStoryHomeState extends State<PageStoryHome> {
           // 请求未结束，显示loading
           return
             Center(
-                child: CircularProgressIndicator()
+
             );
 
 
@@ -151,9 +151,9 @@ class PageStoryHomeState extends State<PageStoryHome> {
                   new HomeHeader("今日推荐","今日听什么？快来这里看看"),
                   new StoryGridView(0, _homeAllData),
                   new HomeHeader("重磅推荐","充实每一天，成长看得见"),
-//                  new StoryGridView(1, _homeAllData),
+                  new StoryGridView(1, _homeAllData),
                   new HomeHeader("猜你喜欢","知识就是这样炼成的"),
-//                  new StoryGridView(2, _homeAllData),
+                  new StoryGridView(2, _homeAllData),
                 ]
 
             );
@@ -196,28 +196,32 @@ class PageStoryHomeState extends State<PageStoryHome> {
   @override
   Widget build(BuildContext context) {
 
-    return  new Container(
+    return  new SingleChildScrollView(
 
-      child: new Column(
-        children: [
-          new Expanded(
-            child: new Column(
+      //滑动的方向 Axis.vertical为垂直方向滑动，Axis.horizontal 为水平方向
+        scrollDirection: Axis.vertical,
+        //true 滑动到底部
+        reverse: false,
+        padding: EdgeInsets.all(0.0),
+        ////滑动到底部回弹效果
+        physics: BouncingScrollPhysics(),
 
-              children: [
-                new Container(
 
-                  child: initBannerBuilder(),
-                ),
+        child: new Column(
+          children: [
 
-              ],
+          new Container(
+
+              child: initBannerBuilder(),
             ),
-          ),
-         new Container(
-           child:initHomeAllBuilder(),
 
-         )
-        ],
-      ),
+
+           new Container(
+             child:initHomeAllBuilder(),
+
+           )
+          ],
+        ),
     );
   }
 
