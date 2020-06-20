@@ -39,14 +39,29 @@ class StoryPlayPageState extends State<StoryPlayPage>{
 
     });
      playThisMusic();
+
+    audioPlayer.onAudioPositionChanged.listen((p) async {
+// p参数可以获取当前进度，也是可以调整的，比如p.inMilliseconds
+    });
   }
-  playThisMusic(){
-
+  playThisMusic() async {
+    int result = await audioPlayer.play(data.media);
+    if (result == 1) {
+      // success
+      print('play success');
+    } else {
+      print('play failed');
+    }
   }
 
-
-  stopThisMusic() {
-    audioPlayer.pause();
+  stopThisMusic() async{
+    int result = await audioPlayer.pause();
+    if (result == 1) {
+      // success
+      print('pause success');
+    } else {
+      print('pause failed');
+    }
   }
   onNext() {
     print('next');
@@ -67,6 +82,8 @@ class StoryPlayPageState extends State<StoryPlayPage>{
 
 
   }
+
+
 
   @override
   Widget build(BuildContext context) {
