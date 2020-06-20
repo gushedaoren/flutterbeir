@@ -45,12 +45,12 @@ class StoryGridView extends StatelessWidget {
       shrinkWrap: true,
       itemCount: gridDatas.length,
       physics: NeverScrollableScrollPhysics(),
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.symmetric(horizontal: 5),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: coloum,
-        mainAxisSpacing: 10,
-        crossAxisSpacing: 10,
-        childAspectRatio: 0.7,
+        mainAxisSpacing: 5,
+        crossAxisSpacing: 5,
+        childAspectRatio: 10/12,
       ),
       itemBuilder: (context, index) {
         return getItemContainer(gridDatas[index]);
@@ -87,8 +87,7 @@ class StoryGridView extends StatelessWidget {
         new Image(
           image: NetworkImage(data.icon),
         ),
-        new Container(
-          margin: const EdgeInsets.only(top: 8.0),
+        new Expanded(
           child: new Text(
             data.name,
             style: new TextStyle(
@@ -113,7 +112,7 @@ class StoryGridView extends StatelessWidget {
         clickItem(data);
       },
       child: new Container(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(2.0),
         child: initGridItem(data)
       ),
     );
