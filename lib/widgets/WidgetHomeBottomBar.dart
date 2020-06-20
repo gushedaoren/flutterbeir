@@ -16,8 +16,6 @@ class WidgetHomeBottomBar extends StatefulWidget {
 
 class _BottonWidgetState extends State<WidgetHomeBottomBar> {
 
-  // 设置定义颜色变量
-  final _Color = Colors.lightBlue;
   // 设置初始化的索引
   int _currentIndex = 0;
 
@@ -49,30 +47,30 @@ class _BottonWidgetState extends State<WidgetHomeBottomBar> {
             // 设置图标,颜色和文字
             icon: Icon(
               Icons.library_music,
-              color: _Color,
+              color: app.getPrimaryColor(),
             ),
-            title: Text('故事',style: TextStyle(color: _Color),),
+            title: Text('故事',style: TextStyle(color: app.getPrimaryColor()),),
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.video_label,
-              color: _Color,
+              color: app.getPrimaryColor(),
             ),
-            title: Text('动画',style: TextStyle(color: _Color),),
+            title: Text('动画',style: TextStyle(color: app.getPrimaryColor()),),
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.pages,
-              color: _Color,
+              color: app.getPrimaryColor(),
             ),
-            title: Text('智能',style: TextStyle(color: _Color),),
+            title: Text('智能',style: TextStyle(color: app.getPrimaryColor()),),
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.near_me,
-              color: _Color,
+              Icons.person,
+              color: app.getPrimaryColor(),
             ),
-            title: Text('我的',style: TextStyle(color: _Color),),
+            title: Text('我的',style: TextStyle(color: app.getPrimaryColor()),),
           ),
         ],
 
