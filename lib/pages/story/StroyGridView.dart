@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterbeir/base/BaseStatelessWidget.dart';
+import 'package:flutterbeir/media/StoryPlayPage.dart';
 import 'package:flutterbeir/models/ModelHomeAll.dart';
 
 class StoryGridView extends StatelessWidget {
@@ -11,8 +12,11 @@ class StoryGridView extends StatelessWidget {
 
   StoryGridView(this.type,this.homeAll);
 
+
+  BuildContext context;
   @override
   Widget build(BuildContext context) {
+    this.context=context;
 
 
     List gridDatas;
@@ -55,9 +59,27 @@ class StoryGridView extends StatelessWidget {
   }
 
 
-  getItemContainer(Homegrid data){
+  clickItem(Homegrid data){
+
+    print(data);
+    Navigator.push(
+      context,
+      //创建一个路由
+      new MaterialPageRoute(
+          builder: (context) => StoryPlayPage(data),
+          //设置下一个界面的名字（就是设置别名）
+          settings: RouteSettings(
+              name: 'StoryPlayPage',
+              arguments: {"datas": data}
+
+          )
+      ),
+    );
+
+  }
 
 
+  initGridItem(Homegrid data){
     return new Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -78,6 +100,26 @@ class StoryGridView extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  getItemContainer(Homegrid data){
+
+
+    return new GestureDetector(
+      onTap: () {
+        //处理点击事件
+        print("clicke grid item");
+
+        clickItem(data);
+      },
+      child: new Container(
+        padding: const EdgeInsets.all(8.0),
+        child: initGridItem(data)
+      ),
+    );
+
+
+
   }
 
 }
