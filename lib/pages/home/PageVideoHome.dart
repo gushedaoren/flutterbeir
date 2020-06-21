@@ -9,6 +9,9 @@ import 'package:flutterbeir/base/BasePageState.dart';
 import 'package:flutterbeir/base/BaseStatefulWidget.dart';
 import 'package:flutterbeir/config/BRConfig.dart';
 import 'package:flutterbeir/models/ModelBanner.dart';
+import 'package:flutterbeir/models/ModelVideoHomeAll.dart';
+import 'package:flutterbeir/pages/Series/SeriesGridView.dart';
+import 'package:flutterbeir/widgets/HomeHeader.dart';
 
 class PageVideoHome extends BaseStatefulWidget {
 
@@ -34,7 +37,38 @@ class PageVideoHome extends BaseStatefulWidget {
 class PageVideoHomeState extends State<PageVideoHome>{
 
   StreamController<ModelBanner> _streamBannerController;
+  StreamController<ModelVideoHomeAll> _streamHomeAllController;
+  static var _homeAllData;
   static var _bannersData;
+
+  getHomeAllRequest() async {
+
+    var url_post=BRConfig.domian+"/brstory/videohomeall/";
+    FormData formData = new FormData.from({
+
+    });
+    LogUtil.e(url_post);
+    var dio = new Dio();
+    var response = await dio.get(url_post, data: formData);
+
+
+    var responseStr=response.data;
+    print(responseStr);
+
+    var data=ModelVideoHomeAll.fromJson(responseStr);
+
+    _homeAllData=data;
+
+
+
+
+    _streamHomeAllController.add(data);
+    _streamHomeAllController.close();
+
+
+
+  }
+
   getBannerRequest() async {
 
     var url_post=BRConfig.domian+"/brstory/banner/";
@@ -87,6 +121,9 @@ class PageVideoHomeState extends State<PageVideoHome>{
     getBannerRequest();
 
     _streamBannerController = StreamController<ModelBanner>();
+
+    getHomeAllRequest();
+    _streamHomeAllController=StreamController<ModelVideoHomeAll>();
 
   }
 
@@ -145,14 +182,58 @@ class PageVideoHomeState extends State<PageVideoHome>{
 
 
           new Container(
-//            child:initHomeAllBuilder(),
+            child:initHomeAllBuilder(),
 
           )
         ],
       ),
     );
   }
+  initHomeAllBuilder(){
+    return StreamBuilder<ModelVideoHomeAll>(
+      stream:_streamHomeAllController.stream,
+      //initialData: ,// a Stream<int> or null
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
 
+        // 请求已结束
+        if(snapshot.connectionState == ConnectionState.done){
+          if(snapshot.hasError){
+            // 请求失败，显示错误
+            return Text("Error: ${snapshot.error}");
+          }else{
+            return new Container(
+              child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children:[
+                    new HomeHeader("今日推荐","今日看什么？快来这里看看"),
+                    new SeriesGridView(_homeAllData),
+//                    new HomeHeader("重磅推荐","充实每一天，成长看得见"),
+//                    new StoryGridView(1, _homeAllData),
+//                    new HomeHeader("猜你喜欢","知识就是这样炼成的"),
+//                    new StoryGridView(2, _homeAllData),
+                  ]
+
+              ),
+
+            );
+
+
+          }
+        }else{
+          // 请求未结束，显示loading
+          return
+            Center(
+                child: CircularProgressIndicator()
+            );
+
+
+        }
+
+
+
+      },
+    );
+  }
 
 
 }
