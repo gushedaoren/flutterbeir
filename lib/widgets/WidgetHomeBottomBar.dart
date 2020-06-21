@@ -42,6 +42,7 @@ class _BottonWidgetState extends State<WidgetHomeBottomBar> {
       body: lists[_currentIndex],
 
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
             // 设置图标,颜色和文字

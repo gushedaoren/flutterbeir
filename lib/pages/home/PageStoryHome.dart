@@ -4,7 +4,8 @@ import 'dart:async';
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_banner_swiper/flutter_banner_swiper.dart';
+
+import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutterbeir/config/BRConfig.dart';
 import 'package:flutterbeir/models/ModelBanner.dart';
 import 'package:flutterbeir/models/ModelHomeAll.dart';
@@ -84,6 +85,27 @@ class PageStoryHomeState extends State<PageStoryHome> {
 
   }
 
+  initBannerSwiper(){
+    return new Swiper(
+
+      containerWidth: 720,
+      containerHeight: 360,
+      itemHeight: 360,
+      itemWidth: 720,
+
+
+      itemBuilder: (BuildContext context,int index){
+        return Text("test");
+
+//        return new Image.network(_bannersData.results[index%_bannersData.results.length].media.toString(),fit: BoxFit.cover,width: 720,height: 360);
+      },
+      itemCount: _bannersData.results.length,
+      pagination: new SwiperPagination(),
+      control: new SwiperControl(),
+    );
+
+  }
+
   initBannerBuilder(){
     return StreamBuilder<ModelBanner>(
       stream:_streamBannerController.stream,
@@ -97,25 +119,8 @@ class PageStoryHomeState extends State<PageStoryHome> {
             return Text("Error: ${snapshot.error}");
           }else{
             // 请求成功，显示数据
-            return BannerSwiper(
+            return initBannerSwiper();
 
-
-              //width  和 height 是图片的高宽比  不用传具体的高宽   必传s
-              height: 720,
-              width: 360,
-              //轮播图数目 必传
-              length: (_bannersData==null)?0:_bannersData.results.length,
-
-              //轮播的item  widget 必传
-              getwidget: (index) {
-                return new GestureDetector(
-                    child:  Image.network(_bannersData.results[index%_bannersData.results.length].media.toString(),fit: BoxFit.cover,),
-                    onTap: () {
-                      //点击后todo
-                    });
-              },
-
-            );
           }
         }else{
           // 请求未结束，显示loading
