@@ -29,6 +29,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.15.1"
+  banner_view:
+    dependency: "direct main"
+    description:
+      name: banner_view
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.1.2"
   boolean_selector:
     dependency: transitive
     description:

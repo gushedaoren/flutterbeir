@@ -1,6 +1,7 @@
 
 import 'dart:async';
 
+import 'package:banner_view/banner_view.dart';
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
@@ -86,23 +87,18 @@ class PageStoryHomeState extends State<PageStoryHome> {
   }
 
   initBannerSwiper(){
-    return new Swiper(
 
-      containerWidth: 720,
-      containerHeight: 360,
-      itemHeight: 360,
-      itemWidth: 720,
+    var bannerLength=_bannersData.results.length;
+    return  Container(
+        alignment: Alignment.center,
+        height: 200.0,
+        child: new BannerView(
 
-
-      itemBuilder: (BuildContext context,int index){
-        return Text("test");
-
-//        return new Image.network(_bannersData.results[index%_bannersData.results.length].media.toString(),fit: BoxFit.cover,width: 720,height: 360);
-      },
-      itemCount: _bannersData.results.length,
-      pagination: new SwiperPagination(),
-      control: new SwiperControl(),
-    );
+        [
+          new Image.network(_bannersData.results[0%bannerLength].media.toString(),fit: BoxFit.cover,width: 720,height: 360),
+          new Image.network(_bannersData.results[1%bannerLength].media.toString(),fit: BoxFit.cover,width: 720,height: 360),
+        ]
+    ));
 
   }
 
