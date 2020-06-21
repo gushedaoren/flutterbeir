@@ -6,10 +6,7 @@ import 'package:flutterbeir/base/BRApp.dart';
 
 import 'BasePageState.dart';
 
-class BaseStatefulWidget extends StatefulWidget {
-
-  State<StatefulWidget> createState() => new BasePageState();
-
+abstract class BaseStatefulWidget extends StatefulWidget {
 
 
 }
