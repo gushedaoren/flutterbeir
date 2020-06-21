@@ -53,20 +53,21 @@ class StoryGridView extends StatelessWidget {
         childAspectRatio: 10/12,
       ),
       itemBuilder: (context, index) {
-        return getItemContainer(gridDatas[index]);
+        return getItemContainer(gridDatas,index);
       },
     );
   }
 
 
-  clickItem(Homegrid data){
+  clickItem(List datas,var index){
 
+    Homegrid data=datas[index];
     print(data);
     Navigator.push(
       context,
       //创建一个路由
       new MaterialPageRoute(
-          builder: (context) => StoryPlayPage(data),
+          builder: (context) => StoryPlayPage(datas,data),
           //设置下一个界面的名字（就是设置别名）
           settings: RouteSettings(
               name: 'StoryPlayPage',
@@ -101,15 +102,16 @@ class StoryGridView extends StatelessWidget {
     );
   }
 
-  getItemContainer(Homegrid data){
+  getItemContainer(List datas,var index){
 
+    Homegrid data=datas[index];
 
     return new GestureDetector(
       onTap: () {
         //处理点击事件
         print("clicke grid item");
 
-        clickItem(data);
+        clickItem(datas,index);
       },
       child: new Container(
         padding: const EdgeInsets.all(2.0),

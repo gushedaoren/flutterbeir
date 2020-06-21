@@ -28,11 +28,14 @@ class BRMusicPlayer extends StatefulWidget{
 
   final String songUrl;
   final String songname;
+  final List songlist;
+
 
 
   BRMusicPlayer({
     this.songUrl,
     this.songname,
+    this.songlist,
 
     this.onCompleted,
     this.onError,

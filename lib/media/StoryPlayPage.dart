@@ -11,21 +11,24 @@ class StoryPlayPage extends StatefulWidget{
 
   Homegrid data;
 
+  List datas;
 
-  StoryPlayPage(this.data);
+
+  StoryPlayPage(this.datas,this.data);
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
 
-    return new StoryPlayPageState(data);
+    return new StoryPlayPageState(datas,data);
   }
 
 }
 
 class StoryPlayPageState extends State<StoryPlayPage>{
   Homegrid data;
-  StoryPlayPageState(this.data);
+  List datas;
+  StoryPlayPageState(this.datas,this.data);
   bool isSongPage = true;
 
   BRMusicPlayer brMusicPlayer;
@@ -48,8 +51,20 @@ class StoryPlayPageState extends State<StoryPlayPage>{
   }
   onNext() {
     print('next');
-    setState(() {
 
+    setState(() {
+     brMusicPlayer= BRMusicPlayer(
+          songUrl:data.media,
+          songname:data.name,
+          songlist: datas,
+
+
+          onCompleted:this.onCompleted,
+          onError:this.onError,
+          onNext:this.onNext,
+          onPrevious:this.onPrevious,
+          volume:1.0
+      );
     });
     print('next123');
 
@@ -64,6 +79,7 @@ class StoryPlayPageState extends State<StoryPlayPage>{
     print('completed');
 
 
+
   }
 
 
@@ -76,6 +92,8 @@ class StoryPlayPageState extends State<StoryPlayPage>{
     brMusicPlayer=BRMusicPlayer(
         songUrl:data.media,
         songname:data.name,
+        songlist: datas,
+
 
         onCompleted:this.onCompleted,
         onError:this.onError,
