@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:flutterbeir/base/BaseStatefulWidget.dart';
 import 'package:flutterbeir/config/BRConfig.dart';
 import 'package:flutterbeir/models/ModelBanner.dart';
 import 'package:flutterbeir/models/ModelHomeAll.dart';
@@ -14,7 +15,7 @@ import 'package:flutterbeir/pages/story/StroyGridView.dart';
 import 'package:flutterbeir/widgets/HomeHeader.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'dart:convert';
-class PageStoryHome extends StatefulWidget {
+class PageStoryHome extends BaseStatefulWidget {
 
   @override
   State<StatefulWidget> createState()=> PageStoryHomeState();

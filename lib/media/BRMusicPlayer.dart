@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutterbeir/base/BRApp.dart';
-import 'package:flutterbeir/base/BaseState.dart';
+import 'package:flutterbeir/base/BasePageState.dart';
 import 'package:flutterbeir/config/BRConfig.dart';
 
 

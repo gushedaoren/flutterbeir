@@ -1,15 +1,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutterbeir/base/BRApp.dart';
+import 'package:flutterbeir/base/BaseStatefulWidget.dart';
 
-class BaseState extends State{
-  BRApp brApp;
+class BasePageState extends State<BaseStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-
-    
     throw UnimplementedError();
   }
-
+  
 }

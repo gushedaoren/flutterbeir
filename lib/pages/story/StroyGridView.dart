@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterbeir/base/BaseStatelessWidget.dart';
+import 'package:flutterbeir/base/BaseStatefulWidget.dart';
 import 'package:flutterbeir/media/StoryPlayPage.dart';
 import 'package:flutterbeir/models/ModelHomeAll.dart';
 
