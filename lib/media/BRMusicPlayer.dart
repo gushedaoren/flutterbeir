@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutterbeir/base/BRApp.dart';
 import 'package:flutterbeir/base/BaseState.dart';
+import 'package:flutterbeir/config/BRConfig.dart';
 
 
 // import '../song.dart';
@@ -49,7 +50,7 @@ class BRMusicPlayer extends StatefulWidget{
 }
 
 class _PlayerState extends State<BRMusicPlayer> {
-  AudioPlayer audioPlayer = new AudioPlayer();
+  AudioPlayer audioPlayer = new AudioPlayer(mode: PlayerMode.MEDIA_PLAYER,playerId: BRConfig.audioPlayerId);
   bool isPlaying = true;
   Duration duration;
   Duration position;
@@ -76,14 +77,16 @@ class _PlayerState extends State<BRMusicPlayer> {
     return format;
   }
   playThisMusic() {
-    audioPlayer.play(
-        widget.songUrl
-    );
+    print(widget.songname);
+    print(widget.songUrl);
+
+
+    audioPlayer.play(widget.songUrl);
   }
 
   initState() {
     super.initState();
-//    playThisMusic();
+
 
     listener1 = audioPlayer.onDurationChanged.listen((Duration d) {
       // print('Max duration: $d');
@@ -116,6 +119,8 @@ class _PlayerState extends State<BRMusicPlayer> {
         return;
       }
     });
+
+    playThisMusic();
   }
 
   @override

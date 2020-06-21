@@ -28,8 +28,7 @@ class StoryPlayPageState extends State<StoryPlayPage>{
   StoryPlayPageState(this.data);
   bool isSongPage = true;
 
-  AudioPlayer audioPlayer = new AudioPlayer();
-
+  BRMusicPlayer brMusicPlayer;
 
   void initState() {
     // AudioPlayer.logEnabled = true;
@@ -38,30 +37,14 @@ class StoryPlayPageState extends State<StoryPlayPage>{
     setState(() {
 
     });
-     playThisMusic();
 
-    audioPlayer.onAudioPositionChanged.listen((p) async {
-// p参数可以获取当前进度，也是可以调整的，比如p.inMilliseconds
-    });
   }
   playThisMusic() async {
-    int result = await audioPlayer.play(data.media);
-    if (result == 1) {
-      // success
-      print('play success');
-    } else {
-      print('play failed');
-    }
+
   }
 
   stopThisMusic() async{
-    int result = await audioPlayer.pause();
-    if (result == 1) {
-      // success
-      print('pause success');
-    } else {
-      print('pause failed');
-    }
+
   }
   onNext() {
     print('next');
@@ -90,21 +73,22 @@ class StoryPlayPageState extends State<StoryPlayPage>{
     // TODO: implement build
 
 
+    brMusicPlayer=BRMusicPlayer(
+        songUrl:data.media,
+        songname:data.name,
+
+        onCompleted:this.onCompleted,
+        onError:this.onError,
+        onNext:this.onNext,
+        onPrevious:this.onPrevious,
+        volume:1.0
+    );
     return Scaffold(
       appBar: AppBar(title: Text(data.name),),
       body: new Column(
         children:[
           _content(),
-          BRMusicPlayer(
-              songUrl:data.media,
-              songname:data.name,
-
-              onCompleted:this.onCompleted,
-              onError:this.onError,
-              onNext:this.onNext,
-              onPrevious:this.onPrevious,
-              volume:1.0
-          )
+          brMusicPlayer
         ]
 
       ),
