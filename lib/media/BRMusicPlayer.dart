@@ -118,8 +118,9 @@ class _PlayerState extends State<BRMusicPlayer> {
     });
   }
 
-
+  @override
   void deactivate() {
+    audioPlayer.pause();
     audioPlayer.stop();
     super.deactivate();
   }
@@ -144,6 +145,7 @@ class _PlayerState extends State<BRMusicPlayer> {
           children: <Widget>[
             new IconButton(
               icon: Icon(Icons.arrow_back),
+              iconSize: 48.0,
               color: brApp.getPrimaryColor(),
               onPressed: () => {widget.onPrevious()},
             ),
@@ -159,7 +161,7 @@ class _PlayerState extends State<BRMusicPlayer> {
                 :
             new IconButton(
               icon: Icon(Icons.play_arrow),
-              iconSize: 36.0,
+              iconSize: 48.0,
               color: brApp.getPrimaryColor(),
               onPressed: () {
                 stopThisMusic();
@@ -167,6 +169,7 @@ class _PlayerState extends State<BRMusicPlayer> {
             ),
             new IconButton(
               icon: Icon(Icons.arrow_forward),
+              iconSize: 48.0,
               color: brApp.getPrimaryColor(),
               onPressed: () => {
                 // Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context,) => new SongPage(widget.songUrl, widget.songname, widget.list))),
