@@ -4,13 +4,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutterbeir/base/BRApp.dart';
 
-class BaseStatelessWidget extends StatelessWidget{
+class BaseStatelessWidget extends StatefulWidget{
 
   BRApp brApp;
+
+
   @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    brApp=new BRApp(context);
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
 
     throw UnimplementedError();
   }

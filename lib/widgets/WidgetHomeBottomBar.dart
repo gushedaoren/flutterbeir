@@ -35,8 +35,8 @@ class _BottonWidgetState extends State<WidgetHomeBottomBar> {
   @override
   Widget build(BuildContext context) {
 
-    var app=BRApp(context);
-    app.init();
+    var app=new BRApp();
+    app.init(context);
     return Scaffold(
       // 根据用户点击的索引显示不同的内容
       body: lists[_currentIndex],

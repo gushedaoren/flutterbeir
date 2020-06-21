@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutterbeir/base/BRApp.dart';
+import 'package:flutterbeir/base/BaseState.dart';
 
 
 // import '../song.dart';
@@ -52,6 +54,7 @@ class _PlayerState extends State<BRMusicPlayer> {
   Duration duration;
   Duration position;
   double sliderValue;
+  BRApp brApp=new BRApp();
 
   AudioPlayerState palyerState;
   dynamic listener1,listener2,listener3;
@@ -80,7 +83,7 @@ class _PlayerState extends State<BRMusicPlayer> {
 
   initState() {
     super.initState();
-    playThisMusic();
+//    playThisMusic();
 
     listener1 = audioPlayer.onDurationChanged.listen((Duration d) {
       // print('Max duration: $d');
@@ -141,13 +144,14 @@ class _PlayerState extends State<BRMusicPlayer> {
           children: <Widget>[
             new IconButton(
               icon: Icon(Icons.arrow_back),
-              color: Colors.yellow,
+              color: brApp.getPrimaryColor(),
               onPressed: () => {widget.onPrevious()},
             ),
             this.isPlaying ?
             new IconButton(
               icon: Icon(Icons.stop),
-              color: Colors.yellow,
+              iconSize: 48.0,
+              color: brApp.getPrimaryColor(),
               onPressed: () {
                 stopThisMusic();
               },
@@ -155,14 +159,15 @@ class _PlayerState extends State<BRMusicPlayer> {
                 :
             new IconButton(
               icon: Icon(Icons.play_arrow),
-              color: Colors.yellow,
+              iconSize: 36.0,
+              color: brApp.getPrimaryColor(),
               onPressed: () {
                 stopThisMusic();
               },
             ),
             new IconButton(
               icon: Icon(Icons.arrow_forward),
-              color: Colors.yellow,
+              color: brApp.getPrimaryColor(),
               onPressed: () => {
                 // Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context,) => new SongPage(widget.songUrl, widget.songname, widget.list))),
                 widget.onNext()
@@ -178,7 +183,7 @@ class _PlayerState extends State<BRMusicPlayer> {
             }
           },
           value: sliderValue ?? 0.0,
-          activeColor: Colors.yellow,
+          activeColor: brApp.getPrimaryColor(),
         ),
       ],
     );
