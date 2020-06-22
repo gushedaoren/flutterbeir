@@ -3,6 +3,7 @@ import 'package:flutterbeir/base/BaseStatefulWidget.dart';
 import 'package:flutterbeir/media/StoryPlayPage.dart';
 import 'package:flutterbeir/models/ModelHomeAll.dart';
 import 'package:flutterbeir/models/ModelVideoHomeAll.dart';
+import 'package:flutterbeir/pages/Series/SeriesStoryListPage.dart';
 
 class SeriesGridView extends StatelessWidget {
 
@@ -53,15 +54,16 @@ class SeriesGridView extends StatelessWidget {
   }
 
 
-  clickItem(List datas,var index){
+  clickItem(VideozSeries1 data){
 
-    Homegrid data=datas[index];
+
+
     print(data);
     Navigator.push(
       context,
       //创建一个路由
       new MaterialPageRoute(
-          builder: (context) => StoryPlayPage(datas,data),
+          builder: (context) => SeriesStoryListPage(data),
           //设置下一个界面的名字（就是设置别名）
           settings: RouteSettings(
               name: 'StoryPlayPage',
@@ -105,7 +107,7 @@ class SeriesGridView extends StatelessWidget {
         //处理点击事件
         print("clicke grid item");
 
-        clickItem(datas,index);
+        clickItem(data);
       },
       child: new Container(
         padding: const EdgeInsets.all(2.0),
