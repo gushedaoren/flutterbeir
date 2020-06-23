@@ -11,7 +11,7 @@ import 'package:flutterbeir/base/BaseStatefulWidget.dart';
 import 'package:flutterbeir/config/BRConfig.dart';
 import 'package:flutterbeir/models/ModelBanner.dart';
 import 'package:flutterbeir/models/ModelVideoHomeAll.dart';
-import 'package:flutterbeir/models/ModelVideoSeries.dart';
+import 'package:flutterbeir/models/ModelVideoSeriesList.dart';
 import 'package:flutterbeir/widgets/StoryListItem.dart';
 
 class SeriesStoryListPage extends BaseStatefulWidget {
@@ -40,10 +40,10 @@ class SeriesStoryListPage extends BaseStatefulWidget {
 class SeriesStoryListPageState extends State<SeriesStoryListPage>{
 
   VideozSeries1 videozSeries1;
-  StreamController<List<ModelVideoSeries>> _streamSeriesController;
+  StreamController<ModelVideoSeriesList> _streamSeriesController;
 
   SeriesStoryListPageState(this.videozSeries1);
-  List<dynamic> seriesStoryList=new List(0);
+  ModelVideoSeriesList seriesStoryList;
   getSeriesStoryList(var seriesid) async {
     var url_post=BRConfig.domian+"/brstory/videolist/";
     FormData formData = new FormData.from({
@@ -56,20 +56,8 @@ class SeriesStoryListPageState extends State<SeriesStoryListPage>{
 
 
 
-    print(response);
-    var datas=response.data;
+    seriesStoryList=ModelVideoSeriesList.fromJson(response.data);
 
-    print(datas.length);
-
-
-    for(var m in datas){
-      print(m);
-      print(m.runtimeType);
-      var json=jsonDecode(m.toString());
-
-      ModelVideoSeries videoSeries= ModelVideoSeries.fromJson(json);
-      seriesStoryList.add(videoSeries);
-    }
 
 
     _streamSeriesController.add(seriesStoryList);
@@ -96,10 +84,10 @@ class SeriesStoryListPageState extends State<SeriesStoryListPage>{
 
   initListView(){
     new ListView.separated(
-      itemCount: seriesStoryList.length,
+      itemCount: seriesStoryList.videos.length,
 
       itemBuilder: (context, item) {
-        return buildListData(seriesStoryList[item]);
+        return buildListData(seriesStoryList.videos[item]);
       },
       separatorBuilder: (BuildContext context, int index) => Divider(),
 
@@ -114,8 +102,9 @@ class SeriesStoryListPageState extends State<SeriesStoryListPage>{
     // TODO: implement initState
     super.initState();
     print("initState");
-    _streamSeriesController = StreamController<List<ModelVideoSeries>>();
+
     getSeriesStoryList(videozSeries1.id);
+    _streamSeriesController = StreamController<ModelVideoSeriesList>();
 
 
   }
@@ -127,9 +116,9 @@ class SeriesStoryListPageState extends State<SeriesStoryListPage>{
 
 
   initListBuilder(){
-    return StreamBuilder<List<ModelVideoSeries>>(
+    return StreamBuilder<ModelVideoSeriesList>(
       stream:_streamSeriesController.stream,
-      //initialData: ,// a Stream<int> or null
+
       builder: (BuildContext context, AsyncSnapshot snapshot) {
 
         // 请求已结束
@@ -159,7 +148,7 @@ class SeriesStoryListPageState extends State<SeriesStoryListPage>{
   }
 
 
-  buildListData(ModelVideoSeries item) {
+  buildListData(Video item) {
 
 
 
