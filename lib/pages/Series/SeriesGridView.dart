@@ -105,7 +105,7 @@ class SeriesGridView extends StatelessWidget {
     return new GestureDetector(
       onTap: () {
         //处理点击事件
-        print("clicke grid item");
+        print("click grid item");
 
         clickItem(data);
       },
