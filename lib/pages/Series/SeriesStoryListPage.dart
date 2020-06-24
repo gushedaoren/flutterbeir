@@ -8,6 +8,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterbeir/base/BaseStatefulWidget.dart';
+import 'package:flutterbeir/config/BRColor.dart';
 import 'package:flutterbeir/config/BRConfig.dart';
 import 'package:flutterbeir/models/ModelBanner.dart';
 import 'package:flutterbeir/models/ModelVideoHomeAll.dart';
@@ -22,14 +23,6 @@ class SeriesStoryListPage extends BaseStatefulWidget {
 
 
   SeriesStoryListPage(this.videozSeries1); //  @override
-//  Widget build(BuildContext context) {
-//    return Scaffold(
-//      appBar: AppBar(title: Text('英语动画'),),
-//      body: Center(
-//        child: Text('动画'),
-//      ),
-//    );
-//  }
 
 
   @override
@@ -67,20 +60,23 @@ class SeriesStoryListPageState extends State<SeriesStoryListPage>{
 
   initSeriesViews(){
 
-    return new Column(
-      children: [
+    return Container(
+        color: BrColors.colorBgWhite,
+        child:new Column(
+          children: [
 
-        new Container(
+            new Container(
 
-          child: new Image.network(videozSeries1.icon,fit:BoxFit.cover,width:720,height: 180,),
-        ),
+              child: new Image.network(videozSeries1.icon,fit:BoxFit.cover,width:720,height: 180,),
+            ),
 
 
 
-        new Expanded(
-         child: initListBuilder()
+            new Expanded(
+                child: initListBuilder()
+            )
+          ],
         )
-      ],
     );
   }
 

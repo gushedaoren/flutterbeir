@@ -21,5 +21,9 @@ class BrColors {
 
   static const Color colorPrimary = Color(0xffF48433);
 
+
+  static const Color colorBgWhite = Color(0xfff3f3f3);
+
+
 }
 
