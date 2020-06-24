@@ -3,14 +3,26 @@ import 'package:flutter/material.dart';
 class StoryListItem extends StatelessWidget {
 
   var title = "";
-  var info = "";
+  var icon = "";
 
 
-  StoryListItem(this.title, this.info);
+  StoryListItem(this.title, this.icon);
+
+  initText(BuildContext context){
+    Color color = Theme.of(context).primaryColor;
+    return new Text(title, style: new TextStyle(
+
+
+      fontSize: 18.0,
+      fontWeight: FontWeight.w400,
+      color: color,
+    ),);
+
+  }
 
   @override
   Widget build(BuildContext context) {
-    Color color = Theme.of(context).primaryColor;
+
 
     return new Container(
       padding: const EdgeInsets.all(8.0),
@@ -19,18 +31,12 @@ class StoryListItem extends StatelessWidget {
 
           children:[
 
-            new Text(title, style: new TextStyle(
 
-              fontSize: 18.0,
-              fontWeight: FontWeight.w400,
-              color: color,
-            ),),
-            new Text(info, style: new TextStyle(
+            new Image.network(icon,fit: BoxFit.fitWidth,width: 100,height: 100,),
 
-              fontSize: 16.0,
-              fontWeight: FontWeight.w400,
-              color: Colors.black,
-            ),),
+
+            new Expanded(child: initText(context))
+
           ]
 
       ),

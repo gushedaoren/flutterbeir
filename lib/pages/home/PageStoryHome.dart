@@ -202,6 +202,14 @@ class PageStoryHomeState extends State<PageStoryHome> {
 
 
   @override
+  void deactivate() {
+    // TODO: implement deactivate
+    super.deactivate();
+    _streamHomeAllController.close();
+    _streamBannerController.close();
+  }
+
+  @override
   Widget build(BuildContext context) {
 
     return  new SingleChildScrollView(

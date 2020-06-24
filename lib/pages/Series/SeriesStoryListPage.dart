@@ -13,6 +13,7 @@ import 'package:flutterbeir/models/ModelBanner.dart';
 import 'package:flutterbeir/models/ModelVideoHomeAll.dart';
 import 'package:flutterbeir/models/ModelVideoSeriesList.dart';
 import 'package:flutterbeir/widgets/StoryListItem.dart';
+import 'package:rxdart/rxdart.dart';
 
 class SeriesStoryListPage extends BaseStatefulWidget {
 
@@ -40,10 +41,10 @@ class SeriesStoryListPage extends BaseStatefulWidget {
 class SeriesStoryListPageState extends State<SeriesStoryListPage>{
 
   VideozSeries1 videozSeries1;
-  StreamController<ModelVideoSeriesList> _streamSeriesController;
+  StreamController<ModelVideoSeriesList> _streamSeriesController=new BehaviorSubject();
 
   SeriesStoryListPageState(this.videozSeries1);
-  ModelVideoSeriesList seriesStoryList;
+  static var seriesStoryList;
   getSeriesStoryList(var seriesid) async {
     var url_post=BRConfig.domian+"/brstory/videolist/";
     FormData formData = new FormData.from({
@@ -65,13 +66,15 @@ class SeriesStoryListPageState extends State<SeriesStoryListPage>{
   }
 
   initSeriesViews(){
+
     return new Column(
       children: [
 
         new Container(
 
-          child: new Image.network(videozSeries1.icon,fit: BoxFit.none,width: 360,height: 180),
+          child: new Image.network(videozSeries1.icon,fit:BoxFit.cover,width:720,height: 180,),
         ),
+
 
 
         new Expanded(
@@ -83,7 +86,9 @@ class SeriesStoryListPageState extends State<SeriesStoryListPage>{
 
 
   initListView(){
-    new ListView.separated(
+
+   return new ListView.separated(
+      padding: const EdgeInsets.all(10.0),
       itemCount: seriesStoryList.videos.length,
 
       itemBuilder: (context, item) {
@@ -104,7 +109,7 @@ class SeriesStoryListPageState extends State<SeriesStoryListPage>{
     print("initState");
 
     getSeriesStoryList(videozSeries1.id);
-    _streamSeriesController = StreamController<ModelVideoSeriesList>();
+
 
 
   }
@@ -128,14 +133,14 @@ class SeriesStoryListPageState extends State<SeriesStoryListPage>{
             return Text("Error: ${snapshot.error}");
           }else{
             // 请求成功，显示数据
-            return initListBuilder();
+            return initListView();
 
           }
         }else{
           // 请求未结束，显示loading
           return
             Center(
-
+                child: CircularProgressIndicator()
             );
 
 
@@ -151,8 +156,15 @@ class SeriesStoryListPageState extends State<SeriesStoryListPage>{
   buildListData(Video item) {
 
 
+    print(item.name);
 
-    return new Image.network(videozSeries1.icon,fit: BoxFit.none,width: 360,height: 180);
+    if(item.icon==null){
+      item.icon=videozSeries1.storyIcon;
+    }
+
+    return new Container(
+      child: StoryListItem(item.name,item.icon),
+    );
 
   }
   
