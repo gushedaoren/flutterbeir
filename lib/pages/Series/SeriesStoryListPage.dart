@@ -151,17 +151,31 @@ class SeriesStoryListPageState extends State<SeriesStoryListPage>{
 
   buildListData(Video item) {
 
-
-    print(item.name);
-
     if(item.icon==null){
-      item.icon=videozSeries1.storyIcon;
+        item.icon=videozSeries1.storyIcon;
     }
 
-    return new Container(
-      child: StoryListItem(item.name,item.icon),
+    return GestureDetector(
+      child: new Container(
+          child:  StoryListItem(item.name,item.icon),
+
+      ),
+
+
+
+      onTap: () => listItemTap(item),
     );
 
+
+
   }
+
+
+  listItemTap(Video item){
+    print("taped:"+item.name);
+
+
+  }
+
   
 }
