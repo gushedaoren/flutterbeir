@@ -3,3 +3,6 @@ audioplayers=/Users/jennifer/apps/flutter/.pub-cache/hosted/pub.flutter-io.cn/au
 path_provider=/Users/jennifer/apps/flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider-1.6.11/
 path_provider_linux=/Users/jennifer/apps/flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider_linux-0.0.1+1/
 path_provider_macos=/Users/jennifer/apps/flutter/.pub-cache/hosted/pub.flutter-io.cn/path_provider_macos-0.0.4+3/
+video_player=/Users/jennifer/apps/flutter/.pub-cache/hosted/pub.flutter-io.cn/video_player-0.10.11+1/
+video_player_web=/Users/jennifer/apps/flutter/.pub-cache/hosted/pub.flutter-io.cn/video_player_web-0.1.3+1/
+wakelock=/Users/jennifer/apps/flutter/.pub-cache/hosted/pub.flutter-io.cn/wakelock-0.1.4+1/

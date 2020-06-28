@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterbeir/base/BaseStatefulWidget.dart';
 import 'package:flutterbeir/config/BRColor.dart';
 import 'package:flutterbeir/config/BRConfig.dart';
+import 'package:flutterbeir/media/VideoPlayPage.dart';
 import 'package:flutterbeir/models/ModelBanner.dart';
 import 'package:flutterbeir/models/ModelVideoHomeAll.dart';
 import 'package:flutterbeir/models/ModelVideoSeriesList.dart';
@@ -173,6 +174,20 @@ class SeriesStoryListPageState extends State<SeriesStoryListPage>{
 
   listItemTap(Video item){
     print("taped:"+item.name);
+
+    Navigator.push(
+      context,
+      //创建一个路由
+      new MaterialPageRoute(
+          builder: (context) => VideoPlayerPage(item),
+          //设置下一个界面的名字（就是设置别名）
+//          settings: RouteSettings(
+//              name: 'StoryPlayPage',
+//              arguments: {"datas": data}
+//
+//          )
+      ),
+    );
 
 
   }
