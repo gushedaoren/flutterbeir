@@ -31,7 +31,7 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
       videoPlayerController: videoPlayerController,
       aspectRatio: 3 / 2, //宽高比
       autoPlay: true, //自动播放
-      looping: true, //循环播放
+      looping: false, //循环播放
     );
   }
 
