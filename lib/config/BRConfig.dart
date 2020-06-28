@@ -8,5 +8,7 @@ class BRConfig {
 
   static String audioPlayerId="com.brstory";
 
+  static String ROBOT_IMAGE_URL=domian+"/upload/images/usericon/usericon_robot.png";
+
   static var DEBUG=true;
 }

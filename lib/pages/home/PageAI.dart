@@ -120,9 +120,15 @@ class _ChatScreenState extends State<PageAI> {
 
 
 
+
   ChatMessage message1= ChatMessage(
+
     text: "小朋友，你好，我是贝儿机器人。",
-    user: ChatUser(),
+    user: ChatUser(
+      name: "贝儿机器人",
+      uid: "00000000",
+      avatar: BRConfig.ROBOT_IMAGE_URL,
+    ),
     createdAt: DateTime.now(),
     quickReplies: QuickReplies(
       values: <Reply>[
