@@ -11,6 +11,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterbeir/config/BRConfig.dart';
 import 'package:flutterbeir/models/ModelBanner.dart';
+import 'package:flutterbeir/utils/CommonUtils.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
 
@@ -62,6 +63,11 @@ class _ChatScreenState extends State<PageAI> {
 
     var url_post= BRConfig.domian+"/brstory/talkingtoairobot/";
     FormData formData = new FormData.from({
+
+      "keyword":"你好",
+      "userid":"test",
+      "sign":CommonUtils.getSign(),
+
 
     });
     LogUtil.e(url_post);

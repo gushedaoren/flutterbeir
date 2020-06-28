@@ -41,6 +41,9 @@ dependencies:
   uuid: ^2.0.1
   image_picker:
   shared_preferences:
+  crypto: ^2.0.6
+  convert:
+  date_format: ^1.0.8
 
 dev_dependencies:
   flutter_test:
