@@ -26,7 +26,7 @@ class _BottonWidgetState extends State<WidgetHomeBottomBar> {
     lists
       ..add(PageStoryHome())
       ..add(PageVideoHome())
-      ..add(PageAI())
+      ..add(PageAI("test","test"))
       ..add(PageMe());
 
 
