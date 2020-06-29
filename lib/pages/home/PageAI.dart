@@ -33,6 +33,7 @@ class PageAI extends StatefulWidget {
 class _ChatScreenState extends State<PageAI> {
   ChatUser user = ChatUser();
   StreamController<ModelBanner> _streamController;
+  List<ChatMessage> messages = new List<ChatMessage>();
   @override
   void initState() {
     user.name = widget.username;
@@ -40,7 +41,7 @@ class _ChatScreenState extends State<PageAI> {
     super.initState();
 
 
-    chatRequest();
+
     _streamController = StreamController<ModelBanner>();
 
   }
@@ -56,16 +57,37 @@ class _ChatScreenState extends State<PageAI> {
 //        message.toJson(),
 //      );
 //    });
+    ChatMessage messageMe=ChatMessage(
+        text: message.text,
+        user: ChatUser(
+          name: "我",
+          uid: "111111",
+
+        ),
+        createdAt: DateTime.now(),
+        quickReplies: QuickReplies(
+          values: <Reply>[
+
+
+          ],
+        )
+
+
+    );
+
+    messages.add(messageMe);
+    chatRequest(message.text, "test");
+
   }
 
 
-  chatRequest() async {
+  chatRequest(keyword,userid) async {
 
     var url_post= BRConfig.domian+"/brstory/talkingtoairobot/";
     FormData formData = new FormData.from({
 
-      "keyword":"你好",
-      "userid":"test",
+      "keyword":keyword,
+      "userid":userid,
       "sign":CommonUtils.getSign(),
 
 
@@ -76,7 +98,42 @@ class _ChatScreenState extends State<PageAI> {
 
 
     var responseStr=response.data;
+
+    var answer=response.data["brdata"]["data"]["answer"];
     print(responseStr);
+
+    print(answer);
+
+    ChatMessage messageReboot= ChatMessage(
+
+        text: answer,
+        user: ChatUser(
+          name: "贝儿机器人",
+          uid: "000000",
+          avatar: BRConfig.ROBOT_IMAGE_URL,
+        ),
+        createdAt: DateTime.now(),
+        quickReplies: QuickReplies(
+          values: <Reply>[
+
+
+          ],
+        )
+
+
+
+    );
+    
+    messages.add(messageReboot);
+
+    setState(() {
+
+    });
+
+
+
+
+
 
 
 
@@ -140,6 +197,7 @@ class _ChatScreenState extends State<PageAI> {
       values: <Reply>[
 
 
+
       ],
     )
 
@@ -171,17 +229,17 @@ class _ChatScreenState extends State<PageAI> {
       body: StreamBuilder(
         stream: _streamController.stream,
         builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return Center(
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(
-                    Theme.of(context).primaryColor),
-              ),
-            );
-          } else {
-            List<ChatMessage> messages = new List<ChatMessage>();
-            messages.add(message1);
-            messages.add(message2);
+          if (!snapshot.hasData) {
+            if(messages.length==0){
+              messages.add(message1);
+            }
+
+          }
+
+          print(messages);
+
+
+
 
             return DashChat(
               user: user,
@@ -198,7 +256,7 @@ class _ChatScreenState extends State<PageAI> {
                 )
               ],
             );
-          }
+
         },
       ),
     );
