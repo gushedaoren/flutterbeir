@@ -11,12 +11,24 @@ class MeItem extends StatelessWidget {
 
   MeItem(this.title, this.info,this.imgPath);
 
+  _onClick(){
+
+
+    print("点击了"+title);
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
     Color color = Theme.of(context).primaryColor;
 
     return new Container(
       padding: const EdgeInsets.all(10.0),
+      child: GestureDetector(
+        onTap: _onClick,//写入方法名称就可以了，但是是无参的
+
+
       child:  Row(
 
           mainAxisAlignment:MainAxisAlignment.spaceBetween,
@@ -63,7 +75,9 @@ class MeItem extends StatelessWidget {
           ]
 
       ),
+      ),
     );
+
 
 
   }
