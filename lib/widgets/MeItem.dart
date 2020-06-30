@@ -16,25 +16,50 @@ class MeItem extends StatelessWidget {
     Color color = Theme.of(context).primaryColor;
 
     return new Container(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(10.0),
       child:  Row(
 
+          mainAxisAlignment:MainAxisAlignment.spaceBetween,
 
           children:[
-            new Image.asset(imgPath),
 
-            new Text(title, style: new TextStyle(
 
-              fontSize: 18.0,
-              fontWeight: FontWeight.w400,
-              color: Colors.black,
-            ),),
+            new Container(
+
+              child: new Row(
+
+
+                children: <Widget>[
+                  new Container(
+                    width: 30,
+                    height: 30,
+                    color: Colors.transparent,
+                    child: new Image.asset(imgPath),
+                  ),
+
+                  new Container(
+                    padding: const EdgeInsets.only(left: 5.0),
+                    child: new Text(title, style: new TextStyle(
+
+
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black,
+                    ),) ,
+                  )
+
+
+                ],
+              ),
+            ),
             new Text(info, style: new TextStyle(
 
               fontSize: 16.0,
               fontWeight: FontWeight.w400,
               color: Colors.black,
             ),),
+
+
           ]
 
       ),
