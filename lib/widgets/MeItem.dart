@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterbeir/pages/AboutUsPage.dart';
 
 class MeItem extends StatelessWidget {
 
@@ -8,6 +9,7 @@ class MeItem extends StatelessWidget {
   var imgPath="";
 
 
+  BuildContext context;
 
   MeItem(this.title, this.info,this.imgPath);
 
@@ -16,12 +18,21 @@ class MeItem extends StatelessWidget {
 
     print("点击了"+title);
 
+    if(title.contains("关于我们")){
+
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return AboutUsPage();
+      }));
+    }
+
+
   }
 
 
   @override
   Widget build(BuildContext context) {
     Color color = Theme.of(context).primaryColor;
+    this.context=context;
 
     return new Container(
       padding: const EdgeInsets.all(10.0),
