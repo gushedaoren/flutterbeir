@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterbeir/config/BRConfig.dart';
 import 'package:flutterbeir/widgets/MeItem.dart';
 
 class PageMe extends StatelessWidget {
@@ -16,20 +17,25 @@ class PageMe extends StatelessWidget {
 
   initHeader(){
     return Container(
+
       decoration: BoxDecoration(
-        image: new DecorationImage(
-          fit: BoxFit.cover,
-          image: new NetworkImage(
-              'https://randomuser.me/api/portraits/men/43.jpg'),
+        image: DecorationImage(
+          image: AssetImage("assets/images/me_header.png"),
+          fit: BoxFit.fill,
         ),
       ),
       child: Container(
-        color: Colors.red.withOpacity(.5),
+
+        height: 180,
+
         child: Center(
-          child: Text(
-            "我在图片的上面哦~",
-            style: TextStyle(color: Colors.white, fontSize: 33),
-          ),
+          child:new Container(
+            width: 90,
+            height: 90,
+              child:new Image.asset("assets/images/ic_launcher.png")
+          )
+
+
         ),
       ),
     );

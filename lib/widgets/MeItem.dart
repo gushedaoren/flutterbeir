@@ -38,7 +38,7 @@ class MeItem extends StatelessWidget {
                   ),
 
                   new Container(
-                    padding: const EdgeInsets.only(left: 5.0),
+                    padding: const EdgeInsets.only(left: 10.0),
                     child: new Text(title, style: new TextStyle(
 
 
