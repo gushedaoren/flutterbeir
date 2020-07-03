@@ -2,11 +2,20 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutterbeir/utils/CacheUtil.dart';
 
 class AboutUsPage extends StatelessWidget{
+
+  CacheUtil cacheUtil=CacheUtil();
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+
+    var data= cacheUtil.getCache(CacheUtil.key_appinfo);
+
+
+    print(data[0]);
     return new CustomScrollView(
       shrinkWrap: false,
 
@@ -18,6 +27,7 @@ class AboutUsPage extends StatelessWidget{
             delegate: new SliverChildListDelegate(
               <Widget>[
                 initHeader(),
+                Text("test")
 
               ],
             ),

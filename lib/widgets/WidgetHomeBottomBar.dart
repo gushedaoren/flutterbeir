@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterbeir/base/BRApp.dart';
+import 'package:flutterbeir/utils/CacheUtil.dart';
+import 'package:flutterbeir/utils/RequestUtil.dart';
 // 引入四个文件
 
 import '../pages/home/PageStoryHome.dart';
@@ -16,6 +18,10 @@ class WidgetHomeBottomBar extends StatefulWidget {
 
 class _BottonWidgetState extends State<WidgetHomeBottomBar> {
 
+
+  RequestUtil requestUtil=RequestUtil();
+
+
   // 设置初始化的索引
   int _currentIndex = 0;
 
@@ -28,7 +34,7 @@ class _BottonWidgetState extends State<WidgetHomeBottomBar> {
       ..add(PageVideoHome())
       ..add(PageAI("test","test"))
       ..add(PageMe());
-
+    requestUtil.getAppinfoRequest();
 
     super.initState();
   }
