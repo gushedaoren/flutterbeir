@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutterbeir/config/BRConfig.dart';
+import 'package:flutterbeir/utils/CommonUtils.dart';
 import 'package:flutterbeir/widgets/MeItem.dart';
+import 'package:package_info/package_info.dart';
 
 class PageMe extends StatelessWidget {
 
+
+  var appVersion="";
+  CommonUtils commonUtils=CommonUtils();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +46,19 @@ class PageMe extends StatelessWidget {
     );
   }
 
+  void _getVersion() async {
+    PackageInfo.fromPlatform().then((PackageInfo packageInfo) {
+
+        appVersion = packageInfo.version;
+
+    });
+  }
+
+
+
   initPage(){
+
+
 
     return new CustomScrollView(
       shrinkWrap: false,
@@ -55,8 +72,8 @@ class PageMe extends StatelessWidget {
                 initHeader(),
                 MeItem("关于我们","","assets/images/me_aboutus.png"),
                 MeItem("微信公众号","beirstory","assets/images/me_wechat.png"),
-                MeItem("分享app","3.0","assets/images/me_share.png"),
-                MeItem("给个好评","","assets/images/me_good.png"),
+//                MeItem("分享app",appVersion,"assets/images/me_share.png"),
+//                MeItem("给个好评","","assets/images/me_good.png"),
                 MeItem("隐私协议","","assets/images/me_yinsi.png"),
                 MeItem("客服电话","02155039850","assets/images/me_phone.png"),
 
@@ -67,5 +84,6 @@ class PageMe extends StatelessWidget {
       ],
     );
   }
+
 
 }

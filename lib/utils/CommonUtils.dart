@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:convert/convert.dart';
 import 'package:crypto/crypto.dart';
 import 'package:date_format/date_format.dart';
+import 'package:package_info/package_info.dart';
 
 class CommonUtils {
 
@@ -36,4 +37,18 @@ class CommonUtils {
     // 这里其实就是 digest.toString()
     return hex.encode(digest.bytes);
   }
+
+
+  getPackageInfo()   {
+    PackageInfo mpackageInfo;
+    PackageInfo.fromPlatform().then((PackageInfo packageInfo) {
+      mpackageInfo=packageInfo;
+    });
+
+    return mpackageInfo;
+
+
+
+  }
+
 }

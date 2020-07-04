@@ -19,11 +19,6 @@ class AboutUsPage extends StatelessWidget{
     return "   "+appinfoPraseTool.getAppInfoValue("appdesc");
 
 
-
-
-
-
-
   }
 
 
