@@ -45,6 +45,7 @@ dependencies:
   convert:
   date_format: ^1.0.8
   package_info: ^0.4.0+2
+  webview_flutter:
 
 dev_dependencies:
   flutter_test:
@@ -184,3 +185,4 @@ flutter:
     - assets/images/tab4_selected.png
     - assets/images/tab5_normal.png
     - assets/images/tab5_selected.png
+    - assets/privacy.html

@@ -31,7 +31,7 @@ class MeItem extends StatelessWidget {
 
 
 
-      mydialog.showAlert("隐私协议", "隐私内容");
+      mydialog.showAlert("隐私协议");
     }
 
 

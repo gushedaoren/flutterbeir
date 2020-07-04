@@ -1,6 +1,9 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutterbeir/config/BRConfig.dart';
+import 'package:flutterbeir/widgets/PrivacyWebViewPage.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class Mydialog{
 
@@ -9,21 +12,19 @@ class Mydialog{
 
   Mydialog(this.context);
 
-  showAlert(title,content) {
+  showAlert(title) {
 
     showDialog<Null>(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
         return new AlertDialog(
-          title: new Text(title),
-          content: new SingleChildScrollView(
-            child: new ListBody(
-              children: <Widget>[
-                new Text(content),
 
-              ],
-            ),
+          title: new Text(title),
+          content: WebView(
+
+            initialUrl: BRConfig.PRIVACY_URL,
+            javascriptMode: JavascriptMode.unrestricted,
           ),
           actions: <Widget>[
             new FlatButton(
