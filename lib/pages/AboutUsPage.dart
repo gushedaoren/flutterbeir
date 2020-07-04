@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutterbeir/models/ModelAppinfo.dart';
+import 'package:flutterbeir/utils/AppinfoPraseTool.dart';
 import 'package:flutterbeir/utils/CacheUtil.dart';
 
 class AboutUsPage extends StatelessWidget{
@@ -11,30 +12,11 @@ class AboutUsPage extends StatelessWidget{
 
 
   getAppDesc(value){
-    print(value);
-
-    ModelAppinfo appinfo=value;
-
-    print(appinfo);
 
 
-    var datas=appinfo.data;
+    AppinfoPraseTool appinfoPraseTool=AppinfoPraseTool(value);
 
-
-
-    for(int i=0;i<datas.length;i++){
-      Datum data=datas[i];
-
-      if(data.optionkey.contains("appdesc")){
-        appdesc=data.optionValue;
-        print(appdesc);
-      }
-
-    }
-
-    return appdesc;
-
-
+    return appinfoPraseTool.getAppInfoValue("appdesc");
 
 
 
