@@ -34,7 +34,11 @@ class _BottonWidgetState extends State<WidgetHomeBottomBar> {
       ..add(PageVideoHome())
       ..add(PageAI("test","test"))
       ..add(PageMe());
+
+    requestUtil.autoRegister();
     requestUtil.getAppinfoRequest();
+
+
 
     super.initState();
   }

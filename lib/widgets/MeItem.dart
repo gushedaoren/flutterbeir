@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterbeir/pages/AboutUsPage.dart';
 import 'package:flutterbeir/utils/Mydialog.dart';
+import 'package:flutterbeir/utils/RequestUtil.dart';
 
 class MeItem extends StatelessWidget {
 
@@ -11,6 +12,7 @@ class MeItem extends StatelessWidget {
 
 
   BuildContext context;
+  RequestUtil requestUtil=RequestUtil();
 
   MeItem(this.title, this.info,this.imgPath);
 
@@ -21,9 +23,10 @@ class MeItem extends StatelessWidget {
 
     if(title.contains("关于我们")){
 
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return AboutUsPage();
-      }));
+      requestUtil.autoRegister();
+//      Navigator.push(context, MaterialPageRoute(builder: (context) {
+//        return AboutUsPage();
+//      }));
     }
 
     if(title.contains("隐私协议")){

@@ -47,21 +47,14 @@ class _ChatScreenState extends State<PageAI> {
   }
 
   void onSend(ChatMessage message) {
-//    var documentReference = Firestore.instance
-//        .collection('messages')
-//        .document(DateTime.now().millisecondsSinceEpoch.toString());
-//
-//    Firestore.instance.runTransaction((transaction) async {
-//      await transaction.set(
-//        documentReference,
-//        message.toJson(),
-//      );
-//    });
+
+
+    var uid="flutter-test";
     ChatMessage messageMe=ChatMessage(
         text: message.text,
         user: ChatUser(
           name: "我",
-          uid: "111111",
+          uid: uid,
 
         ),
         createdAt: DateTime.now(),
@@ -76,7 +69,7 @@ class _ChatScreenState extends State<PageAI> {
     );
 
     messages.add(messageMe);
-    chatRequest(message.text, "test");
+    chatRequest(message.text, uid);
 
   }
 
