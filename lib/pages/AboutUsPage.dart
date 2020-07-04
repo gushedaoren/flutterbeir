@@ -16,7 +16,7 @@ class AboutUsPage extends StatelessWidget{
 
     AppinfoPraseTool appinfoPraseTool=AppinfoPraseTool(value);
 
-    return appinfoPraseTool.getAppInfoValue("appdesc");
+    return "   "+appinfoPraseTool.getAppInfoValue("appdesc");
 
 
 
@@ -38,47 +38,58 @@ class AboutUsPage extends StatelessWidget{
     // TODO: implement build
 
 
+    return new Container(
+      color: Colors.white,
+      child:  Column(
 
 
-
-
-
-    return new CustomScrollView(
-      shrinkWrap: false,
-
-      // 内容
-      slivers: <Widget>[
-        new SliverPadding(
-          padding: const EdgeInsets.all(0.0),
-          sliver: new SliverList(
-            delegate: new SliverChildListDelegate(
-              <Widget>[
-                initHeader(),
-               FutureBuilder<ModelAppinfo>(
-                future: getCacheData(),
-                builder: (BuildContext context, AsyncSnapshot snapshot){
-                  // 请求已结束
-                  if(snapshot.connectionState == ConnectionState.done){
-                    if(snapshot.hasError){
-                      // 请求失败，显示错误
-                      return Text("Error: ${snapshot.error}");
-                    }else{
-                      // 请求成功，显示数据
-                      return Text(getAppDesc(snapshot.data));
-                    }
-                  }else{
-                    // 请求未结束，显示loading
-                    return CircularProgressIndicator();
-                  }
-                },)
-
-              ],
-            ),
-          ),
-        ),
-      ],
+        children: <Widget>[
+          initHeader(),
+          initText()
+        ],
+      ),
     );
+
+
   }
+
+
+  initText(){
+
+   return FutureBuilder<ModelAppinfo>(
+      future: getCacheData(),
+      builder: (BuildContext context, AsyncSnapshot snapshot){
+        // 请求已结束
+        if(snapshot.connectionState == ConnectionState.done){
+          if(snapshot.hasError){
+            // 请求失败，显示错误
+            return Text("Error: ${snapshot.error}");
+          }else{
+            // 请求成功，显示数据
+            return new Container(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: new Text(getAppDesc(snapshot.data), style: new TextStyle(
+
+
+                fontSize: 18.0,
+                fontWeight: FontWeight.w400,
+                color: Colors.black,
+                decoration: TextDecoration.none
+              ),) ,
+            );
+
+
+        
+
+          }
+        }else{
+          // 请求未结束，显示loading
+          return CircularProgressIndicator();
+        }
+      },);
+
+  }
+
 
   initHeader(){
     return Container(
@@ -86,12 +97,12 @@ class AboutUsPage extends StatelessWidget{
 
       child: Container(
 
-        height: 180,
+        height: 240,
 
         child: Center(
             child:new Container(
-                width: 90,
-                height: 90,
+                width: 120,
+                height: 120,
                 child:new Image.asset("assets/images/br_qrcode.jpg")
             )
 
