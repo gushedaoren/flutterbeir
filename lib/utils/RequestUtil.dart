@@ -12,6 +12,7 @@ import 'package:device_info/device_info.dart';
 import 'package:dio/dio.dart';
 import 'package:flutterbeir/config/BRConfig.dart';
 import 'package:flutterbeir/models/ModelAppinfo.dart';
+import 'package:flutterbeir/models/ModelRegisterResult.dart';
 
 import 'CacheUtil.dart';
 
@@ -62,6 +63,28 @@ class RequestUtil {
     }
 
     print("设备id:"+deviceid);
+
+
+    var url_post=BRConfig.domian+"/brstory/autoregister/";
+    FormData formData = new FormData.from({
+      deviceid:deviceid
+
+    });
+    LogUtil.e(url_post);
+    var dio = new Dio();
+    var response = await dio.post(url_post, data: formData);
+
+
+    var responseStr=response.data;
+    print(responseStr);
+
+
+
+    String rawJson = jsonEncode(responseStr);
+
+
+    cacheUtil.setCache(CacheUtil.key_userinfo,rawJson);
+
 
 
 
