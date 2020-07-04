@@ -10,7 +10,7 @@ class AboutUsPage extends StatelessWidget{
   CacheUtil cacheUtil=CacheUtil();
 
 
-  setAppinfo(value){
+  getAppDesc(value){
     print(value);
 
     ModelAppinfo appinfo=value;
@@ -32,7 +32,7 @@ class AboutUsPage extends StatelessWidget{
 
     }
 
-    setState(){};
+    return appdesc;
 
 
 
@@ -43,11 +43,19 @@ class AboutUsPage extends StatelessWidget{
 
 
   }
+
+
+  getCacheData(){
+//    cacheUtil.getAppInfo().then((value) => setAppinfo(value));
+    return cacheUtil.getAppInfo();
+
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
 
-    cacheUtil.getAppInfo().then((value) => setAppinfo(value));
+
 
 
 
@@ -64,7 +72,23 @@ class AboutUsPage extends StatelessWidget{
             delegate: new SliverChildListDelegate(
               <Widget>[
                 initHeader(),
-                Text(appdesc)
+               FutureBuilder<ModelAppinfo>(
+                future: getCacheData(),
+                builder: (BuildContext context, AsyncSnapshot snapshot){
+                  // 请求已结束
+                  if(snapshot.connectionState == ConnectionState.done){
+                    if(snapshot.hasError){
+                      // 请求失败，显示错误
+                      return Text("Error: ${snapshot.error}");
+                    }else{
+                      // 请求成功，显示数据
+                      return Text(getAppDesc(snapshot.data));
+                    }
+                  }else{
+                    // 请求未结束，显示loading
+                    return CircularProgressIndicator();
+                  }
+                },)
 
               ],
             ),
