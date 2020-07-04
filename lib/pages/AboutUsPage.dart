@@ -2,20 +2,57 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutterbeir/models/ModelAppinfo.dart';
 import 'package:flutterbeir/utils/CacheUtil.dart';
 
 class AboutUsPage extends StatelessWidget{
-
+  var appdesc="";
   CacheUtil cacheUtil=CacheUtil();
 
+
+  setAppinfo(value){
+    print(value);
+
+    ModelAppinfo appinfo=value;
+
+    print(appinfo);
+
+
+    var datas=appinfo.data;
+
+
+
+    for(int i=0;i<datas.length;i++){
+      Datum data=datas[i];
+
+      if(data.optionkey.contains("appdesc")){
+        appdesc=data.optionValue;
+        print(appdesc);
+      }
+
+    }
+
+    setState(){};
+
+
+
+
+
+
+
+
+
+  }
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
 
-    var data= cacheUtil.getCache(CacheUtil.key_appinfo);
+    cacheUtil.getAppInfo().then((value) => setAppinfo(value));
 
 
-    print(data[0]);
+
+
+
     return new CustomScrollView(
       shrinkWrap: false,
 
@@ -27,7 +64,7 @@ class AboutUsPage extends StatelessWidget{
             delegate: new SliverChildListDelegate(
               <Widget>[
                 initHeader(),
-                Text("test")
+                Text(appdesc)
 
               ],
             ),

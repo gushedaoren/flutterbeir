@@ -9,6 +9,7 @@ import 'package:crypto/crypto.dart';
 import 'package:date_format/date_format.dart';
 import 'package:dio/dio.dart';
 import 'package:flutterbeir/config/BRConfig.dart';
+import 'package:flutterbeir/models/ModelAppinfo.dart';
 
 import 'CacheUtil.dart';
 
@@ -28,8 +29,10 @@ class RequestUtil {
     var responseStr=response.data;
     print(responseStr);
 
+    String rawJson = jsonEncode(responseStr);
 
-    cacheUtil.setCache(CacheUtil.key_appinfo, responseStr);
+
+    cacheUtil.setCache(CacheUtil.key_appinfo,rawJson);
 
 
 

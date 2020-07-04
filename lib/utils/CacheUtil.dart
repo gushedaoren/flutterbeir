@@ -1,5 +1,8 @@
 
 
+import 'dart:convert';
+
+import 'package:flutterbeir/models/ModelAppinfo.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheUtil{
@@ -13,4 +16,18 @@ class CacheUtil{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.get(key);
   }
+
+  Future<ModelAppinfo> getAppInfo() async{
+    SharedPreferences prefs =await SharedPreferences.getInstance();
+    var data=prefs.getString(key_appinfo);
+
+    Map mMap = jsonDecode(data);
+
+    var appinfo = ModelAppinfo.fromJson(mMap);
+
+
+
+    return appinfo;
+  }
+
 }
