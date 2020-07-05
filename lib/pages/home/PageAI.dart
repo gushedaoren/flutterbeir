@@ -1,6 +1,7 @@
 
 
 import 'dart:async';
+import 'dart:convert';
 
 import 'dart:io';
 
@@ -11,8 +12,10 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterbeir/config/BRConfig.dart';
 import 'package:flutterbeir/models/ModelBanner.dart';
+import 'package:flutterbeir/utils/CacheUtil.dart';
 import 'package:flutterbeir/utils/CommonUtils.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 
 
@@ -46,10 +49,24 @@ class _ChatScreenState extends State<PageAI> {
 
   }
 
-  void onSend(ChatMessage message) {
+  void onSend(ChatMessage message) async{
 
 
-    var uid="flutter-test";
+
+    SharedPreferences prefs =await SharedPreferences.getInstance();
+    var data=prefs.getString(CacheUtil.key_userinfo);
+
+    Map<String, dynamic> user = json.decode(data);
+
+    var usrJson=user["brdata"];
+
+    usrJson=usrJson.toString().replaceAll("'", "\"");
+
+    Map<String, dynamic> userReal = json.decode(usrJson);
+
+    print(userReal["uid"]);
+
+    var uid=userReal["uid"].toString();
     ChatMessage messageMe=ChatMessage(
         text: message.text,
         user: ChatUser(
