@@ -253,6 +253,8 @@ class _ChatScreenState extends State<PageAI> {
 
             return DashChat(
               user: user,
+              textBeforeImage: false,
+
               messages: messages,
               inputDecoration: InputDecoration(
                 hintText: "在这里输入内容哦...",
@@ -260,10 +262,10 @@ class _ChatScreenState extends State<PageAI> {
               ),
               onSend: onSend,
               trailing: <Widget>[
-                IconButton(
-                  icon: Icon(Icons.photo),
-                  onPressed: uploadFile,
-                )
+//                IconButton(
+//                  icon: Icon(Icons.photo),
+//                  onPressed: uploadFile,
+//                )
               ],
             );
 
