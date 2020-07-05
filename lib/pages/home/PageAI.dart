@@ -108,11 +108,19 @@ class _ChatScreenState extends State<PageAI> {
 
 
     var responseStr=response.data;
-
-    var answer=response.data["brdata"]["data"]["answer"];
     print(responseStr);
+    var answer="";
+    var status=response.data["status"];
+    if(status==0){
+      answer=response.data["brdata"][0]["name"];
+    }else {
+      answer=response.data["brdata"]["data"]["answer"];
+      print(answer);
+    }
 
-    print(answer);
+
+
+
 
     ChatMessage messageReboot= ChatMessage(
 
