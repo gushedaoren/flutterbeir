@@ -48,6 +48,7 @@ dependencies:
   webview_flutter:
   device_info:
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

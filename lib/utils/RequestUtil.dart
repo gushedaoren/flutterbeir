@@ -6,14 +6,11 @@ import 'dart:io';
 
 
 import 'package:common_utils/common_utils.dart';
-import 'package:convert/convert.dart';
-import 'package:crypto/crypto.dart';
-import 'package:date_format/date_format.dart';
+
 import 'package:device_info/device_info.dart';
 import 'package:dio/dio.dart';
 import 'package:flutterbeir/config/BRConfig.dart';
-import 'package:flutterbeir/models/ModelAppinfo.dart';
-import 'package:flutterbeir/models/ModelRegisterResult.dart';
+
 import 'package:package_info/package_info.dart';
 
 import 'CacheUtil.dart';
@@ -61,25 +58,29 @@ class RequestUtil {
     appversion = packageInfo.version;
     buildNumber = packageInfo.buildNumber;
 
+
+    systemVersion=Platform.operatingSystemVersion.toString();
+    platform=Platform.operatingSystem;
+
     if(Platform.isIOS){
       //ios相关代码
       IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
       deviceid=iosInfo.identifierForVendor;
       model=iosInfo.model;
-      platform="IOS";
+
       systemVersion=iosInfo.systemVersion;
 
 
 
     }else if(Platform.isAndroid){
       //android相关代码
+
       AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
 
       deviceid=androidInfo.androidId;
       model=androidInfo.model;
-      platform="Android";
-      manufacturer=androidInfo.manufacturer;
 
+      manufacturer=androidInfo.manufacturer;
 
     }
 
@@ -88,11 +89,21 @@ class RequestUtil {
 
     var url_post=BRConfig.domian+"/brstory/autoregister/";
 
+    FormData formData = new FormData.from(
+        {
+          "deviceid":deviceid,
+          "platform":platform,
+          "model":model,
+          "appversion":appversion,
+          "buildNumber":buildNumber,
+          "systemVersion":systemVersion,
+          "manufacturer":manufacturer,
 
-
+        }
+    );
     try{
       Response response;
-      var data={
+      var mdata={
         "deviceid":deviceid,
         "platform":platform,
         "model":model,
@@ -102,9 +113,10 @@ class RequestUtil {
         "manufacturer":manufacturer,
 
       };
+      print(mdata);
       response = await Dio().post(
           url_post,
-          data:data
+          data:formData
       );
 
       var responseStr=response.data;
