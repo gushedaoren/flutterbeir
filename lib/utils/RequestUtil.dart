@@ -87,35 +87,40 @@ class RequestUtil {
 
 
     var url_post=BRConfig.domian+"/brstory/autoregister/";
-    FormData formData = new FormData.from({
-      "deviceid":deviceid,
-      "platform":platform,
-      "model":model,
-      "appversion":appversion,
-      "buildNumber":buildNumber,
-      "systemVersion":systemVersion,
-      "manufacturer":manufacturer,
 
 
 
+    try{
+      Response response;
+      var data={
+        "deviceid":deviceid,
+        "platform":platform,
+        "model":model,
+        "appversion":appversion,
+        "buildNumber":buildNumber,
+        "systemVersion":systemVersion,
+        "manufacturer":manufacturer,
 
-    });
-    LogUtil.e(url_post);
-    print(formData);
-    var dio = new Dio();
-    var response = await dio.post(url_post, data: formData);
-    print(response);
+      };
+      response = await Dio().post(
+          url_post,
+          data:data
+      );
 
-
-    var responseStr=response.data;
-    print(responseStr);
+      var responseStr=response.data;
+      print(responseStr);
 
 
 
-    String rawJson = jsonEncode(responseStr);
+      String rawJson = jsonEncode(responseStr);
 
 
-    cacheUtil.setCache(CacheUtil.key_userinfo,rawJson);
+      cacheUtil.setCache(CacheUtil.key_userinfo,rawJson);
+    }catch(e){
+      return print(e);
+    }
+
+
 
 
 
