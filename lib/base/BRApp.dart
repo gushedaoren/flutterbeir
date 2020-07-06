@@ -34,8 +34,8 @@ class BRApp{
 
   void initUMeng() async{
     var result = await UmengAnalyticsPlugin.init(
-      androidKey: '5dfc5b91cb23d26df0000a90',
-      iosKey: '5dfc5c034ca35748d1000c4c',
+      androidKey: '5b08c03b8f4a9d2f11000747',
+      iosKey: '5f02bc7e895cca3b65000038',
     );
   }
 
