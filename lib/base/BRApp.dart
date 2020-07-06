@@ -5,7 +5,7 @@ import 'dart:ui';
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
+import 'package:umeng_analytics_plugin/umeng_analytics_plugin.dart';
 class BRApp{
 
 
@@ -26,7 +26,19 @@ class BRApp{
     this.context=context;
     LogUtil.init();
     LogUtil.v("app initing");
+
+    initUMeng();
+
   }
+
+
+  void initUMeng() async{
+    var result = await UmengAnalyticsPlugin.init(
+      androidKey: '5dfc5b91cb23d26df0000a90',
+      iosKey: '5dfc5c034ca35748d1000c4c',
+    );
+  }
+
 
 
   Color primaryColor;
