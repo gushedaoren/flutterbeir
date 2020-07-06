@@ -47,7 +47,8 @@ dependencies:
   package_info: ^0.4.0+2
   webview_flutter:
   device_info:
-  umeng_analytics_plugin: ^1.0.3
+
+
 
 
 dev_dependencies:

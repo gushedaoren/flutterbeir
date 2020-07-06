@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+
 import 'package:flutterbeir/config/BRColor.dart';
 
 class BRMaterialApp extends MaterialApp{
@@ -8,7 +9,9 @@ class BRMaterialApp extends MaterialApp{
   getAppTheme(Widget widget){
 
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: '贝儿故事',
+
+
       theme: ThemeData(
         // This is the theme of your application.
         //
