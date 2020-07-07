@@ -105,6 +105,7 @@ class PageVideoHomeState extends State<PageVideoHome>{
         height: 200.0,
         child: new BannerView(
 
+
             [
               new Image.network(_bannersData.results[0%bannerLength].media.toString(),fit: BoxFit.cover,width: 720,height: 360),
               new Image.network(_bannersData.results[1%bannerLength].media.toString(),fit: BoxFit.cover,width: 720,height: 360),
