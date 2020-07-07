@@ -12,6 +12,7 @@ import 'package:flutterbeir/config/BRConfig.dart';
 import 'package:flutterbeir/models/ModelBanner.dart';
 import 'package:flutterbeir/models/ModelHomeAll.dart';
 import 'package:flutterbeir/pages/story/StroyGridView.dart';
+import 'package:flutterbeir/widgets/BRBannerView.dart';
 import 'package:flutterbeir/widgets/HomeHeader.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'dart:convert';
@@ -23,41 +24,13 @@ class PageStoryHome extends BaseStatefulWidget {
 }
 class PageStoryHomeState extends State<PageStoryHome> {
 
-  StreamController<ModelBanner> _streamBannerController;
+
   StreamController<ModelHomeAll> _streamHomeAllController;
 
-  static var _bannersData;
+
 
   static var _homeAllData;
-  var bannerSwiper;
 
-  getBannerRequest() async {
-
-    var url_post=BRConfig.domian+"/brstory/banner/";
-    FormData formData = new FormData.from({
-
-    });
-    LogUtil.e(url_post);
-    var dio = new Dio();
-    var response = await dio.get(url_post, data: formData);
-
-
-    var responseStr=response.data;
-    print(responseStr);
-
-    var data=ModelBanner.fromJson(responseStr);
-
-    _bannersData= data;
-
-    print(data.results[0].media.toString());
-
-
-    _streamBannerController.add(_bannersData);
-    _streamBannerController.close();
-
-
-
-  }
 
   getHomeAllRequest() async {
 
@@ -87,53 +60,7 @@ class PageStoryHomeState extends State<PageStoryHome> {
 
   }
 
-  initBannerSwiper(){
 
-    var bannerLength=_bannersData.results.length;
-    return  Container(
-        alignment: Alignment.center,
-        height: 200.0,
-        child: new BannerView(
-
-        [
-          new Image.network(_bannersData.results[0%bannerLength].media.toString(),fit: BoxFit.cover,width: 720,height: 360),
-          new Image.network(_bannersData.results[1%bannerLength].media.toString(),fit: BoxFit.cover,width: 720,height: 360),
-        ]
-    ));
-
-  }
-
-  initBannerBuilder(){
-    return StreamBuilder<ModelBanner>(
-      stream:_streamBannerController.stream,
-      //initialData: ,// a Stream<int> or null
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-
-        // 请求已结束
-        if(snapshot.connectionState == ConnectionState.done){
-          if(snapshot.hasError){
-            // 请求失败，显示错误
-            return Text("Error: ${snapshot.error}");
-          }else{
-            // 请求成功，显示数据
-            return initBannerSwiper();
-
-          }
-        }else{
-          // 请求未结束，显示loading
-          return
-            Center(
-
-            );
-
-
-        }
-
-
-
-      },
-    );
-  }
 
 
   initHomeAllBuilder(){
@@ -186,9 +113,9 @@ class PageStoryHomeState extends State<PageStoryHome> {
     // TODO: implement initState
     super.initState();
     print("initState");
-    getBannerRequest();
+
     getHomeAllRequest();
-    _streamBannerController = StreamController<ModelBanner>();
+
     _streamHomeAllController=StreamController<ModelHomeAll>();
   }
 
@@ -206,7 +133,7 @@ class PageStoryHomeState extends State<PageStoryHome> {
     // TODO: implement deactivate
     super.deactivate();
     _streamHomeAllController.close();
-    _streamBannerController.close();
+
   }
 
   @override
@@ -228,7 +155,7 @@ class PageStoryHomeState extends State<PageStoryHome> {
 
           new Container(
 
-              child: initBannerBuilder(),
+              child: BRBannerView(),
             ),
 
 
