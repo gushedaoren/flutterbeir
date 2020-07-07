@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />.
     <application
-        android:name="io.flutter.app.FlutterApplication"
+        android:name="com.brstory.BRApplication"
         android:label="贝儿故事"
         android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
