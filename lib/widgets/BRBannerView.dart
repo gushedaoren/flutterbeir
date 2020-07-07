@@ -9,6 +9,8 @@ import 'package:flutterbeir/base/BaseStatefulWidget.dart';
 import 'package:flutterbeir/config/BRConfig.dart';
 import 'package:flutterbeir/models/ModelBanner.dart';
 
+import 'BannerImage.dart';
+
 class BRBannerView extends BaseStatefulWidget {
 
 
@@ -59,10 +61,9 @@ class BRBannerViewState extends State<BRBannerView>{
         alignment: Alignment.center,
         height: 200.0,
         child: new BannerView(
-
             [
-              new Image.network(_bannersData.results[0%bannerLength].media.toString(),fit: BoxFit.cover,width: 720,height: 360),
-              new Image.network(_bannersData.results[1%bannerLength].media.toString(),fit: BoxFit.cover,width: 720,height: 360),
+              BannerImage(_bannersData.results[0%bannerLength]),
+              BannerImage(_bannersData.results[1%bannerLength]),
             ]
         ));
 
