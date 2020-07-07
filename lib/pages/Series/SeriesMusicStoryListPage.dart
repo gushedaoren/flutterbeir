@@ -22,34 +22,34 @@ import 'package:rxdart/rxdart.dart';
 class SeriesMusicStoryListPage extends BaseStatefulWidget {
 
 
-  Story story;
+  String  seriesid;
+
+  String seriesIcon;
 
 
-  SeriesMusicStoryListPage(this.story); //  @override
+  SeriesMusicStoryListPage(this.seriesid,this.seriesIcon); //  @override
 
 
   @override
-  State<BaseStatefulWidget> createState()=> SeriesStoryListPageState(story);
+  State<BaseStatefulWidget> createState()=> SeriesStoryListPageState(seriesid,seriesIcon);
 
 
 }
 
 class SeriesStoryListPageState extends State<SeriesMusicStoryListPage>{
 
-  Story story;
+  String seriesIcon;
+  String seriesid;
   StreamController<ModelVideoSeriesList> _streamSeriesController=new BehaviorSubject();
 
-  SeriesStoryListPageState(this.story);
+  SeriesStoryListPageState(this.seriesid,this.seriesIcon);
   static var seriesStoryList;
   getSeriesStoryList(var seriesid) async {
-    var url_post=BRConfig.domian+"/brstory/storylist/";
-    FormData formData = new FormData.from({
+    var url_post=BRConfig.domian+"/brstory/storylist/?seriesid="+seriesid;
 
-      "seriesid":seriesid
-    });
     LogUtil.e(url_post);
     var dio = new Dio();
-    var response = await dio.get(url_post, data: formData);
+    var response = await dio.get(url_post);
 
 
 
@@ -70,7 +70,7 @@ class SeriesStoryListPageState extends State<SeriesMusicStoryListPage>{
 
             new Container(
 
-              child: new Image.network(story.icon,fit:BoxFit.cover,width:720,height: 180,),
+              child: new Image.network(seriesIcon,fit:BoxFit.cover,width:720,height: 180,),
             ),
 
 
@@ -107,7 +107,7 @@ class SeriesStoryListPageState extends State<SeriesMusicStoryListPage>{
     super.initState();
     print("initState");
 
-    getSeriesStoryList(story.id);
+    getSeriesStoryList(seriesid);
 
 
 
@@ -155,7 +155,7 @@ class SeriesStoryListPageState extends State<SeriesMusicStoryListPage>{
   buildListData(Video item) {
 
     if(item.icon==null){
-        item.icon=story.icon;
+        item.icon=seriesIcon;
     }
 
     return GestureDetector(

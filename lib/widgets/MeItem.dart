@@ -23,10 +23,10 @@ class MeItem extends StatelessWidget {
 
     if(title.contains("关于我们")){
 
-      requestUtil.autoRegister();
-//      Navigator.push(context, MaterialPageRoute(builder: (context) {
-//        return AboutUsPage();
-//      }));
+//      requestUtil.autoRegister();
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return AboutUsPage();
+      }));
     }
 
     if(title.contains("隐私协议")){
