@@ -45,8 +45,8 @@ dependencies:
   convert:
   date_format: ^1.0.8
   package_info: ^0.4.0+2
-  webview_flutter:
   device_info:
+  webview_flutter:
 
 
 

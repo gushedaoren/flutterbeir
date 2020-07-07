@@ -125,6 +125,7 @@ android {
         oppo { dimension "mark" }
         bbg { dimension "mark" }
         baidu { dimension "mark" }
+        flutter { dimension "mark" }
 
     }
     productFlavors.all {
