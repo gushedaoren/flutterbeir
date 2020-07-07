@@ -10,4 +10,9 @@ import Flutter
     GeneratedPluginRegistrant.register(with: self)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
+    
+    
+    override func applicationDidFinishLaunching(_ application: UIApplication) {
+        
+    }
 }
