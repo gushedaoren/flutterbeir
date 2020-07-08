@@ -62,8 +62,8 @@ class BRBannerViewState extends State<BRBannerView>{
         height: 200.0,
         child: new BannerView(
             [
-              BannerImage(_bannersData.results[0%bannerLength]),
-              BannerImage(_bannersData.results[1%bannerLength]),
+              BannerImage(_bannersData.results[0]),
+              BannerImage(_bannersData.results[1]),
             ]
         ));
 

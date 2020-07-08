@@ -24,8 +24,10 @@ class MusicStoryListItem extends StatelessWidget {
   Widget build(BuildContext context) {
 
 
+
+
     return new Container(
-      padding: const EdgeInsets.all(8.0),
+
       child:  Row(
 
 

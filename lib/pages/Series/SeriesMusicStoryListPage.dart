@@ -180,10 +180,15 @@ class SeriesStoryListPageState extends State<SeriesMusicStoryListPage>{
 
     Story item=storys[index];
 
+    var iconurl=item.icon;
+
+    if(iconurl==null){
+      iconurl=series.storyIcon;
+    }
 
     return GestureDetector(
       child: new Container(
-          child:  MusicStoryListItem(item.name,item.icon),
+          child:  MusicStoryListItem(item.name,iconurl),
 
       ),
 
