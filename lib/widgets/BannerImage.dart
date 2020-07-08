@@ -24,7 +24,7 @@ class BannerImage extends StatelessWidget {
   Widget build(BuildContext context) {
     this.context=context;
     Color color = Theme.of(context).primaryColor;
-
+    print(result.media.toString());
     return
       new  GestureDetector(
 

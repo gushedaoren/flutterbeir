@@ -10,8 +10,11 @@ import 'package:flutter/material.dart';
 import 'package:flutterbeir/base/BaseStatefulWidget.dart';
 import 'package:flutterbeir/config/BRColor.dart';
 import 'package:flutterbeir/config/BRConfig.dart';
+import 'package:flutterbeir/media/StoryPlayPage.dart';
 import 'package:flutterbeir/media/VideoPlayPage.dart';
 import 'package:flutterbeir/models/ModelBanner.dart';
+import 'package:flutterbeir/models/ModelHomeAll.dart';
+import 'package:flutterbeir/models/ModelSeries.dart';
 import 'package:flutterbeir/models/ModelStorys.dart';
 import 'package:flutterbeir/models/ModelVideoHomeAll.dart';
 import 'package:flutterbeir/models/ModelVideoSeriesList.dart';
@@ -22,16 +25,16 @@ import 'package:rxdart/rxdart.dart';
 class SeriesMusicStoryListPage extends BaseStatefulWidget {
 
 
-  String  seriesid;
+  String  seriresUrl;
 
   String seriesIcon;
 
 
-  SeriesMusicStoryListPage(this.seriesid,this.seriesIcon); //  @override
+  SeriesMusicStoryListPage(this.seriresUrl,this.seriesIcon); //  @override
 
 
   @override
-  State<BaseStatefulWidget> createState()=> SeriesStoryListPageState(seriesid,seriesIcon);
+  State<BaseStatefulWidget> createState()=> SeriesStoryListPageState(seriresUrl,seriesIcon);
 
 
 }
@@ -39,26 +42,43 @@ class SeriesMusicStoryListPage extends BaseStatefulWidget {
 class SeriesStoryListPageState extends State<SeriesMusicStoryListPage>{
 
   String seriesIcon;
-  String seriesid;
-  StreamController<ModelVideoSeriesList> _streamSeriesController=new BehaviorSubject();
+  String seriresUrl;
+  ModelSeries series;
+  StreamController<ModelStorys> _streamSeriesController=new BehaviorSubject();
 
-  SeriesStoryListPageState(this.seriesid,this.seriesIcon);
-  static var seriesStoryList;
+  SeriesStoryListPageState(this.seriresUrl,this.seriesIcon);
+  static ModelStorys seriesStoryList;
   getSeriesStoryList(var seriesid) async {
-    var url_post=BRConfig.domian+"/brstory/storylist/?seriesid="+seriesid;
-
+    var url_post=BRConfig.domian+"/brstory/storylist?seriesid="+seriesid;
+    FormData formData = new FormData.from({
+      seriesid:seriesid
+    });
     LogUtil.e(url_post);
     var dio = new Dio();
-    var response = await dio.get(url_post);
+    var response = await dio.get(url_post,data: formData);
 
 
 
-    seriesStoryList=ModelVideoSeriesList.fromJson(response.data);
+    seriesStoryList=ModelStorys.fromJson(response.data);
 
 
 
     _streamSeriesController.add(seriesStoryList);
     _streamSeriesController.close();
+  }
+
+  getSeriesID() async {
+
+    var dio = new Dio();
+    print(seriresUrl);
+    var response = await dio.get(seriresUrl);
+
+
+
+    series=ModelSeries.fromJson(response.data);
+
+    print("seriresid:"+series.id.toString());
+    getSeriesStoryList(series.id.toString());
   }
 
   initSeriesViews(){
@@ -88,10 +108,10 @@ class SeriesStoryListPageState extends State<SeriesMusicStoryListPage>{
 
    return new ListView.separated(
       padding: const EdgeInsets.all(10.0),
-      itemCount: seriesStoryList.videos.length,
+      itemCount: seriesStoryList.storys.length,
 
       itemBuilder: (context, item) {
-        return buildListData(seriesStoryList.videos[item]);
+        return buildListData(seriesStoryList.storys,item);
       },
       separatorBuilder: (BuildContext context, int index) => Divider(),
 
@@ -107,7 +127,9 @@ class SeriesStoryListPageState extends State<SeriesMusicStoryListPage>{
     super.initState();
     print("initState");
 
-    getSeriesStoryList(seriesid);
+    getSeriesID();
+
+
 
 
 
@@ -120,7 +142,7 @@ class SeriesStoryListPageState extends State<SeriesMusicStoryListPage>{
 
 
   initListBuilder(){
-    return StreamBuilder<ModelVideoSeriesList>(
+    return StreamBuilder<ModelStorys>(
       stream:_streamSeriesController.stream,
 
       builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -131,6 +153,7 @@ class SeriesStoryListPageState extends State<SeriesMusicStoryListPage>{
             // 请求失败，显示错误
             return Text("Error: ${snapshot.error}");
           }else{
+
             // 请求成功，显示数据
             return initListView();
 
@@ -152,11 +175,11 @@ class SeriesStoryListPageState extends State<SeriesMusicStoryListPage>{
   }
 
 
-  buildListData(Video item) {
+  buildListData(var storys,int index) {
 
-    if(item.icon==null){
-        item.icon=seriesIcon;
-    }
+
+    Story item=storys[index];
+
 
     return GestureDetector(
       child: new Container(
@@ -166,13 +189,32 @@ class SeriesStoryListPageState extends State<SeriesMusicStoryListPage>{
 
 
 
-      onTap: () => listItemTap(item),
+      onTap: () => clickItem(storys,index),
     );
 
 
 
   }
 
+  clickItem(List datas,var index){
+
+    Story data=datas[index];
+    print(data);
+    Navigator.push(
+      context,
+      //创建一个路由
+      new MaterialPageRoute(
+          builder: (context) => StoryPlayPage(datas,data),
+          //设置下一个界面的名字（就是设置别名）
+          settings: RouteSettings(
+              name: 'StoryPlayPage',
+              arguments: {"datas": data}
+
+          )
+      ),
+    );
+
+  }
 
   listItemTap(Video item){
     print("taped:"+item.name);

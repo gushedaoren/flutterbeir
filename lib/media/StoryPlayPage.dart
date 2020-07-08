@@ -9,7 +9,7 @@ import 'package:flutterbeir/models/ModelHomeAll.dart';
 class StoryPlayPage extends StatefulWidget{
 
 
-  Homegrid data;
+  var data;
 
   List datas;
 
@@ -26,7 +26,7 @@ class StoryPlayPage extends StatefulWidget{
 }
 
 class StoryPlayPageState extends State<StoryPlayPage>{
-  Homegrid data;
+  var data;
   List datas;
   StoryPlayPageState(this.datas,this.data);
   bool isSongPage = true;
