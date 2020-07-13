@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutterbeir/models/ModelVideoSeriesList.dart';
-import 'package:video_player/video_player.dart';
+import 'package:awsome_video_player/awsome_video_player.dart';
 
 class VideoPlayerPage extends StatefulWidget {
   Video item;
@@ -13,8 +13,6 @@ class VideoPlayerPage extends StatefulWidget {
 }
 
 class _VideoPlayerPageState extends State<VideoPlayerPage> {
-  VideoPlayerController videoPlayerController;
-  ChewieController chewieController;
 
   Video item;
 
@@ -25,14 +23,8 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
   void initState() {
     super.initState();
     //配置视频地址
-    videoPlayerController = VideoPlayerController.network(
-        item.media);
-    chewieController = ChewieController(
-      videoPlayerController: videoPlayerController,
-      aspectRatio: 3 / 2, //宽高比
-      autoPlay: true, //自动播放
-      looping: false, //循环播放
-    );
+
+
   }
 
   @override
@@ -41,21 +33,45 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
       appBar: AppBar(title: Text(item.name)),
       body: Center(
         //视频播放器
-        child: Chewie(
-          controller: chewieController,
+        child: AwsomeVideoPlayer(
+          item.media,
+          /// 视频播放配置
+          playOptions: VideoPlayOptions(
+              seekSeconds: 30,
+              aspectRatio: 16 / 9,
+              loop: true,
+              autoplay: true,
+              allowScrubbing: true,
+              startPosition: Duration(seconds: 0)),
+          /// 自定义视频样式
+          videoStyle: VideoStyle(
+            /// 自定义底部控制栏
+            videoControlBarStyle: VideoControlBarStyle(
+              /// 自定义颜色
+              barBackgroundColor: Colors.blue,//控制栏的背景颜色
+
+              /// 自定义进度条样式
+              progressStyle: VideoProgressStyle(
+                // padding: EdgeInsets.all(0),
+                  playedColor: Colors.red,
+                  bufferedColor: Colors.yellow,
+                  backgroundColor: Colors.green,
+                  dragBarColor: Colors.white,//进度条为`progress`时有效，如果时`basic-progress`则无效
+                  height: 4,
+                  progressRadius: 2,//进度条为`progress`时有效，如果时`basic-progress`则无效
+                  dragHeight: 5//进度条为`progress`时有效，如果时`basic-progress`则无效
+              ),
+            ),
+          ),
         ),
+
       ),
     );
   }
 
   @override
   void dispose() {
-    /**
-     * 当页面销毁的时候，将视频播放器也销毁
-     * 否则，当页面销毁后会继续播放视频！
-     */
-    videoPlayerController.dispose();
-    chewieController.dispose();
+
     super.dispose();
   }
 }

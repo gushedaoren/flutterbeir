@@ -1,14 +1,13 @@
 import 'dart:async';
 
 
-import 'package:banner_view/banner_view.dart';
 import 'package:common_utils/common_utils.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterbeir/base/BasePageState.dart';
+
 import 'package:flutterbeir/base/BaseStatefulWidget.dart';
 import 'package:flutterbeir/config/BRConfig.dart';
-import 'package:flutterbeir/models/ModelBanner.dart';
+
 import 'package:flutterbeir/models/ModelVideoHomeAll.dart';
 import 'package:flutterbeir/pages/Series/SeriesGridView.dart';
 import 'package:flutterbeir/widgets/BRBannerView.dart';
