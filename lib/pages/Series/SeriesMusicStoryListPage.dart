@@ -137,7 +137,19 @@ class SeriesStoryListPageState extends State<SeriesMusicStoryListPage>{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return initSeriesViews();
+
+    return Scaffold(
+      appBar: AppBar(
+          brightness: Brightness.dark,
+          title: Text("")),
+      body: Center(
+        //视频播放器
+        child: initSeriesViews(),
+
+      ),
+    );
+
+
   }
 
 

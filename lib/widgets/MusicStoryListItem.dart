@@ -39,10 +39,11 @@ class MusicStoryListItem extends StatelessWidget {
 
             new Image.network(icon,fit: BoxFit.fitWidth,width: 100,height: 100,),
 
-
-            new Container(
+            new Expanded(child: new Container(
                 margin: const EdgeInsets.all(5.0),
-                child: initText(context))
+                child: initText(context)))
+
+
 
           ]
 

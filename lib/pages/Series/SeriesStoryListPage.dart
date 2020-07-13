@@ -113,7 +113,16 @@ class SeriesStoryListPageState extends State<SeriesStoryListPage>{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return initSeriesViews();
+
+    return Scaffold(
+      appBar: AppBar(title: Text(videozSeries1.title)),
+      body: Center(
+        //视频播放器
+        child: initSeriesViews(),
+
+      ),
+    );
+
   }
 
 
