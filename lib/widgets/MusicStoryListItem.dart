@@ -10,12 +10,15 @@ class MusicStoryListItem extends StatelessWidget {
 
   initText(BuildContext context){
     Color color = Theme.of(context).primaryColor;
-    return new Text(title, style: new TextStyle(
+    return new Text(title,
 
 
+      style: new TextStyle(
+
+      decoration: TextDecoration.none,
       fontSize: 18.0,
       fontWeight: FontWeight.w400,
-      color: color,
+      color: Colors.black,
     ),);
 
   }
@@ -37,7 +40,9 @@ class MusicStoryListItem extends StatelessWidget {
             new Image.network(icon,fit: BoxFit.fitWidth,width: 100,height: 100,),
 
 
-            new Expanded(child: initText(context))
+            new Container(
+                margin: const EdgeInsets.all(5.0),
+                child: initText(context))
 
           ]
 
