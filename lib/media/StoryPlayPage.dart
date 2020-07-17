@@ -97,8 +97,8 @@ class StoryPlayPageState extends State<StoryPlayPage>{
 
         onCompleted:this.onCompleted,
         onError:this.onError,
-        onNext:this.onNext,
-        onPrevious:this.onPrevious,
+//        onNext:this.onNext,
+//        onPrevious:this.onPrevious,
         volume:1.0
     );
     return Scaffold(
