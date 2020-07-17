@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 
 
 import 'package:banner_view/banner_view.dart';
@@ -60,12 +61,21 @@ class BRBannerViewState extends State<BRBannerView>{
     return  Container(
         alignment: Alignment.center,
         height: 200.0,
-        child: new BannerView(
-            [
-              BannerImage(_bannersData.results[0]),
-              BannerImage(_bannersData.results[1]),
-            ]
-        ));
+        child:new Image.asset(
+        "assets/images/banner_music_default.jpg",
+        width: window.physicalSize.width,
+        height: 240.0,
+        //类似于Android的scaleType 此处让图片尽可能小 以覆盖整个widget
+        fit: BoxFit.cover,
+    ));
+//        child: new BannerView(
+//            [
+//              BannerImage(_bannersData.results[0]),
+//              BannerImage(_bannersData.results[1]),
+//            ]
+//        ));
+
+
 
   }
 

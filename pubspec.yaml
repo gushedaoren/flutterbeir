@@ -99,7 +99,6 @@ flutter:
 
 
   assets:
-    - assets/images/banner01.jpg
     - assets/images/banner_default.jpg
     - assets/images/banner_music_default.jpg
     - assets/images/br_qrcode.jpg
