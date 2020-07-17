@@ -32,7 +32,7 @@ class _BottonWidgetState extends State<WidgetHomeBottomBar> {
     lists
       ..add(PageStoryHome())
 //      ..add(PageVideoHome())
-      ..add(PageAI("test","test"))
+//      ..add(PageAI("test","test"))
       ..add(PageMe());
 
     requestUtil.autoRegister();
@@ -69,13 +69,13 @@ class _BottonWidgetState extends State<WidgetHomeBottomBar> {
 //            ),
 //            title: Text('动画',style: TextStyle(color: app.getPrimaryColor()),),
 //          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.pages,
-              color: app.getPrimaryColor(),
-            ),
-            title: Text('智能',style: TextStyle(color: app.getPrimaryColor()),),
-          ),
+//          BottomNavigationBarItem(
+//            icon: Icon(
+//              Icons.pages,
+//              color: app.getPrimaryColor(),
+//            ),
+//            title: Text('智能',style: TextStyle(color: app.getPrimaryColor()),),
+//          ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
