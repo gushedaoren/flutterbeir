@@ -7,16 +7,22 @@ import 'package:flutterbeir/utils/AppinfoPraseTool.dart';
 import 'package:flutterbeir/utils/CacheUtil.dart';
 
 class AboutUsPage extends StatelessWidget{
-  var appdesc="";
+  var appdesc="   贝儿故事为家长和宝宝提供精心甄选的适合0—12岁婴幼儿听的故事，提倡由孩子父母用自己的声音真实的讲给孩子听，帮助爸爸妈妈们解决因工作繁忙而在孩子成长中缺失的困扰，倡导做有爱的父母，讲温度的故事给宝宝听。内容丰富涵盖了儿童故事、睡前故事、有声故事、儿歌、绘本故事、儿童读物、讲故事、绘本、漫画、胎教、三字经、兔小贝儿歌、卡通动画片、亲子游戏、小伴龙、安徒生童话、格林童话、幼儿园童谣、胎教故事、胎教音乐等";
+
   CacheUtil cacheUtil=CacheUtil();
 
 
   getAppDesc(value){
 
 
-    AppinfoPraseTool appinfoPraseTool=AppinfoPraseTool(value);
+//    AppinfoPraseTool appinfoPraseTool=AppinfoPraseTool(value);
+//
+//    return "   "+appinfoPraseTool.getAppInfoValue("appdesc");
 
-    return "   "+appinfoPraseTool.getAppInfoValue("appdesc");
+    return "贝儿故事为家长和宝宝提供精心甄选的适合0—12岁婴幼儿听的故事，提倡由孩子父母用自己的声音真实的讲给孩子听，帮助爸爸妈妈们解决因工作繁忙而在孩子成长中缺失的困扰，倡导做有爱的父母，讲温度的故事给宝宝听。内容丰富涵盖了儿童故事、睡前故事、有声故事、儿歌、绘本故事、儿童读物、讲故事、绘本、漫画、胎教、三字经、兔小贝儿歌、卡通动画片、亲子游戏、小伴龙、安徒生童话、格林童话、幼儿园童谣、胎教故事、胎教音乐等";
+
+
+
 
 
   }
@@ -32,18 +38,36 @@ class AboutUsPage extends StatelessWidget{
   Widget build(BuildContext context) {
     // TODO: implement build
 
+    return Scaffold(
+      appBar: AppBar(title: Text("关于我们")),
+      body: Center(
+        //视频播放器
+        child: new Container(
+          padding: const EdgeInsets.all(10.0),
+          color: Colors.white,
+          child:  Column(
 
-    return new Container(
-      color: Colors.white,
-      child:  Column(
 
 
-        children: <Widget>[
-          initHeader(),
-          initText()
-        ],
+            children: <Widget>[
+
+              initHeader(),
+              new Text(appdesc, style: new TextStyle(
+
+
+
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.black,
+                  decoration: TextDecoration.none
+              ),)
+            ],
+          ),
+        )
+
       ),
     );
+
 
 
   }
@@ -92,7 +116,7 @@ class AboutUsPage extends StatelessWidget{
 
       child: Container(
 
-        height: 240,
+        height: 180,
 
         child: Center(
             child:new Container(

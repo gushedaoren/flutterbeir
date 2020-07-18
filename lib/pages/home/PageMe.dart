@@ -74,7 +74,7 @@ class PageMe extends StatelessWidget {
                 MeItem("微信公众号","beirstory","assets/images/me_wechat.png"),
 //                MeItem("分享app",appVersion,"assets/images/me_share.png"),
 //                MeItem("给个好评","","assets/images/me_good.png"),
-                MeItem("隐私协议","","assets/images/me_yinsi.png"),
+//                MeItem("隐私协议","","assets/images/me_yinsi.png"),
                 MeItem("客服电话","02155039850","assets/images/me_phone.png"),
 
               ],
