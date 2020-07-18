@@ -32,8 +32,7 @@ dependencies:
   dio: ^1.0.9
   common_utils: ^1.1.1
   json_annotation: ^2.0.0
-  audioplayer: 0.8.1
-  audioplayer_web: 0.7.1
+  audioplayers: ^0.15.1
   banner_view: ^1.1.2
   rxdart: ^0.23.0
   video_player:
@@ -47,7 +46,7 @@ dependencies:
   date_format: ^1.0.8
   package_info: ^0.4.0+2
   device_info:
-  webview_flutter:
+
 
 
 

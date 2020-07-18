@@ -1,6 +1,5 @@
-import 'package:audioplayer/audioplayer.dart';
 import 'package:flutter/material.dart';
-
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutterbeir/base/BRApp.dart';
 import 'package:flutterbeir/base/BasePageState.dart';
 import 'package:flutterbeir/config/BRConfig.dart';
@@ -54,7 +53,7 @@ class BRMusicPlayer extends StatefulWidget{
 }
 
 class _PlayerState extends State<BRMusicPlayer> {
-  AudioPlayer audioPlayer = AudioPlayer();
+  AudioPlayer audioPlayer = new AudioPlayer(mode: PlayerMode.MEDIA_PLAYER,playerId: BRConfig.audioPlayerId);
   bool isPlaying = true;
   Duration duration;
   Duration position;
@@ -67,7 +66,7 @@ class _PlayerState extends State<BRMusicPlayer> {
     if (isPlaying) {
       audioPlayer.pause();
     } else {
-      audioPlayer.play(widget.songUrl);
+      audioPlayer.resume();
     }
   }
 
@@ -92,7 +91,13 @@ class _PlayerState extends State<BRMusicPlayer> {
     super.initState();
 
 
-
+    listener1 = audioPlayer.onDurationChanged.listen((Duration d) {
+      // print('Max duration: $d');
+      setState(() => duration = d);
+      if (position != null) {
+        this.sliderValue = (position.inSeconds / duration.inSeconds);
+      }
+    });
     listener2 = audioPlayer.onAudioPositionChanged.listen((Duration  p){
       // print("Current position: $p");
       setState(() => position = p);
@@ -130,10 +135,10 @@ class _PlayerState extends State<BRMusicPlayer> {
 
   @override
   void  dispose() {
-
+    listener1.cancel();
     listener2.cancel();
     listener3.cancel();
-
+    audioPlayer.release();
     super.dispose();
   }
 
@@ -183,13 +188,9 @@ class _PlayerState extends State<BRMusicPlayer> {
         new Slider(
           onChanged: (newValue) {
             if (duration != null) {
-              var seconds = (duration.inSeconds * newValue).roundToDouble();
+              int seconds = (duration.inSeconds * newValue).round();
               print("audioPlayer.seek: $seconds");
-
-              audioPlayer.seek(seconds);
-
-
-
+              audioPlayer.seek(new Duration(seconds: seconds));
             }
           },
           value: sliderValue ?? 0.0,

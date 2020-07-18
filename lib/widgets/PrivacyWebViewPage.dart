@@ -3,8 +3,6 @@ import 'package:flutterbeir/config/BRConfig.dart';
 
 import 'dart:async';
 
-import 'package:webview_flutter/webview_flutter.dart';
-
 
 
 class PrivacyWebViewPage extends StatefulWidget {
@@ -13,20 +11,25 @@ class PrivacyWebViewPage extends StatefulWidget {
 }
 
 class _WebViewPageState extends State<PrivacyWebViewPage> {
-  // 获取项目中的html文件
-  Future<String> _getFile() async {
-    return "";
-  }
-
-
-// initialUrl 这里有个bug.如果你使用本地html的话,html中不能使用汉语. 使用服务器提供的url的话可以使用汉语.....
   @override
   Widget build(BuildContext context) {
-    return WebView(
-      initialUrl: BRConfig.PRIVACY_URL,
-      javascriptMode: JavascriptMode.unrestricted,
-    );
+    // TODO: implement build
+    throw UnimplementedError();
   }
+//  // 获取项目中的html文件
+//  Future<String> _getFile() async {
+//    return "";
+//  }
+//
+//
+//// initialUrl 这里有个bug.如果你使用本地html的话,html中不能使用汉语. 使用服务器提供的url的话可以使用汉语.....
+//  @override
+//  Widget build(BuildContext context) {
+//    return WebView(
+//      initialUrl: BRConfig.PRIVACY_URL,
+//      javascriptMode: JavascriptMode.unrestricted,
+//    );
+//  }
 
 
 }

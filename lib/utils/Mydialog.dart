@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterbeir/config/BRConfig.dart';
 import 'package:flutterbeir/widgets/PrivacyWebViewPage.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 class Mydialog{
 
@@ -21,11 +20,11 @@ class Mydialog{
         return new AlertDialog(
 
           title: new Text(title),
-          content: WebView(
-
-            initialUrl: BRConfig.PRIVACY_URL,
-            javascriptMode: JavascriptMode.unrestricted,
-          ),
+//          content: WebView(
+//
+//            initialUrl: BRConfig.PRIVACY_URL,
+//            javascriptMode: JavascriptMode.unrestricted,
+//          ),
           actions: <Widget>[
             new FlatButton(
               child: new Text('确定'),
