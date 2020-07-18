@@ -1,6 +1,4 @@
 
-
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterbeir/media/BRMusicPlayer.dart';
@@ -120,6 +118,7 @@ class StoryPlayPageState extends State<StoryPlayPage>{
       return new GestureDetector(
           onTap: () => setState((){this.isSongPage = false;}),
           child: new Container(
+            padding: EdgeInsets.all(10),
               height: 0.8 * width,
               width: 0.8 * width,
               decoration: new BoxDecoration(

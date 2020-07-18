@@ -32,7 +32,8 @@ dependencies:
   dio: ^1.0.9
   common_utils: ^1.1.1
   json_annotation: ^2.0.0
-  audioplayers: ^0.15.1
+  audioplayer: 0.8.1
+  audioplayer_web: 0.7.1
   banner_view: ^1.1.2
   rxdart: ^0.23.0
   video_player:
@@ -54,6 +55,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,5 +1,6 @@
+import 'package:audioplayer/audioplayer.dart';
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audioplayers.dart';
+
 import 'package:flutterbeir/base/BRApp.dart';
 import 'package:flutterbeir/base/BasePageState.dart';
 import 'package:flutterbeir/config/BRConfig.dart';
@@ -53,7 +54,7 @@ class BRMusicPlayer extends StatefulWidget{
 }
 
 class _PlayerState extends State<BRMusicPlayer> {
-  AudioPlayer audioPlayer = new AudioPlayer(mode: PlayerMode.MEDIA_PLAYER,playerId: BRConfig.audioPlayerId);
+  AudioPlayer audioPlayer = AudioPlayer();
   bool isPlaying = true;
   Duration duration;
   Duration position;
@@ -66,7 +67,7 @@ class _PlayerState extends State<BRMusicPlayer> {
     if (isPlaying) {
       audioPlayer.pause();
     } else {
-      audioPlayer.resume();
+      audioPlayer.play(widget.songUrl);
     }
   }
 
@@ -91,13 +92,7 @@ class _PlayerState extends State<BRMusicPlayer> {
     super.initState();
 
 
-    listener1 = audioPlayer.onDurationChanged.listen((Duration d) {
-      // print('Max duration: $d');
-      setState(() => duration = d);
-      if (position != null) {
-        this.sliderValue = (position.inSeconds / duration.inSeconds);
-      }
-    });
+
     listener2 = audioPlayer.onAudioPositionChanged.listen((Duration  p){
       // print("Current position: $p");
       setState(() => position = p);
@@ -135,10 +130,10 @@ class _PlayerState extends State<BRMusicPlayer> {
 
   @override
   void  dispose() {
-    listener1.cancel();
+
     listener2.cancel();
     listener3.cancel();
-    audioPlayer.release();
+
     super.dispose();
   }
 
@@ -151,12 +146,12 @@ class _PlayerState extends State<BRMusicPlayer> {
         new Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new IconButton(
-              icon: Icon(Icons.arrow_back),
-              iconSize: 48.0,
-              color: brApp.getPrimaryColor(),
-              onPressed: () => {widget.onPrevious()},
-            ),
+//            new IconButton(
+//              icon: Icon(Icons.arrow_back),
+//              iconSize: 48.0,
+//              color: brApp.getPrimaryColor(),
+//              onPressed: () => {widget.onPrevious()},
+//            ),
             this.isPlaying ?
             new IconButton(
               icon: Icon(Icons.stop),
@@ -175,22 +170,26 @@ class _PlayerState extends State<BRMusicPlayer> {
                 stopThisMusic();
               },
             ),
-            new IconButton(
-              icon: Icon(Icons.arrow_forward),
-              iconSize: 48.0,
-              color: brApp.getPrimaryColor(),
-              onPressed: () => {
-                // Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context,) => new SongPage(widget.songUrl, widget.songname, widget.list))),
-                widget.onNext()
-              },
-            ),
+//            new IconButton(
+//              icon: Icon(Icons.arrow_forward),
+//              iconSize: 48.0,
+//              color: brApp.getPrimaryColor(),
+//              onPressed: () => {
+//                // Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context,) => new SongPage(widget.songUrl, widget.songname, widget.list))),
+//                widget.onNext()
+//              },
+//            ),
           ],),
         new Slider(
           onChanged: (newValue) {
             if (duration != null) {
-              int seconds = (duration.inSeconds * newValue).round();
+              var seconds = (duration.inSeconds * newValue).roundToDouble();
               print("audioPlayer.seek: $seconds");
-              audioPlayer.seek(new Duration(seconds: seconds));
+
+              audioPlayer.seek(seconds);
+
+
+
             }
           },
           value: sliderValue ?? 0.0,

@@ -12,6 +12,7 @@ import 'package:dio/dio.dart';
 import 'package:flutterbeir/config/BRConfig.dart';
 
 import 'package:package_info/package_info.dart';
+import 'package:uuid/uuid.dart';
 
 import 'CacheUtil.dart';
 
@@ -65,7 +66,7 @@ class RequestUtil {
     if(Platform.isIOS){
       //ios相关代码
       IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
-      deviceid=iosInfo.identifierForVendor;
+      deviceid=Uuid.NAMESPACE_DNS;
       model=iosInfo.model;
 
       systemVersion=iosInfo.systemVersion;

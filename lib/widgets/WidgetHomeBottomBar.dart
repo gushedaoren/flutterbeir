@@ -35,8 +35,8 @@ class _BottonWidgetState extends State<WidgetHomeBottomBar> {
 //      ..add(PageAI("test","test"))
       ..add(PageMe());
 
-    requestUtil.autoRegister();
-    requestUtil.getAppinfoRequest();
+//    requestUtil.autoRegister();
+//    requestUtil.getAppinfoRequest();
 
 
 
