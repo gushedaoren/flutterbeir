@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterbeir/models/ModelBanner.dart';
 import 'package:flutterbeir/pages/Series/SeriesMusicStoryListPage.dart';
+import 'package:flutterbeir/utils/Adapter.dart';
 
 
 class BannerImage extends StatelessWidget {
@@ -38,7 +39,7 @@ class BannerImage extends StatelessWidget {
                 children:[
 
 
-                  new Image.network(result.media.toString(),fit: BoxFit.cover,width: 400,height: 200,)
+                  new Image.network(result.media.toString(),fit: BoxFit.cover,width: Adapt.screenW(),height: Adapt.px(300),)
                 ]
 
             ),

@@ -25,7 +25,7 @@ class StoryGridView extends StatelessWidget {
     switch(type){
       case 0:
         gridDatas=homeAll.homegrid1;
-        coloum=2;
+        coloum=3;
         break;
       case 1:
         gridDatas=homeAll.homegrid2;

@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterbeir/base/BaseStatefulWidget.dart';
 import 'package:flutterbeir/config/BRConfig.dart';
 import 'package:flutterbeir/models/ModelBanner.dart';
+import 'package:flutterbeir/utils/Adapter.dart';
 
 import 'BannerImage.dart';
 
@@ -58,22 +59,16 @@ class BRBannerViewState extends State<BRBannerView>{
   initBannerSwiper(){
 
     var bannerLength=_bannersData.results.length;
-    return  Container(
+    return   Container(
         alignment: Alignment.center,
-        height: 200.0,
-        child:new Image.asset(
-        "assets/images/banner_music_default.jpg",
-        width: window.physicalSize.width,
-        height: 240.0,
-        //类似于Android的scaleType 此处让图片尽可能小 以覆盖整个widget
-        fit: BoxFit.cover,
-    ));
-//        child: new BannerView(
-//            [
-//              BannerImage(_bannersData.results[0]),
-//              BannerImage(_bannersData.results[1]),
-//            ]
-//        ));
+        height: Adapt.px(300),
+        child: new BannerView(
+            [
+              BannerImage(_bannersData.results[0]),
+              BannerImage(_bannersData.results[1]),
+            ]
+        ));
+
 
 
 
