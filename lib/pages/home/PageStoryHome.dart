@@ -79,11 +79,11 @@ class PageStoryHomeState extends State<PageStoryHome> {
               child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children:[
-                    new HomeHeader("今日推荐","今日听什么？快来这里看看"),
+                    new HomeHeader(1,"今日推荐","今日听什么？快来这里看看"),
                     new StoryGridView(0, _homeAllData),
-                    new HomeHeader("重磅推荐","充实每一天，成长看得见"),
+                    new HomeHeader(2,"重磅推荐","充实每一天，成长看得见"),
                     new StoryGridView(1, _homeAllData),
-                    new HomeHeader("猜你喜欢","知识就是这样炼成的"),
+                    new HomeHeader(5,"猜你喜欢","知识就是这样炼成的"),
                     new StoryGridView(2, _homeAllData),
                   ]
 

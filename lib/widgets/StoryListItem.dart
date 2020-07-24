@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterbeir/utils/Adapter.dart';
 
 class StoryListItem extends StatelessWidget {
 
@@ -32,7 +33,7 @@ class StoryListItem extends StatelessWidget {
           children:[
 
 
-            new Image.network(icon,fit: BoxFit.fitWidth,width: 100,height: 100,),
+            new Image.network(icon,fit: BoxFit.fitWidth,width: Adapt.px(100),height:Adapt.px(100)),
 
 
             new Expanded(child: new Container(

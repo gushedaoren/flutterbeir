@@ -129,7 +129,7 @@ class PageVideoHomeState extends State<PageVideoHome>{
               child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children:[
-                    new HomeHeader("今日推荐","今日看什么？快来这里看看"),
+                    new HomeHeader(1,"今日推荐","今日看什么？快来这里看看"),
                     new SeriesGridView(_homeAllData),
 //                    new HomeHeader("重磅推荐","充实每一天，成长看得见"),
 //                    new StoryGridView(1, _homeAllData),

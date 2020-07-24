@@ -2,7 +2,7 @@
 
 
 class BRConfig {
-  static String domian="http://api-beir-pro-v3.1207game.com/";
+  static String domian="http://106.54.95.22:8083/";
 
 //  static String domian="http://192.168.31.149:8081";
 
