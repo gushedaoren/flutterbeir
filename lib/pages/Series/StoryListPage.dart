@@ -126,6 +126,7 @@ class StoryListPageState extends State<StoryListPage>{
       appBar: AppBar(
           brightness: Brightness.dark,
           title: Text(title)),
+
       body: Center(
         //视频播放器
         child: initSeriesViews(),
