@@ -63,6 +63,7 @@ target 'Runner' do
 
   # Keep pod path relative so it can be checked into Podfile.lock.
   pod 'Flutter', :path => 'Flutter'
+  pod 'GDTMobSDK', '~> 4.11.10' # 输入你想要的版本号
   
 
   # Plugin Pods
