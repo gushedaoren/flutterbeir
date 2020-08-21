@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
+		3870A82624DD871C006D5DCF /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870A82524DD871C006D5DCF /* Constant.swift */; };
+		3870A82824DD8890006D5DCF /* GDTNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870A82724DD8890006D5DCF /* GDTNavigationController.swift */; };
+		3870A82A24DD8914006D5DCF /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3870A82924DD8914006D5DCF /* Util.swift */; };
+		38812D7D24F004810097401A /* UMSwift in Resources */ = {isa = PBXBuildFile; fileRef = 38812D7B24F004810097401A /* UMSwift */; };
+		38812D8C24F00DCC0097401A /* UMAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38812D8B24F00DCC0097401A /* UMAnalytics.framework */; };
+		38812D8F24F00DE30097401A /* UMCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38812D8E24F00DE30097401A /* UMCommon.framework */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
@@ -17,14 +23,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9705A1C41CF9048500538489 /* Embed Frameworks */ = {
+		38812D8A24F0092E0097401A /* Embed PlugIns */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 10;
+			dstSubfolderSpec = 13;
 			files = (
 			);
-			name = "Embed Frameworks";
+			name = "Embed PlugIns";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -34,7 +40,14 @@
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
 		170A147169AF86C236DECF86 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3870A82524DD871C006D5DCF /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		3870A82724DD8890006D5DCF /* GDTNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GDTNavigationController.swift; sourceTree = "<group>"; };
+		3870A82924DD8914006D5DCF /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		38769ADA24C472E000AAF0C9 /* 贝儿故事Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "贝儿故事Debug.entitlements"; sourceTree = "<group>"; };
+		38812D7B24F004810097401A /* UMSwift */ = {isa = PBXFileReference; lastKnownFileType = folder; path = UMSwift; sourceTree = "<group>"; };
+		38812D8B24F00DCC0097401A /* UMAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UMAnalytics.framework; path = Pods/UMCAnalytics/UMAnalytics.framework; sourceTree = "<group>"; };
+		38812D8E24F00DE30097401A /* UMCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UMCommon.framework; path = Pods/UMCCommon/UMCommon.framework; sourceTree = "<group>"; };
+		38812D9124F00DF20097401A /* UMCommonLog */ = {isa = PBXFileReference; lastKnownFileType = folder; name = UMCommonLog; path = Pods/UMCCommonLog/UMCommonLog; sourceTree = "<group>"; };
 		3888EE8B24CB353F00CC754A /* 贝儿故事.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "贝儿故事.entitlements"; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
 		57EE57AB30DDA9C3A0DAA815 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
@@ -56,7 +69,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38812D8F24F00DE30097401A /* UMCommon.framework in Frameworks */,
 				FB4BEB32616BE7842F7CFC61 /* Pods_Runner.framework in Frameworks */,
+				38812D8C24F00DCC0097401A /* UMAnalytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +121,10 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				38812D7B24F004810097401A /* UMSwift */,
+				3870A82924DD8914006D5DCF /* Util.swift */,
+				3870A82724DD8890006D5DCF /* GDTNavigationController.swift */,
+				3870A82524DD871C006D5DCF /* Constant.swift */,
 				3888EE8B24CB353F00CC754A /* 贝儿故事.entitlements */,
 				38769ADA24C472E000AAF0C9 /* 贝儿故事Debug.entitlements */,
 				97C146FA1CF9000F007C117D /* Main.storyboard */,
@@ -131,6 +150,9 @@
 		A7A5076800020DE68A2193D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				38812D9124F00DF20097401A /* UMCommonLog */,
+				38812D8E24F00DE30097401A /* UMCommon.framework */,
+				38812D8B24F00DCC0097401A /* UMAnalytics.framework */,
 				170A147169AF86C236DECF86 /* Pods_Runner.framework */,
 			);
 			name = Frameworks;
@@ -148,9 +170,10 @@
 				97C146EA1CF9000F007C117D /* Sources */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
-				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				C76273900BA45134649D2ED5 /* [CP] Embed Pods Frameworks */,
+				B3BFDE67E16F37CF36159B73 /* [CP] Copy Pods Resources */,
+				38812D8A24F0092E0097401A /* Embed PlugIns */,
 			);
 			buildRules = (
 			);
@@ -200,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
+				38812D7D24F004810097401A /* UMSwift in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
@@ -259,6 +283,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B3BFDE67E16F37CF36159B73 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C76273900BA45134649D2ED5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -283,8 +324,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3870A82A24DD8914006D5DCF /* Util.swift in Sources */,
+				3870A82824DD8890006D5DCF /* GDTNavigationController.swift in Sources */,
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
+				3870A82624DD871C006D5DCF /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,11 +416,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 112;
-				DEVELOPMENT_TEAM = B74T6BT8NN;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Pods/UMCAnalytics",
+					"$(PROJECT_DIR)/Pods/UMCCommon",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -393,10 +440,12 @@
 					"$(PROJECT_DIR)/Flutter",
 				);
 				MARKETING_VERSION = 1.1.2;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brstory;
 				PRODUCT_NAME = "贝儿故事";
-				PROVISIONING_PROFILE_SPECIFIER = "pro-brstory";
-				SUPPORTS_MACCATALYST = YES;
+				PROVISIONING_PROFILE_SPECIFIER = "dev-brstory";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -524,11 +573,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 112;
-				DEVELOPMENT_TEAM = 44H7WFVFCH;
+				DEVELOPMENT_TEAM = B74T6BT8NN;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Pods/UMCAnalytics",
+					"$(PROJECT_DIR)/Pods/UMCCommon",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -545,10 +597,11 @@
 					"$(PROJECT_DIR)/Flutter",
 				);
 				MARKETING_VERSION = 1.1.2;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brstory;
 				PRODUCT_NAME = "贝儿故事";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -563,14 +616,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Runner/贝儿故事.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Distribution: Shanghai Raspberry Education Technology Co., Ltd. (44H7WFVFCH)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 112;
-				DEVELOPMENT_TEAM = 44H7WFVFCH;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Flutter",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Pods/UMCAnalytics",
+					"$(PROJECT_DIR)/Pods/UMCCommon",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -587,10 +644,12 @@
 					"$(PROJECT_DIR)/Flutter",
 				);
 				MARKETING_VERSION = 1.1.2;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brstory;
 				PRODUCT_NAME = "贝儿故事";
-				PROVISIONING_PROFILE_SPECIFIER = "pro-brstory";
-				SUPPORTS_MACCATALYST = YES;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

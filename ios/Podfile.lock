@@ -24,6 +24,10 @@ PODS:
     - Flutter
   - shared_preferences_web (0.0.1):
     - Flutter
+  - UMCAnalytics (6.1.0):
+    - UMCCommon
+  - UMCCommon (2.1.4)
+  - UMCCommonLog (2.0.0)
   - video_player (0.0.1):
     - Flutter
   - video_player_web (0.0.1):
@@ -45,9 +49,18 @@ DEPENDENCIES:
   - shared_preferences_linux (from `.symlinks/plugins/shared_preferences_linux/ios`)
   - shared_preferences_macos (from `.symlinks/plugins/shared_preferences_macos/ios`)
   - shared_preferences_web (from `.symlinks/plugins/shared_preferences_web/ios`)
+  - UMCAnalytics
+  - UMCCommon
+  - UMCCommonLog
   - video_player (from `.symlinks/plugins/video_player/ios`)
   - video_player_web (from `.symlinks/plugins/video_player_web/ios`)
   - wakelock (from `.symlinks/plugins/wakelock/ios`)
+
+SPEC REPOS:
+  trunk:
+    - UMCAnalytics
+    - UMCCommon
+    - UMCCommonLog
 
 EXTERNAL SOURCES:
   audioplayers:
@@ -97,10 +110,13 @@ SPEC CHECKSUMS:
   shared_preferences_linux: afefbfe8d921e207f01ede8b60373d9e3b566b78
   shared_preferences_macos: f3f29b71ccbb56bf40c9dd6396c9acf15e214087
   shared_preferences_web: 141cce0c3ed1a1c5bf2a0e44f52d31eeb66e5ea9
+  UMCAnalytics: 3503f179f7af932b30af9ac161ac11fb48fa72b6
+  UMCCommon: b0703b0053323f598e01670ea702b8eb1e66e611
+  UMCCommonLog: 9b7ddde5d14a52fc1986ba5ac3121b8b2f433638
   video_player: 9cc823b1d9da7e8427ee591e8438bfbcde500e6e
   video_player_web: da8cadb8274ed4f8dbee8d7171b420dedd437ce7
   wakelock: 0d4a70faf8950410735e3f61fb15d517c8a6efc4
 
-PODFILE CHECKSUM: a44206717613676c29102ce2e18dda9e69927cb8
+PODFILE CHECKSUM: 279aa3fc4b94070b41018ffdccda664fe5e2eb65
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0.beta.2

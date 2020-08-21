@@ -22,10 +22,9 @@ public class BRApplication extends FlutterApplication {
 
 
 
-
         UMConfigure.init(this, UMConfigure.DEVICE_TYPE_PHONE, "");
 
-
+        android.util.Log.i("UMLog", "UMConfigure.init@MainApplication");
 
 
     }
