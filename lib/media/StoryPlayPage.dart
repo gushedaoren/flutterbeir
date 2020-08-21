@@ -100,7 +100,11 @@ class StoryPlayPageState extends State<StoryPlayPage>{
         volume:1.0
     );
     return Scaffold(
-      appBar: AppBar(title: Text(data.name),),
+      appBar: AppBar(title: Text(data.name,style: new TextStyle(
+
+        fontSize: 18.0,
+        color: Colors.white,
+      ))),
       body: new Column(
         children:[
           _content(),

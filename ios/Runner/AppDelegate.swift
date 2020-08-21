@@ -19,6 +19,7 @@ var mwindow: UIWindow?
 //    UMCommonLogSwift.setUpUMCommonLogManager()
     
     UMConfigure.initWithAppkey("5f02bc7e895cca3b65000038", channel: "App Store")
+    
    
             
 
