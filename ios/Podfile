@@ -65,10 +65,6 @@ target 'Runner' do
   pod 'Flutter', :path => 'Flutter'
 
   
-  pod 'UMCCommon'
-  pod 'UMCCommonLog'
-
-  pod 'UMCAnalytics'
 
   # Plugin Pods
 
