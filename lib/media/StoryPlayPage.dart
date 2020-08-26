@@ -100,7 +100,12 @@ class StoryPlayPageState extends State<StoryPlayPage>{
         volume:1.0
     );
     return Scaffold(
-      appBar: AppBar(title: Text(data.name,style: new TextStyle(
+      appBar: AppBar(
+
+          iconTheme: IconThemeData(
+            color: Colors.white, //修改颜色
+          ),
+          title: Text(data.name,style: new TextStyle(
 
         fontSize: 18.0,
         color: Colors.white,
@@ -122,7 +127,9 @@ class StoryPlayPageState extends State<StoryPlayPage>{
       return new GestureDetector(
           onTap: () => setState((){this.isSongPage = false;}),
           child: new Container(
-            padding: EdgeInsets.all(10),
+
+            margin: EdgeInsets.fromLTRB(10, 30, 10, 10),
+            padding: EdgeInsets.all(20),
               height: 0.8 * width,
               width: 0.8 * width,
               decoration: new BoxDecoration(
