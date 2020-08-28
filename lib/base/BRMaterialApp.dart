@@ -11,7 +11,7 @@ class BRMaterialApp extends MaterialApp{
     return MaterialApp(
       title: '贝儿故事',
 
-
+      debugShowCheckedModeBanner:false,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -23,6 +23,8 @@ class BRMaterialApp extends MaterialApp{
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: BrColors.BRColorPrimary,
+
+
         // This makes the visual density adapt to the platform that you run
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
