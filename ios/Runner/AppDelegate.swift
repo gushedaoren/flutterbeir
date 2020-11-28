@@ -17,9 +17,6 @@ var mwindow: UIWindow?
     GeneratedPluginRegistrant.register(with: self)
 
     
-    UMConfigure.initWithAppkey("5f02bc7e895cca3b65000038", channel: "appstore")
-   
-            
 
     return true
   }
