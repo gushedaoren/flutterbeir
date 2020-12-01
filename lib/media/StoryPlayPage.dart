@@ -1,8 +1,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterbeir/config/BRConfig.dart';
 import 'package:flutterbeir/media/BRMusicPlayer.dart';
 import 'package:flutterbeir/models/ModelHomeAll.dart';
+import 'package:flutterbeir/models/ModelSeries.dart';
 
 class StoryPlayPage extends StatefulWidget{
 
@@ -10,9 +12,14 @@ class StoryPlayPage extends StatefulWidget{
   var data;
 
   List datas;
+  ModelSeries series;
 
+  // StoryPlayPage(this.datas,this.data);
 
   StoryPlayPage(this.datas,this.data);
+
+
+
 
   @override
   State<StatefulWidget> createState() {
@@ -139,7 +146,7 @@ class StoryPlayPageState extends State<StoryPlayPage>{
                   width: 10, //                   <--- border width here
                 ),
                 image: new DecorationImage(
-                  image: new NetworkImage(data.icon),
+                  image: new NetworkImage(data.icon!=null?data.icon:widget.series.storyIcon),
                   fit: BoxFit.cover,
                 ),
               ),

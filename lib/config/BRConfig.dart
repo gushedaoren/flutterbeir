@@ -12,6 +12,8 @@ class BRConfig {
 
   static String USEER_ICON_DEFAULT=domian+"/upload/images/usericon/icon_default.png";
 
+  static String ICON_DEFAULT=domian+"/upload/images/usericon/icon_default.png";
+
 
   static String PRIVACY_URL="http://shumei.1207game.com/privacy.html";
 

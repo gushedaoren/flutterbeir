@@ -53,6 +53,9 @@ class BRMusicPlayer extends StatefulWidget{
 }
 
 class _PlayerState extends State<BRMusicPlayer> {
+
+
+
   AudioPlayer audioPlayer = new AudioPlayer(mode: PlayerMode.MEDIA_PLAYER,playerId: BRConfig.audioPlayerId);
   bool isPlaying = true;
   Duration duration;

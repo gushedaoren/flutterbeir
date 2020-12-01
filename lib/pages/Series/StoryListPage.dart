@@ -202,11 +202,14 @@ class StoryListPageState extends State<StoryListPage>{
 
     Story data=datas[index];
     print(data);
+
+    StoryPlayPage storyPlayPage=StoryPlayPage(datas,data);
+    storyPlayPage.series=series;
     Navigator.push(
       context,
       //创建一个路由
       new MaterialPageRoute(
-          builder: (context) => StoryPlayPage(datas,data),
+          builder: (context) => storyPlayPage,
           //设置下一个界面的名字（就是设置别名）
           settings: RouteSettings(
               name: 'StoryPlayPage',
