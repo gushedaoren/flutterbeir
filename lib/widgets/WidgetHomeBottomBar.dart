@@ -11,7 +11,7 @@ import '../pages/home/PageMe.dart';
 
 // 动态的Widget
 class WidgetHomeBottomBar extends StatefulWidget {
-  WidgetHomeBottomBar({Key key}) : super(key: key);
+  WidgetHomeBottomBar({Key ?skey}) : super(key: key);
 
 
 
@@ -27,7 +27,7 @@ class _BottonWidgetState extends State<WidgetHomeBottomBar> {
   // 设置初始化的索引
   int _currentIndex = 0;
 
-  List<Widget> lists =  List();
+  List<Widget> lists =  [];
   // 重写方法 把四个文件添加到lists里面
   @override
   void initState() {

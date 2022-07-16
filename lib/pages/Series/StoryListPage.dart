@@ -51,6 +51,8 @@ class StoryListPageState extends State<StoryListPage>{
   getSeriesStoryList(var seriesid) async {
     var url_post=BRConfig.domian+"/brstory/storylist?seriesid="+seriesid.toString();
 
+
+
     LogUtil.e(url_post);
     var dio = new Dio();
     var response = await dio.get(url_post);
