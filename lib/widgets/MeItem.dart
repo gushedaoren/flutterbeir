@@ -11,8 +11,8 @@ class MeItem extends StatelessWidget {
   var imgPath="";
 
 
-  BuildContext context;
-  RequestUtil requestUtil=RequestUtil();
+  BuildContext? context;
+  RequestUtil? requestUtil=RequestUtil();
 
   MeItem(this.title, this.info,this.imgPath);
 
@@ -24,13 +24,13 @@ class MeItem extends StatelessWidget {
     if(title.contains("关于我们")){
 
 //      requestUtil.autoRegister();
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
+      Navigator.push(context!, MaterialPageRoute(builder: (context) {
         return AboutUsPage();
       }));
     }
 
     if(title.contains("隐私协议")){
-      Mydialog mydialog=Mydialog(context);
+      Mydialog mydialog=Mydialog(context!);
 
 
 

@@ -22,7 +22,7 @@ class BRBannerView extends BaseStatefulWidget {
 
 class BRBannerViewState extends State<BRBannerView>{
 
-  StreamController<ModelBanner> _streamBannerController;
+  StreamController<ModelBanner>? _streamBannerController;
 
   static var _bannersData;
 
@@ -49,8 +49,8 @@ class BRBannerViewState extends State<BRBannerView>{
     print(data.results[0].media.toString());
 
 
-    _streamBannerController.add(_bannersData);
-    _streamBannerController.close();
+    _streamBannerController!.add(_bannersData);
+    _streamBannerController!.close();
 
 
 
@@ -76,7 +76,7 @@ class BRBannerViewState extends State<BRBannerView>{
 
   initBannerBuilder(){
     return StreamBuilder<ModelBanner>(
-      stream:_streamBannerController.stream,
+      stream:_streamBannerController!.stream,
       //initialData: ,// a Stream<int> or null
       builder: (BuildContext context, AsyncSnapshot snapshot) {
 
@@ -111,7 +111,7 @@ class BRBannerViewState extends State<BRBannerView>{
     // TODO: implement deactivate
     super.deactivate();
 
-    _streamBannerController.close();
+    _streamBannerController!.close();
   }
 
   @override

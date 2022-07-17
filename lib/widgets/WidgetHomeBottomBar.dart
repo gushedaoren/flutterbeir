@@ -11,7 +11,7 @@ import '../pages/home/PageMe.dart';
 
 // 动态的Widget
 class WidgetHomeBottomBar extends StatefulWidget {
-  WidgetHomeBottomBar({Key ?skey}) : super(key: key);
+  WidgetHomeBottomBar({Key ?key}) : super(key: key);
 
 
 
@@ -62,7 +62,7 @@ class _BottonWidgetState extends State<WidgetHomeBottomBar> {
               Icons.library_music,
               color: app.getPrimaryColor(),
             ),
-            title: Text('故事',style: TextStyle(color: app.getPrimaryColor()),),
+            label: "故事",
           ),
 //          BottomNavigationBarItem(
 //            icon: Icon(
@@ -83,7 +83,7 @@ class _BottonWidgetState extends State<WidgetHomeBottomBar> {
               Icons.person,
               color: app.getPrimaryColor(),
             ),
-            title: Text('我的',style: TextStyle(color: app.getPrimaryColor()),),
+            label: "我的"
           ),
         ],
 

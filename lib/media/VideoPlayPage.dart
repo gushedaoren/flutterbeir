@@ -13,9 +13,9 @@ class VideoPlayerPage extends StatefulWidget {
 
 class _VideoPlayerPageState extends State<VideoPlayerPage> {
 
-  Video item;
+  Video? item;
 
-  VideoPlayerController _controller;
+  VideoPlayerController? _controller;
   _VideoPlayerPageState(this.item);
 
   @override
@@ -24,12 +24,12 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
     //配置视频地址
 
     _controller = VideoPlayerController.network(
-        item.media)
+        item!.media)
       ..initialize().then((_) {
         // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
         setState(() {
 
-          _controller.play();
+          _controller!.play();
         });
       });
   }
@@ -37,12 +37,12 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(item.name)),
+      appBar: AppBar(title: Text(item!.name)),
       body: Center(
         //视频播放器
-        child: _controller.value.initialized
+        child: _controller!.value.initialized
             ? AspectRatio(
-          aspectRatio: _controller.value.aspectRatio,
+          aspectRatio: _controller!.value.aspectRatio,
           child: VideoPlayer(_controller),
         )
             : Container(),
@@ -50,13 +50,13 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
-            _controller.value.isPlaying
-                ? _controller.pause()
-                : _controller.play();
+            _controller!.value.isPlaying
+                ? _controller!.pause()
+                : _controller!.play();
           });
         },
         child: Icon(
-          _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+          _controller!.value.isPlaying ? Icons.pause : Icons.play_arrow,
         ),
       ),
 
@@ -68,6 +68,6 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
   void dispose() {
 
     super.dispose();
-    _controller.dispose();
+    _controller!.dispose();
   }
 }

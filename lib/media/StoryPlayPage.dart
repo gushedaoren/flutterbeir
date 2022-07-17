@@ -11,8 +11,8 @@ class StoryPlayPage extends StatefulWidget{
 
   var data;
 
-  List datas;
-  ModelSeries series;
+  List? datas;
+  ModelSeries? series;
 
   // StoryPlayPage(this.datas,this.data);
 
@@ -25,7 +25,7 @@ class StoryPlayPage extends StatefulWidget{
   State<StatefulWidget> createState() {
     // TODO: implement createState
 
-    return new StoryPlayPageState(datas,data);
+    return new StoryPlayPageState(datas!,data);
   }
 
 }
@@ -146,7 +146,7 @@ class StoryPlayPageState extends State<StoryPlayPage>{
                   width: 10, //                   <--- border width here
                 ),
                 image: new DecorationImage(
-                  image: new NetworkImage(data.icon!=null?data.icon:widget.series.storyIcon),
+                  image: new NetworkImage(data.icon!=null?data.icon:widget.series!.storyIcon),
                   fit: BoxFit.cover,
                 ),
               ),

@@ -42,12 +42,12 @@ class StoryListPageState extends State<StoryListPage>{
 
   var seriesid;
 
-  String title;
-  ModelSeries series;
+  String? title;
+  ModelSeries? series;
   StreamController<ModelStorys> _streamSeriesController=new BehaviorSubject();
 
   StoryListPageState(this.seriesid,this.title);
-  static ModelStorys seriesStoryList;
+  static ModelStorys? seriesStoryList;
   getSeriesStoryList(var seriesid) async {
     var url_post=BRConfig.domian+"/brstory/storylist?seriesid="+seriesid.toString();
 
@@ -63,7 +63,7 @@ class StoryListPageState extends State<StoryListPage>{
 
 
 
-    _streamSeriesController.add(seriesStoryList);
+    _streamSeriesController.add(seriesStoryList!);
     _streamSeriesController.close();
   }
 
@@ -92,10 +92,10 @@ class StoryListPageState extends State<StoryListPage>{
 
     return new ListView.separated(
       padding: const EdgeInsets.all(10.0),
-      itemCount: seriesStoryList.storys.length,
+      itemCount: seriesStoryList!.storys.length,
 
       itemBuilder: (context, item) {
-        return buildListData(seriesStoryList.storys,item);
+        return buildListData(seriesStoryList!.storys,item);
       },
       separatorBuilder: (BuildContext context, int index) => Divider(),
 
@@ -127,7 +127,7 @@ class StoryListPageState extends State<StoryListPage>{
     return Scaffold(
       appBar: AppBar(
           brightness: Brightness.dark,
-          title: Text(title)),
+          title: Text(title!)),
 
       body: Center(
         //视频播放器
@@ -182,7 +182,7 @@ class StoryListPageState extends State<StoryListPage>{
     var iconurl=item.icon;
 
     if(iconurl==null){
-      iconurl=series.storyIcon;
+      iconurl=series!.storyIcon;
     }
 
     return GestureDetector(
@@ -206,7 +206,7 @@ class StoryListPageState extends State<StoryListPage>{
     print(data);
 
     StoryPlayPage storyPlayPage=StoryPlayPage(datas,data);
-    storyPlayPage.series=series;
+    storyPlayPage!.series=series!;
     Navigator.push(
       context,
       //创建一个路由

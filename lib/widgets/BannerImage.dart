@@ -6,17 +6,17 @@ import 'package:flutterbeir/utils/Adapter.dart';
 
 class BannerImage extends StatelessWidget {
 
-  BuildContext context;
+  BuildContext? context;
   _onClick(){
 
 
-    Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return SeriesMusicStoryListPage(result.series,result.media);
+    Navigator.push(context!, MaterialPageRoute(builder: (context) {
+      return SeriesMusicStoryListPage(result!.series!,result!.media);
     }));
 
   }
 
-  Result result;
+  Result? result;
 
 
   BannerImage(this.result);
@@ -25,7 +25,7 @@ class BannerImage extends StatelessWidget {
   Widget build(BuildContext context) {
     this.context=context;
     Color color = Theme.of(context).primaryColor;
-    print(result.media.toString());
+    print(result!.media.toString());
     return
       new  GestureDetector(
 
@@ -39,7 +39,7 @@ class BannerImage extends StatelessWidget {
                 children:[
 
 
-                  new Image.network(result.media.toString(),fit: BoxFit.cover,width: Adapt.screenW(),height: Adapt.px(300),)
+                  new Image.network(result!.media.toString(),fit: BoxFit.cover,width: Adapt.screenW(),height: Adapt.px(300),)
                 ]
 
             ),

@@ -6,14 +6,14 @@ import 'package:flutterbeir/models/ModelHomeAll.dart';
 class StoryGridView extends StatelessWidget {
 
   //0 今日推荐 1 重磅推荐 2 猜你喜欢
-  int type=0;
+  int? type=0;
 
-  ModelHomeAll homeAll;
+  ModelHomeAll? homeAll;
 
   StoryGridView(this.type,this.homeAll);
 
 
-  BuildContext context;
+  BuildContext? context;
   @override
   Widget build(BuildContext context) {
     this.context=context;
@@ -24,15 +24,15 @@ class StoryGridView extends StatelessWidget {
     int coloum=3;
     switch(type){
       case 0:
-        gridDatas=homeAll.homegrid1;
+        gridDatas=homeAll!.homegrid1;
         coloum=3;
         break;
       case 1:
-        gridDatas=homeAll.homegrid2;
+        gridDatas=homeAll!.homegrid2;
         coloum=3;
         break;
       case 2:
-        gridDatas=homeAll.homegrid3;
+        gridDatas=homeAll!.homegrid3;
         coloum=3;
         break;
       default:

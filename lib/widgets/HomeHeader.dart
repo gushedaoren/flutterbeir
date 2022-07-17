@@ -10,7 +10,7 @@ class HomeHeader extends StatelessWidget {
 
   int seriesid=0;
 
-  BuildContext context;
+  BuildContext? context;
   HomeHeader(this.seriesid,this.title, this.info);
 
 
@@ -18,7 +18,7 @@ class HomeHeader extends StatelessWidget {
 
 
   onMoreClick(){
-    Navigator.push(this.context, MaterialPageRoute(builder: (context) {
+    Navigator.push(this.context!, MaterialPageRoute(builder: (context) {
       return StoryListPage(seriesid,title);
     }));
 

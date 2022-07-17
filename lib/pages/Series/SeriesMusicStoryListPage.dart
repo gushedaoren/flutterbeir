@@ -41,13 +41,13 @@ class SeriesMusicStoryListPage extends BaseStatefulWidget {
 
 class SeriesStoryListPageState extends State<SeriesMusicStoryListPage>{
 
-  String seriesIcon;
-  String seriresUrl;
-  ModelSeries series;
+  String? seriesIcon;
+  String? seriresUrl;
+  ModelSeries? series;
   StreamController<ModelStorys> _streamSeriesController=new BehaviorSubject();
 
   SeriesStoryListPageState(this.seriresUrl,this.seriesIcon);
-  static ModelStorys seriesStoryList;
+  static ModelStorys? seriesStoryList;
   getSeriesStoryList(var seriesid) async {
     var url_post=BRConfig.domian+"/brstory/storylist?seriesid="+seriesid;
     FormData formData = new FormData.from({
@@ -63,7 +63,7 @@ class SeriesStoryListPageState extends State<SeriesMusicStoryListPage>{
 
 
 
-    _streamSeriesController.add(seriesStoryList);
+    _streamSeriesController.add(seriesStoryList!);
     _streamSeriesController.close();
   }
 
@@ -77,8 +77,8 @@ class SeriesStoryListPageState extends State<SeriesMusicStoryListPage>{
 
     series=ModelSeries.fromJson(response.data);
 
-    print("seriresid:"+series.id.toString());
-    getSeriesStoryList(series.id.toString());
+    print("seriresid:"+series!.id.toString());
+    getSeriesStoryList(series!.id.toString());
   }
 
   initSeriesViews(){
@@ -90,7 +90,7 @@ class SeriesStoryListPageState extends State<SeriesMusicStoryListPage>{
 
             new Container(
 
-              child: new Image.network(seriesIcon,fit:BoxFit.cover,width:720,height: 180,),
+              child: new Image.network(seriesIcon!,fit:BoxFit.cover,width:720,height: 180,),
             ),
 
 
@@ -108,10 +108,10 @@ class SeriesStoryListPageState extends State<SeriesMusicStoryListPage>{
 
    return new ListView.separated(
       padding: const EdgeInsets.all(10.0),
-      itemCount: seriesStoryList.storys.length,
+      itemCount: seriesStoryList!.storys!.length,
 
       itemBuilder: (context, item) {
-        return buildListData(seriesStoryList.storys,item);
+        return buildListData(seriesStoryList!.storys,item);
       },
       separatorBuilder: (BuildContext context, int index) => Divider(),
 
@@ -195,7 +195,7 @@ class SeriesStoryListPageState extends State<SeriesMusicStoryListPage>{
     var iconurl=item.icon;
 
     if(iconurl==null){
-      iconurl=series.storyIcon;
+      iconurl=series!.storyIcon;
     }
 
     return GestureDetector(
@@ -218,7 +218,7 @@ class SeriesStoryListPageState extends State<SeriesMusicStoryListPage>{
     Story data=datas[index];
     print(data);
     StoryPlayPage storyPlayPage=StoryPlayPage(datas,data);
-    storyPlayPage.series=series;
+    storyPlayPage!.series=series!;
 
     Navigator.push(
       context,

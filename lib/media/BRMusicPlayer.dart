@@ -10,25 +10,25 @@ class BRMusicPlayer extends StatefulWidget{
   // final String audioUrl;
 
   /// 音量
-  final double volume;
+  final double? volume;
 
   /// 错误回调
-  final Function(String) onError;
+  final Function(String)? onError;
 
   ///播放完成
-  final Function() onCompleted;
+  final Function()? onCompleted;
 
   /// 上一首
-  final Function() onPrevious;
+  final Function()? onPrevious;
 
   ///下一首
-  final Function() onNext;
+  final Function()? onNext;
 
-  final Function(bool) onPlaying;
+  final Function(bool)? onPlaying;
 
-  final String songUrl;
-  final String songname;
-  final List songlist;
+  final String? songUrl;
+  final String? songname;
+  final List? songlist;
 
 
 
@@ -58,12 +58,12 @@ class _PlayerState extends State<BRMusicPlayer> {
 
   AudioPlayer audioPlayer = new AudioPlayer(mode: PlayerMode.MEDIA_PLAYER,playerId: BRConfig.audioPlayerId);
   bool isPlaying = true;
-  Duration duration;
-  Duration position;
-  double sliderValue;
+  Duration? duration;
+  Duration? position;
+  double? sliderValue;
   BRApp brApp=new BRApp();
 
-  AudioPlayerState palyerState;
+  AudioPlayerState? palyerState;
   dynamic listener1,listener2,listener3;
   stopThisMusic() {
     if (isPlaying) {
@@ -98,7 +98,7 @@ class _PlayerState extends State<BRMusicPlayer> {
       // print('Max duration: $d');
       setState(() => duration = d);
       if (position != null) {
-        this.sliderValue = (position.inSeconds / duration.inSeconds);
+        this.sliderValue = (position!.inSeconds / duration!.inSeconds);
       }
     });
     listener2 = audioPlayer.onAudioPositionChanged.listen((Duration  p){
@@ -107,7 +107,7 @@ class _PlayerState extends State<BRMusicPlayer> {
 
 
       if (duration != null) {
-        this.sliderValue = (position.inSeconds / duration.inSeconds);
+        this.sliderValue = (position!.inSeconds / duration!.inSeconds);
       }
     });
     listener3 = audioPlayer.onPlayerStateChanged.listen((AudioPlayerState s){
@@ -191,7 +191,7 @@ class _PlayerState extends State<BRMusicPlayer> {
         new Slider(
           onChanged: (newValue) {
             if (duration != null) {
-              int seconds = (duration.inSeconds * newValue).round();
+              int seconds = (duration!.inSeconds * newValue).round();
               print("audioPlayer.seek: $seconds");
               audioPlayer.seek(new Duration(seconds: seconds));
             }

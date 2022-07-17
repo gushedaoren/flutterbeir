@@ -26,7 +26,7 @@ class Mydialog{
 //            javascriptMode: JavascriptMode.unrestricted,
 //          ),
           actions: <Widget>[
-            new FlatButton(
+            new RawMaterialButton(
               child: new Text('确定'),
               onPressed: () {
                 Navigator.of(context).pop();

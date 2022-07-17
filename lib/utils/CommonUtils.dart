@@ -45,7 +45,7 @@ class CommonUtils {
       mpackageInfo=packageInfo;
     });
 
-    return mpackageInfo;
+    return mpackageInfo!;
 
 
 
