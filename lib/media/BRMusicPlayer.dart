@@ -69,7 +69,6 @@ class _PlayerState extends State<BRMusicPlayer> {
   dynamic listener1,listener2,listener3;
 
 
-  BuildContext? context;
   stopThisMusic() {
     if (isPlaying) {
 
@@ -156,7 +155,7 @@ class _PlayerState extends State<BRMusicPlayer> {
   }
 
   Widget build(BuildContext context) {
-    this.context=context;
+
     return new Column(
       // crossAxisAlignment: CrossAxisAlignment.stretch,
       // mainAxisAlignment: MainAxisAlignment.end,
