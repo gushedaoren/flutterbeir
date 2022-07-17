@@ -31,17 +31,18 @@ dependencies:
   flutter_swiper: ^1.1.6
   dio: ^1.0.9
   common_utils: ^1.1.1
+  uuid: ^3.0.1
   json_annotation: ^2.0.0
-  audioplayers: ^0.15.1
+  audioplayers: ^1.0.1
   banner_view: ^1.1.2
   rxdart: ^0.23.0
   video_player:
   chewie: ^0.9.7
   dash_chat: ^1.1.10
-  uuid: ^2.0.1
+
   image_picker:
   shared_preferences:
-  crypto: ^2.0.6
+  crypto: ^3.0.0
   convert:
   date_format: ^1.0.8
   package_info: ^0.4.0+2

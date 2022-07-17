@@ -2,8 +2,7 @@
 
 import 'dart:async';
 import 'dart:convert';
-
-import 'dart:io';
+import 'package:flutter/material.dart';
 
 import 'package:common_utils/common_utils.dart';
 import 'package:dash_chat/dash_chat.dart';
@@ -30,17 +29,17 @@ class PageAI extends StatefulWidget {
   PageAI(this.username, this.uuid);
 
   @override
-  _ChatScreenState createState() => _ChatScreenState();
+  ChatScreenState createState() => ChatScreenState();
 }
 
-class _ChatScreenState extends State<PageAI> {
-  ChatUser user = ChatUser();
+class ChatScreenState extends State<PageAI> {
+  ChatUser? user = ChatUser();
   StreamController<ModelBanner>? _streamController;
   List<ChatMessage>? messages = List.empty();
   @override
   void initState() {
-    user.name = widget.username;
-    user.uid = widget.uuid;
+    user!.name = widget.username;
+    user!.uid = widget.uuid;
     super.initState();
 
 
@@ -56,7 +55,7 @@ class _ChatScreenState extends State<PageAI> {
     SharedPreferences prefs =await SharedPreferences.getInstance();
     var data=prefs.getString(CacheUtil.key_userinfo);
 
-    Map<String, dynamic> user = json.decode(data);
+    Map<String, dynamic> user = json.decode(data!);
 
     var usrJson=user["brdata"];
 
@@ -161,15 +160,15 @@ class _ChatScreenState extends State<PageAI> {
 
 
   void uploadFile() async {
-    File result = await ImagePicker.pickImage(
-      source: ImageSource.gallery,
-      imageQuality: 80,
-      maxHeight: 400,
-      maxWidth: 400,
-    );
-
-    if (result != null) {
-      String id = Uuid().v4().toString();
+    // File result = await ImagePicker.pickImage(
+    //   source: ImageSource.gallery,
+    //   imageQuality: 80,
+    //   maxHeight: 400,
+    //   maxWidth: 400,
+    // );
+    //
+    // if (result != null) {
+    //   String id = Uuid().v4().toString();
 
 //      final StorageReference storageRef =
 //      FirebaseStorage.instance.ref().child("chat_images/$id.jpg");
@@ -263,7 +262,7 @@ class _ChatScreenState extends State<PageAI> {
               user: user,
               textBeforeImage: false,
 
-              messages: messages,
+              messages: messages!,
               inputDecoration: InputDecoration(
                 hintText: "在这里输入内容哦...",
                 border: InputBorder.none,

@@ -56,20 +56,27 @@ class _PlayerState extends State<BRMusicPlayer> {
 
 
 
-  AudioPlayer audioPlayer = new AudioPlayer(mode: PlayerMode.MEDIA_PLAYER,playerId: BRConfig.audioPlayerId);
+  AudioPlayer? audioPlayer = new AudioPlayer(playerId: BRConfig.audioPlayerId!);
   bool isPlaying = true;
   Duration? duration;
   Duration? position;
   double? sliderValue;
   BRApp brApp=new BRApp();
 
-  AudioPlayerState? palyerState;
+
+
+  PlayerState? palyerState;
   dynamic listener1,listener2,listener3;
+
+
+  BuildContext? context;
   stopThisMusic() {
     if (isPlaying) {
-      audioPlayer.pause();
+
+      audioPlayer!.pause();
+
     } else {
-      audioPlayer.resume();
+      audioPlayer!.resume();
     }
   }
 
@@ -87,21 +94,24 @@ class _PlayerState extends State<BRMusicPlayer> {
     print(widget.songUrl);
 
 
-    audioPlayer.play(widget.songUrl);
+
+    Source source=new UrlSource(widget!.songUrl!);
+
+    audioPlayer!.play(source);
   }
 
   initState() {
     super.initState();
 
 
-    listener1 = audioPlayer.onDurationChanged.listen((Duration d) {
+    listener1 = audioPlayer!.onDurationChanged.listen((Duration d) {
       // print('Max duration: $d');
       setState(() => duration = d);
       if (position != null) {
         this.sliderValue = (position!.inSeconds / duration!.inSeconds);
       }
     });
-    listener2 = audioPlayer.onAudioPositionChanged.listen((Duration  p){
+    listener2 = audioPlayer!.onPositionChanged.listen((Duration  p){
       // print("Current position: $p");
       setState(() => position = p);
 
@@ -110,7 +120,7 @@ class _PlayerState extends State<BRMusicPlayer> {
         this.sliderValue = (position!.inSeconds / duration!.inSeconds);
       }
     });
-    listener3 = audioPlayer.onPlayerStateChanged.listen((AudioPlayerState s){
+    listener3 = audioPlayer!.onPlayerStateChanged.listen((PlayerState s){
       // print("Current player state: $s");
       if (s.toString().split('.')[1] == 'PLAYING') {
         setState(() {
@@ -131,8 +141,8 @@ class _PlayerState extends State<BRMusicPlayer> {
 
   @override
   void deactivate() {
-    audioPlayer.pause();
-    audioPlayer.stop();
+    audioPlayer!.pause();
+    audioPlayer!.stop();
     super.deactivate();
   }
 
@@ -141,11 +151,12 @@ class _PlayerState extends State<BRMusicPlayer> {
     listener1.cancel();
     listener2.cancel();
     listener3.cancel();
-    audioPlayer.release();
+    audioPlayer!.release();
     super.dispose();
   }
 
   Widget build(BuildContext context) {
+    this.context=context;
     return new Column(
       // crossAxisAlignment: CrossAxisAlignment.stretch,
       // mainAxisAlignment: MainAxisAlignment.end,
@@ -193,7 +204,7 @@ class _PlayerState extends State<BRMusicPlayer> {
             if (duration != null) {
               int seconds = (duration!.inSeconds * newValue).round();
               print("audioPlayer.seek: $seconds");
-              audioPlayer.seek(new Duration(seconds: seconds));
+              audioPlayer!.seek(new Duration(seconds: seconds));
             }
           },
           value: sliderValue ?? 0.0,
