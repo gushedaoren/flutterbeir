@@ -45,7 +45,7 @@ class SeriesStoryListPageState extends State<SeriesStoryListPage>{
 
       "seriesid":seriesid
     });
-    LogUtil.e(url_post);
+
     var dio = new Dio();
     var response = await dio.get(url_post, data: formData);
 

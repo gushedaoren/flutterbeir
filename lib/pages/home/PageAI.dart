@@ -196,7 +196,7 @@ class ChatScreenState extends State<PageAI> {
 //        );
 //      });
     }
-  }
+
 
 
 
@@ -259,7 +259,7 @@ class ChatScreenState extends State<PageAI> {
 
 
             return DashChat(
-              user: user,
+              user: user!,
               textBeforeImage: false,
 
               messages: messages!,

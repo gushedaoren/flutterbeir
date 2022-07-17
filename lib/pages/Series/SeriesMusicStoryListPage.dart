@@ -1,6 +1,5 @@
 
 import 'dart:async';
-import 'dart:convert';
 
 
 import 'package:common_utils/common_utils.dart';
@@ -53,7 +52,7 @@ class SeriesStoryListPageState extends State<SeriesMusicStoryListPage>{
     FormData formData = new FormData.from({
       seriesid:seriesid
     });
-    LogUtil.e(url_post);
+
     var dio = new Dio();
     var response = await dio.get(url_post,data: formData);
 
