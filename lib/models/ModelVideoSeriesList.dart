@@ -13,14 +13,14 @@ class ModelVideoSeriesList {
     this.videos,
   });
 
-  List<Video> videos;
+  List<Video>? videos;
 
   factory ModelVideoSeriesList.fromJson(Map<String, dynamic> json) => ModelVideoSeriesList(
     videos: List<Video>.from(json["videos"].map((x) => Video.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
-    "videos": List<dynamic>.from(videos.map((x) => x.toJson())),
+    "videos": List<dynamic>.from(videos!.map((x) => x.toJson())),
   };
 }
 
@@ -38,16 +38,16 @@ class Video {
     this.lock,
   });
 
-  int id;
-  String name;
-  String info;
+  int? id;
+  String? name;
+  String? info;
   dynamic icon;
-  String media;
+  String? media;
   dynamic views;
-  int hot;
+  int? hot;
   dynamic price;
-  int category;
-  bool lock;
+  int? category;
+  bool? lock;
 
   factory Video.fromJson(Map<String, dynamic> json) => Video(
     id: json["id"],

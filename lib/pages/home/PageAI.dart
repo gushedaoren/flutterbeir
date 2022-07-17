@@ -35,8 +35,8 @@ class PageAI extends StatefulWidget {
 
 class _ChatScreenState extends State<PageAI> {
   ChatUser user = ChatUser();
-  StreamController<ModelBanner> _streamController;
-  List<ChatMessage> messages = new List<ChatMessage>();
+  StreamController<ModelBanner>? _streamController;
+  List<ChatMessage>? messages = List.empty();
   @override
   void initState() {
     user.name = widget.username;
@@ -85,7 +85,7 @@ class _ChatScreenState extends State<PageAI> {
 
     );
 
-    messages.add(messageMe);
+    messages?.add(messageMe);
     chatRequest(message.text, uid);
 
   }
@@ -142,7 +142,7 @@ class _ChatScreenState extends State<PageAI> {
 
     );
     
-    messages.add(messageReboot);
+    messages!.add(messageReboot);
 
     setState(() {
 
@@ -245,11 +245,11 @@ class _ChatScreenState extends State<PageAI> {
         title: Text("贝儿机器人"),
       ),
       body: StreamBuilder(
-        stream: _streamController.stream,
+        stream: _streamController!.stream,
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            if(messages.length==0){
-              messages.add(message1);
+            if(messages!.length==0){
+              messages!.add(message1);
             }
 
           }

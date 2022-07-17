@@ -37,7 +37,7 @@ class PageVideoHome extends BaseStatefulWidget {
 class PageVideoHomeState extends State<PageVideoHome>{
 
 
-  StreamController<ModelVideoHomeAll> _streamHomeAllController;
+  StreamController<ModelVideoHomeAll>? _streamHomeAllController;
   static var _homeAllData;
 
 
@@ -62,8 +62,8 @@ class PageVideoHomeState extends State<PageVideoHome>{
 
 
 
-    _streamHomeAllController.add(data);
-    _streamHomeAllController.close();
+    _streamHomeAllController!.add(data);
+    _streamHomeAllController!.close();
 
 
 
@@ -115,7 +115,7 @@ class PageVideoHomeState extends State<PageVideoHome>{
   }
   initHomeAllBuilder(){
     return StreamBuilder<ModelVideoHomeAll>(
-      stream:_streamHomeAllController.stream,
+      stream:_streamHomeAllController!.stream,
       //initialData: ,// a Stream<int> or null
       builder: (BuildContext context, AsyncSnapshot snapshot) {
 

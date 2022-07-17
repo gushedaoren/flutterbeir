@@ -19,7 +19,7 @@ class StoryGridView extends StatelessWidget {
     this.context=context;
 
 
-    List gridDatas;
+    List? gridDatas;
 
     int coloum=3;
     switch(type){
@@ -43,7 +43,7 @@ class StoryGridView extends StatelessWidget {
 
     return GridView.builder(
       shrinkWrap: true,
-      itemCount: gridDatas.length,
+      itemCount: gridDatas!.length,
       physics: NeverScrollableScrollPhysics(),
       padding: EdgeInsets.symmetric(horizontal: 5),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -53,7 +53,7 @@ class StoryGridView extends StatelessWidget {
         childAspectRatio: 10/12,
       ),
       itemBuilder: (context, index) {
-        return getItemContainer(gridDatas,index);
+        return getItemContainer(gridDatas!,index);
       },
     );
   }
@@ -64,7 +64,7 @@ class StoryGridView extends StatelessWidget {
     Homegrid data=datas[index];
     print(data);
     Navigator.push(
-      context,
+      context!,
       //创建一个路由
       new MaterialPageRoute(
           builder: (context) => StoryPlayPage(datas,data),
@@ -86,11 +86,11 @@ class StoryGridView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         new Image(
-          image: NetworkImage(data.icon),
+          image: NetworkImage(data!.icon!),
         ),
         new Expanded(
           child: new Text(
-            data.name,
+            data!.name!,
             style: new TextStyle(
               fontSize: 16.0,
               fontWeight: FontWeight.w400,

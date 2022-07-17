@@ -28,11 +28,6 @@ class AboutUsPage extends StatelessWidget{
   }
 
 
-  getCacheData(){
-//    cacheUtil.getAppInfo().then((value) => setAppinfo(value));
-    return cacheUtil.getAppInfo();
-
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +71,7 @@ class AboutUsPage extends StatelessWidget{
   initText(){
 
    return FutureBuilder<ModelAppinfo>(
-      future: getCacheData(),
+
       builder: (BuildContext context, AsyncSnapshot snapshot){
         // 请求已结束
         if(snapshot.connectionState == ConnectionState.done){

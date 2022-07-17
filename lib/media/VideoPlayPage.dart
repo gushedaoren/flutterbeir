@@ -37,7 +37,7 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(item!.name)),
+      appBar: AppBar(title: Text(item!.name!)),
       body: Center(
         //视频播放器
         child: _controller!.value.initialized

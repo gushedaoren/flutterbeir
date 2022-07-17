@@ -11,7 +11,7 @@ class BannerImage extends StatelessWidget {
 
 
     Navigator.push(context!, MaterialPageRoute(builder: (context) {
-      return SeriesMusicStoryListPage(result!.series!,result!.media);
+      return SeriesMusicStoryListPage(result!.series!,result!.media!);
     }));
 
   }

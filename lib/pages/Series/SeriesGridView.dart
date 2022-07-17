@@ -8,25 +8,25 @@ import 'package:flutterbeir/pages/Series/SeriesStoryListPage.dart';
 class SeriesGridView extends StatelessWidget {
 
   //0 今日推荐 1 重磅推荐 2 猜你喜欢
-  int type=0;
+  int? type=0;
 
-  ModelVideoHomeAll homeAll;
+  ModelVideoHomeAll? homeAll;
 
   SeriesGridView(this.homeAll);
 
 
-  BuildContext context;
+  BuildContext? context;
   @override
   Widget build(BuildContext context) {
     this.context=context;
 
 
-    List gridDatas;
+    List? gridDatas;
 
     int coloum=3;
     switch(type){
       case 0:
-        gridDatas=homeAll.videozSeries1;
+        gridDatas=homeAll!.videozSeries1!;
         coloum=2;
         break;
 
@@ -38,7 +38,7 @@ class SeriesGridView extends StatelessWidget {
 
     return GridView.builder(
       shrinkWrap: true,
-      itemCount: gridDatas.length,
+      itemCount: gridDatas!.length!,
       physics: NeverScrollableScrollPhysics(),
       padding: EdgeInsets.symmetric(horizontal: 5),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -48,7 +48,7 @@ class SeriesGridView extends StatelessWidget {
         childAspectRatio: 10/12,
       ),
       itemBuilder: (context, index) {
-        return getItemContainer(gridDatas,index);
+        return getItemContainer(gridDatas!,index);
       },
     );
   }
@@ -60,7 +60,7 @@ class SeriesGridView extends StatelessWidget {
 
     print(data);
     Navigator.push(
-      context,
+      context!,
       //创建一个路由
       new MaterialPageRoute(
           builder: (context) => SeriesStoryListPage(data),
@@ -82,11 +82,11 @@ class SeriesGridView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         new Image(
-          image: NetworkImage(data.storyIcon),
+          image: NetworkImage(data!.storyIcon!),
         ),
         new Expanded(
           child: new Text(
-            data.title,
+            data!.title!,
             style: new TextStyle(
               fontSize: 16.0,
               fontWeight: FontWeight.w400,

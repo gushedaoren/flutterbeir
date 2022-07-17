@@ -19,12 +19,12 @@ class ModelSeries {
     this.storyIcon,
   });
 
-  int id;
-  String title;
-  String info;
-  String icon;
-  int category;
-  String price;
+  int? id;
+  String? title;
+  String? info;
+  String? icon;
+  int? category;
+  String? price;
   dynamic storyIcon;
 
   factory ModelSeries.fromJson(Map<String, dynamic> json) => ModelSeries(

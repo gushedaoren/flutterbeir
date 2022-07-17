@@ -200,7 +200,7 @@ class SeriesStoryListPageState extends State<SeriesMusicStoryListPage>{
 
     return GestureDetector(
       child: new Container(
-          child:  MusicStoryListItem(item.name,iconurl),
+          child:  MusicStoryListItem(item!.name!,iconurl!),
 
       ),
 
@@ -237,7 +237,7 @@ class SeriesStoryListPageState extends State<SeriesMusicStoryListPage>{
   }
 
   listItemTap(Video item){
-    print("taped:"+item.name);
+    print("taped:"+item!.name!);
 
     Navigator.push(
       context,

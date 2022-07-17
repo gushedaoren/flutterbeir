@@ -46,7 +46,7 @@ class BRBannerViewState extends State<BRBannerView>{
 
     _bannersData= data;
 
-    print(data.results[0].media.toString());
+    print(data.results![0].media.toString());
 
 
     _streamBannerController!.add(_bannersData);

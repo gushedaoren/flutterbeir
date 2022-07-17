@@ -15,9 +15,9 @@ class ModelRegisterResult {
     this.brdata,
   });
 
-  String status;
-  String msg;
-  String brdata;
+  String? status;
+  String? msg;
+  String? brdata;
 
   factory ModelRegisterResult.fromJson(Map<String, dynamic> json) => ModelRegisterResult(
     status: json["status"],

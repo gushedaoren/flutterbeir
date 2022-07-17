@@ -17,7 +17,7 @@ class ModelBanner {
 
     dynamic next;
     dynamic previous;
-    List<Result> results;
+    List<Result>? results;
 
     factory ModelBanner.fromJson(Map<String, dynamic> json) => ModelBanner(
         next: json["next"],
@@ -28,7 +28,7 @@ class ModelBanner {
     Map<String, dynamic> toJson() => {
         "next": next,
         "previous": previous,
-        "results": List<dynamic>.from(results.map((x) => x.toJson())),
+        "results": List<dynamic>.from(results!.map((x) => x.toJson())),
     };
 }
 
@@ -47,17 +47,17 @@ class Result {
         this.url,
     });
 
-    int bannerid;
-    String bannername;
-    String action;
-    String media;
-    int type;
-    String title;
-    String desc;
+    int? bannerid;
+    String? bannername;
+    String? action;
+    String? media;
+    int? type;
+    String? title;
+    String? desc;
     dynamic article;
-    int actiontype;
-    String series;
-    String url;
+    int? actiontype;
+    String? series;
+    String? url;
 
     factory Result.fromJson(Map<String, dynamic> json) => Result(
         bannerid: json["bannerid"],

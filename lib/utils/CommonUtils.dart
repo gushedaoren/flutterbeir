@@ -39,16 +39,5 @@ class CommonUtils {
   }
 
 
-  getPackageInfo()   {
-    PackageInfo mpackageInfo;
-    PackageInfo.fromPlatform().then((PackageInfo packageInfo) {
-      mpackageInfo=packageInfo;
-    });
-
-    return mpackageInfo!;
-
-
-
-  }
 
 }

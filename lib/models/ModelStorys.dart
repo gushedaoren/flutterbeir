@@ -13,14 +13,14 @@ class ModelStorys {
     this.storys,
   });
 
-  List<Story> storys;
+  List<Story>? storys;
 
   factory ModelStorys.fromJson(Map<String, dynamic> json) => ModelStorys(
     storys: List<Story>.from(json["storys"].map((x) => Story.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
-    "storys": List<dynamic>.from(storys.map((x) => x.toJson())),
+    "storys": List<dynamic>.from(storys!.map((x) => x.toJson())),
   };
 }
 
@@ -38,16 +38,16 @@ class Story {
     this.lock,
   });
 
-  int id;
-  String name;
-  String info;
-  String icon;
-  String media;
-  int views;
-  int hot;
-  String price;
-  int category;
-  bool lock;
+  int? id;
+  String? name;
+  String? info;
+  String? icon;
+  String? media;
+  int? views;
+  int? hot;
+  String? price;
+  int? category;
+  bool? lock;
 
   factory Story.fromJson(Map<String, dynamic> json) => Story(
     id: json["id"],

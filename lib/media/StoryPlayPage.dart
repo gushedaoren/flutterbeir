@@ -32,11 +32,11 @@ class StoryPlayPage extends StatefulWidget{
 
 class StoryPlayPageState extends State<StoryPlayPage>{
   var data;
-  List datas;
+  List? datas;
   StoryPlayPageState(this.datas,this.data);
   bool isSongPage = true;
 
-  BRMusicPlayer brMusicPlayer;
+  BRMusicPlayer? brMusicPlayer;
 
   void initState() {
     // AudioPlayer.logEnabled = true;
@@ -120,7 +120,7 @@ class StoryPlayPageState extends State<StoryPlayPage>{
       body: new Column(
         children:[
           _content(),
-          brMusicPlayer
+          brMusicPlayer!
         ]
 
       ),

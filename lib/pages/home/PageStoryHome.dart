@@ -25,7 +25,7 @@ class PageStoryHome extends BaseStatefulWidget {
 class PageStoryHomeState extends State<PageStoryHome> {
 
 
-  StreamController<ModelHomeAll> _streamHomeAllController;
+  StreamController<ModelHomeAll>? _streamHomeAllController;
 
 
 
@@ -53,8 +53,8 @@ class PageStoryHomeState extends State<PageStoryHome> {
 
 
 
-    _streamHomeAllController.add(data);
-    _streamHomeAllController.close();
+    _streamHomeAllController!.add(data);
+    _streamHomeAllController!.close();
 
 
 
@@ -65,7 +65,7 @@ class PageStoryHomeState extends State<PageStoryHome> {
 
   initHomeAllBuilder(){
     return StreamBuilder<ModelHomeAll>(
-      stream:_streamHomeAllController.stream,
+      stream:_streamHomeAllController!.stream,
       //initialData: ,// a Stream<int> or null
       builder: (BuildContext context, AsyncSnapshot snapshot) {
 
@@ -132,7 +132,7 @@ class PageStoryHomeState extends State<PageStoryHome> {
   void deactivate() {
     // TODO: implement deactivate
     super.deactivate();
-    _streamHomeAllController.close();
+    _streamHomeAllController!.close();
 
   }
 

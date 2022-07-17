@@ -19,18 +19,6 @@ class CacheUtil{
     return prefs.get(key);
   }
 
-  Future<ModelAppinfo> getAppInfo() async{
-    SharedPreferences prefs =await SharedPreferences.getInstance();
-    var data=prefs.getString(key_appinfo);
-
-    Map mMap = jsonDecode(data);
-
-    var appinfo = ModelAppinfo.fromJson(mMap);
-
-
-
-    return appinfo;
-  }
 
 
 

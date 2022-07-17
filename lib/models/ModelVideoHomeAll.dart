@@ -13,14 +13,14 @@ class ModelVideoHomeAll {
     this.videozSeries1,
   });
 
-  List<VideozSeries1> videozSeries1;
+  List<VideozSeries1>? videozSeries1;
 
   factory ModelVideoHomeAll.fromJson(Map<String, dynamic> json) => ModelVideoHomeAll(
     videozSeries1: List<VideozSeries1>.from(json["videozSeries1"].map((x) => VideozSeries1.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
-    "videozSeries1": List<dynamic>.from(videozSeries1.map((x) => x.toJson())),
+    "videozSeries1": List<dynamic>.from(videozSeries1!.map((x) => x.toJson())),
   };
 }
 
@@ -35,13 +35,13 @@ class VideozSeries1 {
     this.storyIcon,
   });
 
-  int id;
-  String title;
-  String info;
-  String icon;
-  int category;
-  String price;
-  String storyIcon;
+  int? id;
+  String? title;
+  String? info;
+  String? icon;
+  int? category;
+  String? price;
+  String? storyIcon;
 
   factory VideozSeries1.fromJson(Map<String, dynamic> json) => VideozSeries1(
     id: json["id"],

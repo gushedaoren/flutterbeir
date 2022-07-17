@@ -17,11 +17,11 @@ class ModelHomeAll {
     this.huiben,
   });
 
-  List<Homegrid> homegrid1;
-  List<Homegrid> homegrid2;
-  List<Homegrid> homegrid3;
-  List<Zhuanti> zhuanti;
-  List<Huiben> huiben;
+  List<Homegrid>? homegrid1;
+  List<Homegrid>? homegrid2;
+  List<Homegrid>? homegrid3;
+  List<Zhuanti>? zhuanti;
+  List<Huiben>? huiben;
 
   factory ModelHomeAll.fromJson(Map<String, dynamic> json) => ModelHomeAll(
     homegrid1: List<Homegrid>.from(json["homegrid1"].map((x) => Homegrid.fromJson(x))),
@@ -32,11 +32,11 @@ class ModelHomeAll {
   );
 
   Map<String, dynamic> toJson() => {
-    "homegrid1": List<dynamic>.from(homegrid1.map((x) => x.toJson())),
-    "homegrid2": List<dynamic>.from(homegrid2.map((x) => x.toJson())),
-    "homegrid3": List<dynamic>.from(homegrid3.map((x) => x.toJson())),
-    "zhuanti": List<dynamic>.from(zhuanti.map((x) => x.toJson())),
-    "huiben": List<dynamic>.from(huiben.map((x) => x.toJson())),
+    "homegrid1": List<dynamic>.from(homegrid1!.map((x) => x.toJson())),
+    "homegrid2": List<dynamic>.from(homegrid2!.map((x) => x.toJson())),
+    "homegrid3": List<dynamic>.from(homegrid3!.map((x) => x.toJson())),
+    "zhuanti": List<dynamic>.from(zhuanti!.map((x) => x.toJson())),
+    "huiben": List<dynamic>.from(huiben!.map((x) => x.toJson())),
   };
 }
 
@@ -54,16 +54,16 @@ class Homegrid {
     this.lock,
   });
 
-  int id;
-  String name;
-  String info;
-  String icon;
-  String media;
-  int views;
-  int hot;
-  String price;
-  int category;
-  bool lock;
+  int? id;
+  String? name;
+  String? info;
+  String? icon;
+  String? media;
+  int? views;
+  int? hot;
+  String? price;
+  int? category;
+  bool? lock;
 
   factory Homegrid.fromJson(Map<String, dynamic> json) => Homegrid(
     id: json["id"],
@@ -101,11 +101,11 @@ class Huiben {
     this.icon,
   });
 
-  int id;
-  String title;
-  String url;
-  String desc;
-  String icon;
+  int? id;
+  String? title;
+  String? url;
+  String? desc;
+  String? icon;
 
   factory Huiben.fromJson(Map<String, dynamic> json) => Huiben(
     id: json["id"],
@@ -135,13 +135,13 @@ class Zhuanti {
     this.storyIcon,
   });
 
-  int id;
-  String title;
-  String info;
-  String icon;
-  int category;
-  String price;
-  String storyIcon;
+  int? id;
+  String? title;
+  String? info;
+  String? icon;
+  int? category;
+  String? price;
+  String? storyIcon;
 
   factory Zhuanti.fromJson(Map<String, dynamic> json) => Zhuanti(
     id: json["id"],

@@ -92,7 +92,7 @@ class StoryListPageState extends State<StoryListPage>{
 
     return new ListView.separated(
       padding: const EdgeInsets.all(10.0),
-      itemCount: seriesStoryList!.storys.length,
+      itemCount: seriesStoryList!.storys!.length,
 
       itemBuilder: (context, item) {
         return buildListData(seriesStoryList!.storys,item);
@@ -187,7 +187,7 @@ class StoryListPageState extends State<StoryListPage>{
 
     return GestureDetector(
       child: new Container(
-        child:  MusicStoryListItem(item.name,iconurl),
+        child:  MusicStoryListItem(item!.name!,iconurl!),
 
       ),
 
@@ -224,7 +224,7 @@ class StoryListPageState extends State<StoryListPage>{
   }
 
   listItemTap(Video item){
-    print("taped:"+item.name);
+    print("taped:"+item!.name!);
 
     Navigator.push(
       context,

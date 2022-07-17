@@ -20,10 +20,10 @@ class AppinfoPraseTool{
 
 
 
-    for(int i=0;i<datas.length;i++){
+    for(int i=0;i<datas!.length;i++){
       Datum data=datas[i];
 
-      if(data.optionkey.contains(key)){
+      if(data.optionkey!.contains(key)){
         optionValue=data.optionValue;
         print(optionValue);
       }

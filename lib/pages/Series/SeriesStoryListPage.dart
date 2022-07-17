@@ -68,7 +68,7 @@ class SeriesStoryListPageState extends State<SeriesStoryListPage>{
 
             new Container(
 
-              child: new Image.network(videozSeries1.icon,fit:BoxFit.cover,width:720,height: 180,),
+            child: new Image.network(videozSeries1!.icon!,fit:BoxFit.cover,width:720,height: 180,),
             ),
 
 
@@ -115,7 +115,7 @@ class SeriesStoryListPageState extends State<SeriesStoryListPage>{
     // TODO: implement build
 
     return Scaffold(
-      appBar: AppBar(title: Text(videozSeries1.title)),
+      appBar: AppBar(title: Text(videozSeries1!.title!)),
       body: Center(
         //视频播放器
         child: initSeriesViews(),
@@ -167,7 +167,7 @@ class SeriesStoryListPageState extends State<SeriesStoryListPage>{
 
     return GestureDetector(
       child: new Container(
-          child:  StoryListItem(item.name,item.icon),
+          child:  StoryListItem(item!.name!,item.icon),
 
       ),
 
@@ -182,7 +182,7 @@ class SeriesStoryListPageState extends State<SeriesStoryListPage>{
 
 
   listItemTap(Video item){
-    print("taped:"+item.name);
+    print("taped:"+item!.name!);
 
     Navigator.push(
       context,
