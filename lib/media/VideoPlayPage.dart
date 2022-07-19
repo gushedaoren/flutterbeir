@@ -24,7 +24,7 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
     //配置视频地址
 
     _controller = VideoPlayerController.network(
-        item!.media)
+        item!.media!)
       ..initialize().then((_) {
         // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
         setState(() {
@@ -36,16 +36,17 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
 
   @override
   Widget build(BuildContext context) {
+    var initialized;
     return Scaffold(
       appBar: AppBar(title: Text(item!.name!)),
       body: Center(
         //视频播放器
-        child: _controller!.value.initialized
-            ? AspectRatio(
-          aspectRatio: _controller!.value.aspectRatio,
-          child: VideoPlayer(_controller),
-        )
-            : Container(),
+        // child: _controller!.value!
+        //     ? AspectRatio(
+        //   aspectRatio: _controller!.value.aspectRatio,
+        //   child: VideoPlayer(_controller!),
+        // )
+            child: Container(),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
