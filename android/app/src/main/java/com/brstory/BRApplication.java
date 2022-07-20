@@ -20,7 +20,7 @@ public class BRApplication extends FlutterApplication {
 
 
 
-      
+
         android.util.Log.i("UMLog", "UMConfigure.init@MainApplication");
 
 
