@@ -73,10 +73,16 @@ class _PlayerState extends State<BRMusicPlayer> {
     if (isPlaying) {
 
       audioPlayer!.pause();
+      isPlaying=false;
 
     } else {
       audioPlayer!.resume();
+      isPlaying=true;
     }
+
+    setState(() {
+      
+    });
   }
 
   String _formatDuration(Duration d) {
@@ -94,7 +100,7 @@ class _PlayerState extends State<BRMusicPlayer> {
 
 
 
-    Source source=new UrlSource(widget!.songUrl!);
+    Source source=new UrlSource(widget.songUrl!);
 
     audioPlayer!.play(source);
   }
@@ -157,8 +163,8 @@ class _PlayerState extends State<BRMusicPlayer> {
   Widget build(BuildContext context) {
 
     return new Column(
-      // crossAxisAlignment: CrossAxisAlignment.stretch,
-      // mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisAlignment: MainAxisAlignment.end,
       // children: _controllers(context),
       children: <Widget>[
         new Row(

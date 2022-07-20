@@ -4,6 +4,8 @@ import 'dart:ui';
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutterbeir/config/BRColor.dart';
+import 'package:flutterbeir/config/BRConfig.dart';
 
 class BRApp{
 
@@ -40,7 +42,7 @@ class BRApp{
   Color? primaryColor;
 
   Color getPrimaryColor(){
-    return Theme.of(context!).primaryColor;
+    return BrColors.colorPrimary;
 
   }
 
