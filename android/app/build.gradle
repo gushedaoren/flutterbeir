@@ -26,10 +26,6 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    lintOptions {
-        abortOnError false
-    }
-
     compileSdkVersion 33
 
     compileOptions {
@@ -45,19 +41,6 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
-    defaultConfig {
-        applicationId "com.brstory"
-        minSdkVersion 25
-        targetSdkVersion 31
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
-
-        vectorDrawables.useSupportLibrary = true
-        multiDexEnabled true
-     
-
-    }
-
     signingConfigs {
         release {
             storeFile file('brstory.jks')
@@ -65,68 +48,33 @@ android {
             keyAlias "brstory"
             keyPassword "zaq123456"
         }
-    }
-    buildTypes {
-        release {
-            minifyEnabled true
-
-            signingConfig signingConfigs.release
-            
-        }
         debug {
-            minifyEnabled false
+            storeFile file('brstory.jks')
+            storePassword "zaq123456"
+            keyAlias "brstory"
+            keyPassword "zaq123456"
+        }
+    }
 
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId "com.brstory"
+        minSdkVersion 21
+        targetSdkVersion flutter.targetSdkVersion
+        versionCode 141
+        versionName "1.4.1"
+    }
+
+    buildTypes {
+        release{
             signingConfig signingConfigs.release
         }
-
-        sourceSets.main {
-            jniLibs.srcDir 'libs'
-
-            res.srcDirs = ['src/main/res',
-
-
-            ]
-
-
+        debug{
+            signingConfig signingConfigs.debug
         }
-    }
 
-    repositories {
-        flatDir {
-            dirs 'libs' // this way we can find the .aar file in libs folder 到libs文件夹下寻找.aar包
-        }
-    }
-    sourceSets.main {
-        jni.srcDirs = []
-        jniLibs.srcDir 'libs'
-    }
 
-    dexOptions {
-        preDexLibraries = false
-        javaMaxHeapSize "4g"   // 调大 HeapSize
-    }
-
-    flavorDimensions "mark" //相当于一个标记
-    productFlavors {
-        yingyongbao { dimension "mark" }
-        huawei { dimension "mark" }
-        xiaomi { dimension "mark" }
-        vivo { dimension "mark" }
-        oppo { dimension "mark" }
-        bbg { dimension "mark" }
-        baidu { dimension "mark" }
-        flutter { dimension "mark" }
-
-    }
-
-    productFlavors.all {
-        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name, TD_CHANNEL_ID: name,JPUSH_PKGNAME : "com.brstory"]
-
-    }
-    android.applicationVariants.all { variant ->
-        variant.outputs.all {
-            outputFileName = "brstory_v${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
-        }
     }
 }
 
@@ -135,9 +83,10 @@ flutter {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+
+    implementation fileTree(include:['*.jar'], dir:'libs')
 
 
 }

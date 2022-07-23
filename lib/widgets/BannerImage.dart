@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterbeir/config/BRConfig.dart';
 import 'package:flutterbeir/models/ModelBanner.dart';
 import 'package:flutterbeir/pages/Series/SeriesMusicStoryListPage.dart';
 import 'package:flutterbeir/utils/Adapter.dart';
@@ -11,7 +12,9 @@ class BannerImage extends StatelessWidget {
 
 
     Navigator.push(context!, MaterialPageRoute(builder: (context) {
-      return SeriesMusicStoryListPage(result!.series!,result!.media!);
+
+      var seriesurl=result!.series!.replaceAll(BRConfig.base_domain, BRConfig.domian);
+      return SeriesMusicStoryListPage(seriesurl,result!.media!);
     }));
 
   }

@@ -206,7 +206,7 @@ class StoryListPageState extends State<StoryListPage>{
     print(data);
 
     StoryPlayPage storyPlayPage=StoryPlayPage(datas,data);
-    storyPlayPage!.series=series!;
+    // storyPlayPage.series=series!;
     Navigator.push(
       context,
       //创建一个路由
